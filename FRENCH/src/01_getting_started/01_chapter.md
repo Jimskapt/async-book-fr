@@ -61,5 +61,5 @@ With that out of the way, let's explore the exciting world of Asynchronous
 Programming in Rust!
 -->
 
-Maintenant que vous savez cela, commençons à explorer le monde exitant de la
+Maintenant que vous savez cela, commençons à explorer le monde excitant de la
 programmation asynchrone avec Rust !

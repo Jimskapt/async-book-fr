@@ -1,3 +1,4 @@
 [workspace]
 members = [
+  "01_02_why_async",
 ]

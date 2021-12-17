@@ -5,3 +5,11 @@ français.
 
 | Anglais | Français | Remarques |
 | ------- | ------ | ------ |
+| bug | bogue | - |
+| cheaper synchronization | synchronisation allégée | - |
+| crate | crate | - |
+| driver | pilote | - |
+| GUI application | application avec interface graphique | - |
+| library | bibliothèque | - |
+| lifetime | durée de vie | - |
+| pinning | épinglage | - |

@@ -1,3 +1,4 @@
 [workspace]
 members = [
+  "07_05_recursion",
 ]

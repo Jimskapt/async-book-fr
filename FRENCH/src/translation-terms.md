@@ -30,15 +30,20 @@ français.
 | lock | verrou | - |
 | low-level | bas-niveau | - |
 | OS | Système d'Exploitation | Operating System |
+| nightly Rust | version expérimentale de Rust | - |
 | (take) ownership | (prendre) possession | - |
+| pin | épingler | - |
 | pinning | épinglage | - |
 | retry logic | logique de relance | - |
 | runtime | environnement d'exécution | - |
 | scope | portée | pour la durée de vie |
+| shadow | masquer | remplacer une variable par une autre de même nom |
+| stack | pile | - |
 | state machine | machine à états | - |
 | static | statique | - |
 | task | tâche | - |
 | thread | processus | - |
 | thread pool | groupe de processus | - |
+| unsafe | non sécurisé | - |
 | valid | en vigueur | pour la durée de vie |
 | yield control | transférer le contrôle | - |

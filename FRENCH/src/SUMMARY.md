@@ -13,5 +13,6 @@
   - [`join!`](06_multiple_futures/02_join.md)
   - [`select!`](06_multiple_futures/03_select.md)
 - [Solutions de contournement à connaître et à apprécier](07_workarounds/01_chapter.md)
+  - [`?` dans les blocs `async`](07_workarounds/02_err_in_async_blocks.md)
 
 [Traduction des termes](translation-terms.md)

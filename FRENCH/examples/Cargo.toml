@@ -3,4 +3,5 @@ members = [
   "01_02_why_async",
   "01_04_async_await_primer",
   "03_01_async_await",
+  "05_01_streams",
 ]

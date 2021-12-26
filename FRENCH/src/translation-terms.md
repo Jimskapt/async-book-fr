@@ -6,19 +6,19 @@ français.
 | Anglais | Français | Remarques |
 | ------- | ------ | ------ |
 | actor model | modèle d'acteur | - |
-| bug | bogue | - |
 | borrow | emprunter | - |
+| bug | bogue | - |
 | callback | fonction de rappel | - |
 | cheaper synchronization | synchronisation allégée | - |
-| CPU | processeur | - |
-| crate | crate | - |
 | closure | fermeture | - |
 | concurrent | concurrent | - |
 | coroutine | coroutine | - |
+| CPU | processeur | - |
+| crate | crate | - |
 | deadlock | interblocage | - |
-| dynamic dispatch | répartition dynamique | - |
 | driver | pilote | - |
 | drop | libérer | - |
+| dynamic dispatch | répartition dynamique | - |
 | flow controle | contrôle de flux | - |
 | future | future | - |
 | GUI application | application avec interface graphique | - |

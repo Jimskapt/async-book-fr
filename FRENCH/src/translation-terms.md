@@ -5,3 +5,4 @@ français.
 
 | Anglais | Français | Remarques |
 | ------- | ------ | ------ |
+| trait | trait | - |

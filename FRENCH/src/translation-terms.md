@@ -44,6 +44,7 @@ français.
 | task | tâche | - |
 | thread | processus | - |
 | thread pool | groupe de processus | - |
+| tuple | tuple | - |
 | unsafe | non sécurisé | - |
 | valid | en vigueur | pour la durée de vie |
 | yield control | transférer le contrôle | - |

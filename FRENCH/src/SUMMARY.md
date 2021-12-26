@@ -10,5 +10,6 @@
 - [Le trait `Stream`](05_streams/01_chapter.md)
   - [L'itération et la concurrence](05_streams/02_iteration_and_concurrency.md)
 - [Exécuter plusieurs futures en même temps](06_multiple_futures/01_chapter.md)
+  - [`join!`](06_multiple_futures/02_join.md)
 
 [Traduction des termes](translation-terms.md)

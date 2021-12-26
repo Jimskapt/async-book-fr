@@ -29,8 +29,9 @@ français.
 | lifetime | durée de vie | - |
 | lock | verrou | - |
 | low-level | bas-niveau | - |
-| OS | Système d'Exploitation | Operating System |
+| mutable | mutable | - |
 | nightly Rust | version expérimentale de Rust | - |
+| OS | Système d'Exploitation | Operating System |
 | (take) ownership | (prendre) possession | - |
 | pin | épingler | - |
 | pinning | épinglage | - |

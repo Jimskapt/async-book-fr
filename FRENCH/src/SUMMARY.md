@@ -19,5 +19,6 @@
   - [`async` dans les traits](07_workarounds/05_async_in_traits.md)
 - [L'écosystème asynchrone](08_ecosystem/00_chapter.md)
 - [Projet final : Serveur HTTP](09_example/00_intro.md)
+  - [Exécuter du code asynchrone](09_example/01_running_async_code.md)
 
 [Traduction des termes](translation-terms.md)

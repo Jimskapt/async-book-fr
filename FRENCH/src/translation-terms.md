@@ -38,10 +38,12 @@ français.
 | pin | épingler | - |
 | pinning | épinglage | - |
 | reactor | réacteur | - |
+| refactoring | remaniement | - |
 | retry logic | logique de relance | - |
 | runtime | environnement d'exécution | - |
 | scope | portée | pour la durée de vie |
 | shadow | masquer | remplacer une variable par une autre de même nom |
+| snip | partie masquée ici | dans un encart |
 | stack | pile | - |
 | state machine | machine à états | - |
 | static | statique | - |

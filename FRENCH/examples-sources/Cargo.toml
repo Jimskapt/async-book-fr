@@ -9,4 +9,6 @@ members = [
   "06_03_select",
   "07_05_recursion",
   "09_01_sync_tcp_server",
+  "09_02_async_tcp_server",
+  "09_03_slow_request",
 ]

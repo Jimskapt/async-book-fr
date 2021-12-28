@@ -11,6 +11,7 @@ français.
 | callback | fonction de rappel | - |
 | cheaper synchronization | synchronisation allégée | - |
 | closure | fermeture | - |
+| combinator | combinateur | - |
 | concurrent | concurrent | - |
 | coroutine | coroutine | - |
 | CPU | processeur | - |
@@ -20,6 +21,7 @@ français.
 | drop | libérer | - |
 | dynamic dispatch | répartition dynamique | - |
 | flow controle | contrôle de flux | - |
+| framework | cadriciel | - |
 | future | future | - |
 | GUI application | application avec interface graphique | - |
 | heap | tas | - |
@@ -35,6 +37,7 @@ français.
 | (take) ownership | (prendre) possession | - |
 | pin | épingler | - |
 | pinning | épinglage | - |
+| reactor | réacteur | - |
 | retry logic | logique de relance | - |
 | runtime | environnement d'exécution | - |
 | scope | portée | pour la durée de vie |
@@ -42,6 +45,7 @@ français.
 | stack | pile | - |
 | state machine | machine à états | - |
 | static | statique | - |
+| subscriber | abonné | - |
 | task | tâche | - |
 | thread | processus | - |
 | thread pool | groupe de processus | - |

@@ -17,5 +17,6 @@
   - [L'approximation de `Send`](07_workarounds/03_send_approximation.md)
   - [Récursivité](07_workarounds/04_recursion.md)
   - [`async` dans les traits](07_workarounds/05_async_in_traits.md)
+- [L'écosystème asynchrone](08_ecosystem/00_chapter.md)
 
 [Traduction des termes](translation-terms.md)

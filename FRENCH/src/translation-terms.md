@@ -5,3 +5,7 @@ français.
 
 | Anglais | Français | Remarques |
 | ------- | ------ | ------ |
+| combinator | combinateur | - |
+| framework | cadriciel | - |
+| reactor | réacteur | - |
+| subscriber | abonné | - |

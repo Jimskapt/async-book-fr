@@ -5,3 +5,5 @@ français.
 
 | Anglais | Français | Remarques |
 | ------- | ------ | ------ |
+| buffer | tampon | - |
+| closure | fermeture | - |

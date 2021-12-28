@@ -18,5 +18,6 @@
   - [Récursivité](07_workarounds/04_recursion.md)
   - [`async` dans les traits](07_workarounds/05_async_in_traits.md)
 - [L'écosystème asynchrone](08_ecosystem/00_chapter.md)
+- [Projet final : Serveur HTTP](09_example/00_intro.md)
 
 [Traduction des termes](translation-terms.md)

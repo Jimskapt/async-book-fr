@@ -7,6 +7,7 @@ français.
 | ------- | ------ | ------ |
 | actor model | modèle d'acteur | - |
 | borrow | emprunter | - |
+| buffer | tampon | - |
 | bug | bogue | - |
 | callback | fonction de rappel | - |
 | cheaper synchronization | synchronisation allégée | - |

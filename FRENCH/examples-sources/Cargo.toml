@@ -11,4 +11,6 @@ members = [
   "09_01_sync_tcp_server",
   "09_02_async_tcp_server",
   "09_03_slow_request",
+  "09_04_concurrent_tcp_server",
+  "09_05_final_tcp_server",
 ]

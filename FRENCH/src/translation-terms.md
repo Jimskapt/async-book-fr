@@ -5,3 +5,5 @@ français.
 
 | Anglais | Français | Remarques |
 | ------- | ------ | ------ |
+| refactoring | remaniement | - |
+| snip | partie masquée ici | dans un encart |

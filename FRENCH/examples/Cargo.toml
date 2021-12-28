@@ -1,3 +1,5 @@
 [workspace]
 members = [
+  "09_02_async_tcp_server",
+  "09_03_slow_request",
 ]

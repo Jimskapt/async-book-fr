@@ -32,6 +32,7 @@ français.
 | lifetime | durée de vie | - |
 | lock | verrou | - |
 | low-level | bas-niveau | - |
+| mock | mock | - |
 | mutable | mutable | - |
 | nightly Rust | version expérimentale de Rust | - |
 | OS | Système d'Exploitation | Operating System |
@@ -54,6 +55,7 @@ français.
 | thread pool | groupe de processus | - |
 | trait | trait | - |
 | tuple | tuple | - |
+| unit test | test unitaire | - |
 | unsafe | non sécurisé | - |
 | valid | en vigueur | pour la durée de vie |
 | yield control | transférer le contrôle | - |

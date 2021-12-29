@@ -21,5 +21,6 @@
 - [Projet final : Serveur HTTP](09_example/00_intro.md)
   - [Exécuter du code asynchrone](09_example/01_running_async_code.md)
   - [Gérer les connexions en concurrence](09_example/02_handling_connections_concurrently.md)
+  - [Test du serveur](09_example/03_tests.md)
 
 [Traduction des termes](translation-terms.md)

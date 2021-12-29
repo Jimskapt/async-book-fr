@@ -98,7 +98,7 @@ mod tests {
     use std::fs;
 
     #[async_std::test]
-    async fn test_handle_connection() {
+    async fn test_gestion_connexion() {
         let octets_entree = b"GET / HTTP/1.1\r\n";
         let mut contenu = vec![0u8; 1024];
         contenu[..octets_entree.len()].clone_from_slice(octets_entree);

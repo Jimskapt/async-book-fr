@@ -2,3 +2,5 @@
 /examples/target/
 /examples/Cargo.lock
 target
+
+*.gitignore.*

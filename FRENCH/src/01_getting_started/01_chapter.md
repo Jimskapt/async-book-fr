@@ -1,3 +1,12 @@
+> # 🚧 Attention, peinture fraîche !
+>
+> Cette page a été traduite par une seule personne et n'a pas été relue et
+> vérifiée par quelqu'un d'autre ! Les informations peuvent par exemple être
+> erronées, être formulées maladroitement, ou contenir d'autres types de fautes.
+>
+> Vous pouvez contribuer à l'amélioration de cette page sur sa
+> [Pull Request](https://github.com/Jimskapt/async-book-fr/pull/1).
+
 <!--
 # Getting Started
 -->
@@ -63,3 +72,8 @@ Programming in Rust!
 
 Maintenant que vous savez cela, commençons à explorer le monde excitant de la
 programmation asynchrone avec Rust !
+
+Ce livre est la traduction française de la version Anglaise du livre
+[Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/index.html).
+Si vous souhaitez contribuer à cette traduction, vous trouverez [le dépôt de
+son code sur GitHub](https://github.com/Jimskapt/async-book-fr).

@@ -135,7 +135,7 @@ de Rust de async se distingue des autres langages de plusieurs manières :
 
 - Les **futures sont inertes** en Rust et progressent uniquement lorsqu'elles
   sont sollicitées. Libérer une future va arrêter sa progression.
-- **L'asynchrone n'a pas coût** en Rust, ce qui signifie que vous ne payez que
+- **L'asynchrone n'a pas de coût** en Rust, ce qui signifie que vous ne payez que
   ce que vous utilisez. Plus précisément, vous pouvez utiliser async sans
   allouer sur le tas et sans répartition dynamique, ce qui est très intéressant
   pour les performances !

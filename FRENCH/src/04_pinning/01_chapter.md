@@ -1456,5 +1456,5 @@ _contrat d'épinglage_.
 -->
 
 ["Executing `Future`s and Tasks"]: ../02_execution/01_chapter.md
-[the `Future` trait]: ../02_execution/02_future.md
+[the `Future` trait]: https://rust-lang.github.io/async-book/02_execution/02_future.html
 [pin_utils]: https://docs.rs/pin-utils/

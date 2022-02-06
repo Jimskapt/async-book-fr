@@ -34,7 +34,7 @@ fn gestion_connexion(mut flux: TcpStream) {
 
     // Ecrit la réponse dans le flux, et purge le flux pour s'assurer
     // que la réponse est bien renvoyée au client
-    let reponse = format!("{}{}", ligne_statut, contenu);
-    flux.write(reponse.as_bytes()).unwrap();
+    let reponse = format!("{ligne_statut}{contenu}");
+    flux.write_all(reponse.as_bytes()).unwrap();
     flux.flush().unwrap();
 }

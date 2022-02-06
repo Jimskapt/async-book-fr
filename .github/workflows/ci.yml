@@ -34,3 +34,8 @@ jobs:
       #   if: github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository_owner == 'rust-lang'
       - run: mdbook build FRENCH
       - run: cargo test --all --manifest-path=./FRENCH/examples/Cargo.toml --target-dir ./FRENCH/target FRENCH
+      - uses: rust-lang/simpleinfra/github-actions/static-websites@master
+        with:
+          deploy_dir: FRENCH/book/html
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+        if: github.event_name == 'push' && github.ref == 'refs/heads/french-unreleased' && github.repository_owner == 'rust-lang'

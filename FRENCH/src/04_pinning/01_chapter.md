@@ -149,6 +149,7 @@ impl Future for FutureAsynchrone {
 ```
 
 <!--
+
 When `poll` is first called, it will poll `fut_one`. If `fut_one` can't
 complete, `AsyncFuture::poll` will return. Future calls to `poll` will pick
 up where the previous one left off. This process continues until the future
@@ -1261,11 +1262,11 @@ impl Test {
         boxed
     }
 
-    fn a<'a>(self: Pin<&'a Self>) -> &'a str {
+    fn a(self: Pin<&Self>) -> &str {
         &self.get_ref().a
     }
 
-    fn b<'a>(self: Pin<&'a Self>) -> &'a String {
+    fn b(self: Pin<&Self>) -> &String {
         unsafe { &*(self.b) }
     }
 }
@@ -1305,11 +1306,11 @@ impl Test {
         boxed
     }
 
-    fn a<'a>(self: Pin<&'a Self>) -> &'a str {
+    fn a(self: Pin<&Self>) -> &str {
         &self.get_ref().a
     }
 
-    fn b<'a>(self: Pin<&'a Self>) -> &'a String {
+    fn b(self: Pin<&Self>) -> &String {
         unsafe { &*(self.b) }
     }
 }

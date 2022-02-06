@@ -33,7 +33,7 @@ async fn gestion_connexion(mut flux: impl Read + Write + Unpin) {
         ("HTTP/1.1 404 NOT FOUND\r\n\r\n", "404.html")
     };
     let contenu = fs::read_to_string(nom_fichier).unwrap();
-    let reponse = format!("{}{}", ligne_statut, contenu);
+    let reponse = format!("{ligne_statut}{contenu}");
     flux.write(reponse.as_bytes()).await.unwrap();
     flux.flush().await.unwrap();
 }

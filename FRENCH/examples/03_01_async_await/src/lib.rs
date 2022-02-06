@@ -62,12 +62,12 @@ async fn blocs() {
 
     let premiere_future = async {
         // ...
-        println!("{}", ma_chaine);
+        println!("{ma_chaine}");
     };
 
     let seconde_future = async {
         // ...
-        println!("{}", ma_chaine);
+        println!("{ma_chaine}");
     };
 
     // Exécute les deux futures jusqu'à leur fin, ce qui affichera
@@ -86,7 +86,7 @@ fn bloc_avec_move() -> impl Future<Output = ()> {
     let ma_chaine = "alpha".to_string();
     async move {
         // ...
-        println!("{}", ma_chaine);
+        println!("{ma_chaine}");
     }
 }
 // ANCHOR_END: async_move_examples

@@ -11,7 +11,7 @@ This can cause the compiler to fail to infer the error type of the
 `async` block.
 -->
 
-Tout comme dans `async fn`, il est courant d'utiliser `?` dans des blocs
+Tout comme dans une `async fn`, il est courant d'utiliser `?` dans des blocs
 `async`. Cependant, le type de retour des blocs `async` n'a pas d'état
 explicite. Cela peut faire échouer le compilateur à déduire le type d'erreur du
 bloc `async`.

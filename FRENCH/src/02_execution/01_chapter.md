@@ -25,20 +25,20 @@ and building new asynchronous primitives. If you decide to skip this section
 now, you may want to bookmark it to revisit in the future.
 -->
 
-Dans cette section, nous allons voir la structure sous-jacente de comment les
-`Future`s et les tâches asynchrones sont ordonnancées. Si vous vous intéressez
+Dans cette section, nous allons étudier la structure sous-jacente de
+l'ordonnancement des `Future`s et des tâches asynchrones. Si vous vous intéressez
 uniquement à l'apprentissage de l'écriture de code de haut niveau qui utilise
 les types `Future` existants et que vous n'êtes pas intéressés par détails du
-fonctionnement des types `Future`, vous pouvez sauter au chapitre "`async` et
-`await`". Cependant, certains sujets abordés dans ce chapitre sont utiles pour
-comprendre comme le code de `async` et `await` fonctionne, ainsi que comprendre
-l'environnement d'exécution et les caractéristiques de performance du code
-`async` et `await`, ainsi que la création de nouvelles primitives asynchrones.
-Si vous décidez de sauter cette section, vous devriez le marquer pour le
-consulter à nouveau à l'avenir.
+fonctionnement des types `Future`, vous pouvez passer au chapitre suivant.
+Cependant, certains sujets abordés dans ce chapitre sont utiles pour comprendre
+comment le code de `async` et `await` fonctionne, comprendre l'environnement
+d'exécution et les caractéristiques de performance du code `async` et `await`,
+ainsi que la création de nouvelles primitives asynchrones.
+Si vous décidez de sauter cette section, vous devriez le marquer pour revenir le
+consulter à nouveau.
 
 <!--
 Now, with that out of the way, let's talk about the `Future` trait.
 -->
 
-Maintenance que vous savez cela, parlons du trait `Future`.
+Maintenance que vous savez cela, commençons par parler du trait `Future`.

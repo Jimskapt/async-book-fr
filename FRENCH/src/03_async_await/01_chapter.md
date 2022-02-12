@@ -11,7 +11,7 @@ greater detail, explaining how it works and how `async` code differs from
 traditional Rust programs.
 -->
 
-Dans [le premier chapitre][the first chapter], nous avons introduit `async` et
+Dans [le premier chapitre][the first chapter], nous avons présenté `async` et
 `await`. Ce nouveau chapitre va aborder plus en détails `async` et `await`, en
 expliquant comment il fonctionne et comment le code `async` se distingue des
 programmes Rust traditionnels.
@@ -22,17 +22,17 @@ yield control of the current thread rather than blocking, allowing other
 code to make progress while waiting on an operation to complete.
 -->
 
-`async` et `await` sont des entités spécifiques de la syntaxe Rust qui rend
-possible de transférer le contrôle du processus en cours plutôt que de bloquer,
-ce qui permet à un autre code de progresser pendant que nous attendons qu'une
-opération se termine.
+`async` et `await` sont des mot-clés spécifiques de la syntaxe Rust qui permet
+de transférer le contrôle du processus en cours plutôt que de le bloquer,
+ce qui permet à un autre code de progresser pendant que nous attendons que
+cette opération se termine.
 
 <!--
 There are two main ways to use `async`: `async fn` and `async` blocks.
 Each returns a value that implements the `Future` trait:
 -->
 
-Il y a deux principales façons d'utiliser `async` : `async fn` et les blocs
+Il y a deux principaux moyens d'utiliser `async` : `async fn` et les blocs
 `async`. Chacun retourne une valeur qui implémente le trait `Future` :
 
 <!--
@@ -55,13 +55,13 @@ up by the executor and will resume running, allowing the `.await` to resolve.
 -->
 
 Comme nous l'avons vu dans le premier chapitre, les corps des `async` et des
-autres futures sont passives : ils ne font rien jusqu'à ce qu'ils soient
+autres futures sont passifs : ils ne font rien jusqu'à ce qu'ils soient
 exécutés. La façon la plus courante d'exécuter une `Future` est d'utiliser
 `await` sur elle. Lorsque `await` est utilisé sur une `Future`, il va tenter de
 l'exécuter jusqu'à sa fin. Si la `Future` est bloquée, il va transférer le
-contrôle du processus en cours. Lorsqu'une progression pourra être effectuée,
-la `Future` va être récupéré par l'exécuteur et va continuer son exécution, ce
-qui permettra à terme au `await` de se résoudre.
+contrôle du processus en cours. Lorsqu'une progression pourra être effectuée à
+nouveau, la `Future` va être récupérée par l'exécuteur et va continuer son
+exécution, ce qui permettra à terme au `await` de se résoudre.
 
 <!--
 ## `async` Lifetimes
@@ -75,8 +75,8 @@ non-`'static` arguments return a `Future` which is bounded by the lifetime of
 the arguments:
 -->
 
-Contrairement au fonctions traditionnelles, les `async fn` qui utilisent des
-références, ou d'autres arguments non `static`, vont retourner une `Future` qui
+Contrairement aux fonctions traditionnelles, les `async fn` qui utilisent des
+références ou d'autres arguments non `static` vont retourner une `Future` qui
 est contrainte par la durée de vie des arguments :
 
 <!--
@@ -98,7 +98,7 @@ or sending it over to another task or thread, this may be an issue.
 -->
 
 Cela signifie que l'on doit utiliser `await` sur la future retournée d'une
-`async fn` uniquement pendant que ses arguments non `static` soient toujours en
+`async fn` uniquement pendant que ses arguments non `static` sont toujours en
 vigueur. Dans le cas courant où on utilise `await` sur la future immédiatement
 après avoir appelé la fonction (comme avec `alpha(&x).await`), ce n'est pas un
 problème. Cependant, si on stocke la future ou si on l'envoie à une autre tâche
@@ -111,9 +111,9 @@ into a `'static` future is to bundle the arguments with the call to the
 -->
 
 Un contournement courant pour utiliser une `async fn` avec des références en
-argument afin qu'elle retourne une future `'static` est d'envelopper les
-arguments utilisés pour l'appel à la `async fn` à l'intérieur d'un bloc
-`async` :
+argument afin qu'elle retourne une future `'static` est d'envelopper à
+l'intérieur d'un bloc `async` les arguments utilisés pour l'appel à la
+`async fn` :
 
 <!--
 ```rust,edition2018,ignore

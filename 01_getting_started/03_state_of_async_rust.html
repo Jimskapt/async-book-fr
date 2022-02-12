@@ -1,0 +1,422 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>🚧 L&#x27;état de l&#x27;art de l&#x27;asynchrone en Rust - La programmation asynchrone avec Rust</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../01_getting_started/01_chapter.html"><strong aria-hidden="true">1.</strong> 🚧 Pour démarrer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_getting_started/02_why_async.html"><strong aria-hidden="true">1.1.</strong> 🚧 Pourquoi l'asynchrone ?</a></li><li class="chapter-item expanded "><a href="../01_getting_started/03_state_of_async_rust.html" class="active"><strong aria-hidden="true">1.2.</strong> 🚧 L'état de l'art de l'asynchrone en Rust</a></li><li class="chapter-item expanded "><a href="../01_getting_started/04_async_await_primer.html"><strong aria-hidden="true">1.3.</strong> 🚧 Introduction à async et await</a></li></ol></li><li class="chapter-item expanded "><a href="../02_execution/01_chapter.html"><strong aria-hidden="true">2.</strong> 🚧 Sous le capot : exécuter les Futures et les tâches</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_execution/02_future.html"><strong aria-hidden="true">2.1.</strong> 💬 The Future Trait</a></li><li class="chapter-item expanded "><a href="../02_execution/03_wakeups.html"><strong aria-hidden="true">2.2.</strong> 💬 Task Wakeups with Waker</a></li><li class="chapter-item expanded "><a href="../02_execution/04_executor.html"><strong aria-hidden="true">2.3.</strong> 💬 Applied: Build an Executor</a></li><li class="chapter-item expanded "><a href="../02_execution/05_io.html"><strong aria-hidden="true">2.4.</strong> 💬 Executors and System IO</a></li></ol></li><li class="chapter-item expanded "><a href="../03_async_await/01_chapter.html"><strong aria-hidden="true">3.</strong> 🚧 async et await</a></li><li class="chapter-item expanded "><a href="../04_pinning/01_chapter.html"><strong aria-hidden="true">4.</strong> 🚧 L'épinglage</a></li><li class="chapter-item expanded "><a href="../05_streams/01_chapter.html"><strong aria-hidden="true">5.</strong> 🚧 Le trait Stream</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../05_streams/02_iteration_and_concurrency.html"><strong aria-hidden="true">5.1.</strong> 🚧 L'itération et la concurrence</a></li></ol></li><li class="chapter-item expanded "><a href="../06_multiple_futures/01_chapter.html"><strong aria-hidden="true">6.</strong> 🚧 Exécuter plusieurs futures en même temps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../06_multiple_futures/02_join.html"><strong aria-hidden="true">6.1.</strong> 🚧 join!</a></li><li class="chapter-item expanded "><a href="../06_multiple_futures/03_select.html"><strong aria-hidden="true">6.2.</strong> 🚧 select!</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.3.</strong> 🥚 TODO: Spawning</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.4.</strong> 🥚 TODO: Cancellation and Timeouts</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.5.</strong> 🥚 TODO: FuturesUnordered</div></li></ol></li><li class="chapter-item expanded "><a href="../07_workarounds/01_chapter.html"><strong aria-hidden="true">7.</strong> 🚧 Solutions de contournement à connaître et à utiliser</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../07_workarounds/02_err_in_async_blocks.html"><strong aria-hidden="true">7.1.</strong> 🚧 ? dans les blocs async</a></li><li class="chapter-item expanded "><a href="../07_workarounds/03_send_approximation.html"><strong aria-hidden="true">7.2.</strong> 🚧 L'approximation de Send</a></li><li class="chapter-item expanded "><a href="../07_workarounds/04_recursion.html"><strong aria-hidden="true">7.3.</strong> 🚧 La récursivité</a></li><li class="chapter-item expanded "><a href="../07_workarounds/05_async_in_traits.html"><strong aria-hidden="true">7.4.</strong> 🚧 async dans les traits</a></li></ol></li><li class="chapter-item expanded "><a href="../08_ecosystem/00_chapter.html"><strong aria-hidden="true">8.</strong> 🚧 L'écosystème asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/00_intro.html"><strong aria-hidden="true">9.</strong> 🚧 Projet final : Serveur HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../09_example/01_running_async_code.html"><strong aria-hidden="true">9.1.</strong> 🚧 Exécuter du code asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/02_handling_connections_concurrently.html"><strong aria-hidden="true">9.2.</strong> 🚧 Gérer les connexions en concurrence</a></li><li class="chapter-item expanded "><a href="../09_example/03_tests.html"><strong aria-hidden="true">9.3.</strong> 🚧 Test du serveur</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> TODO: I/O</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">10.1.</strong> TODO: AsyncRead and AsyncWrite</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> TODO: Asynchronous Design Patterns: Solutions and Suggestions</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">11.1.</strong> TODO: Modeling Servers and the Request/Response Pattern</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.2.</strong> TODO: Managing Shared State</div></li></ol></li><li class="chapter-item expanded "><a href="../12_appendix/01_translations.html"><strong aria-hidden="true">12.</strong> Annexe : traductions du livre</a></li><li class="chapter-item expanded affix "><a href="../translation-terms.html">Traduction des termes</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">La programmation asynchrone avec Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Jimskapt/async-book-fr/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <blockquote>
+<h1 id="-attention-peinture-fraîche-"><a class="header" href="#-attention-peinture-fraîche-">🚧 Attention, peinture fraîche !</a></h1>
+<p>Cette page a été traduite par une seule personne et n'a pas été relue et
+vérifiée par quelqu'un d'autre ! Les informations peuvent par exemple être
+erronées, être formulées maladroitement, ou contenir d'autres types de fautes.</p>
+<p>Vous pouvez contribuer à l'amélioration de cette page sur sa
+<a href="https://github.com/Jimskapt/async-book-fr/pull/3">Pull Request</a>.</p>
+</blockquote>
+<!--
+# The State of Asynchronous Rust
+-->
+<h1 id="létat-de-lart-de-lasynchrone-en-rust"><a class="header" href="#létat-de-lart-de-lasynchrone-en-rust">L'état de l'art de l'asynchrone en Rust</a></h1>
+<!--
+Parts of async Rust are supported with the same stability guarantees as
+synchronous Rust. Other parts are still maturing and will change
+over time. With async Rust, you can expect:
+-->
+<p>Certaines parties du Rust asynchrone sont pris en charge avec les mêmes
+garanties de stabilité que le Rust synchrone. Les autres parties sont en cours
+de perfectionnement et évolueront dans le temps. Voici ce que vous pouvez
+attendre du Rust asynchrone :</p>
+<!--
+- Outstanding runtime performance for typical concurrent workloads.
+- More frequent interaction with advanced language features, such as lifetimes
+  and pinning.
+- Some compatibility constraints, both between sync and async code, and between
+  different async runtimes.
+- Higher maintenance burden, due to the ongoing evolution of async runtimes
+  and language support.
+-->
+<ul>
+<li>D'excellentes performances à l'exécution des charges de travail en concurrence
+classiques.</li>
+<li>Une interaction plus régulière avec les fonctionnalités avancées du langage,
+comme les durées de vie et l'épinglage.</li>
+<li>Des contraintes de compatibilité, à la fois entre le code synchrone et
+asynchrone, et entre les différents environnements d'exécution.</li>
+<li>Une plus grande exigence de maintenance, à cause de l'évolution continue des
+environnements d'exécution asynchrones et du langage.</li>
+</ul>
+<!--
+In short, async Rust is more difficult to use and can result in a higher
+maintenance burden than synchronous Rust,
+but gives you best-in-class performance in return.
+All areas of async Rust are constantly improving,
+so the impact of these issues will wear off over time.
+-->
+<p>En résumé, le Rust asynchrone est plus difficile à utiliser et peut demander
+plus de maintenance que le Rust synchrone, mais il vous procure en retour les
+meilleures performances dans le domaine. Tous les éléments du Rust asynchrone
+dont en constante amélioration, donc les effets de ces contre-parties
+s'estomperont avec le temps.</p>
+<!--
+## Language and library support
+-->
+<h2 id="la-prise-en-charge-des-bibliothèques-et-du-langage"><a class="header" href="#la-prise-en-charge-des-bibliothèques-et-du-langage">La prise en charge des bibliothèques et du langage</a></h2>
+<!--
+While asynchronous programming is supported by Rust itself,
+most async applications depend on functionality provided
+by community crates.
+As such, you need to rely on a mixture of
+language features and library support:
+-->
+<p>Bien que la programmation asynchrone soit fournie par le coeur de Rust, la
+plupart des applications asynchrones dépendent des fonctionnalités offertes
+par les crates de la communauté.
+Par conséquent, vous devez avoir recours à un mélange de fonctionnalités
+offertes par le langage et les bibliothèques :</p>
+<!--
+- The most fundamental traits, types and functions, such as the
+  [`Future`](https://doc.rust-lang.org/std/future/trait.Future.html) trait
+  are provided by the standard library.
+- The `async/await` syntax is supported directly by the Rust compiler.
+- Many utility types, macros and functions are provided by the
+  [`futures`](https://docs.rs/futures/) crate. They can be used in any async
+  Rust application.
+- Execution of async code, IO and task spawning are provided by "async
+  runtimes", such as Tokio and async-std. Most async applications, and some
+  async crates, depend on a specific runtime. See
+  ["The Async Ecosystem"](../08_ecosystem/00_chapter.md) section for more
+  details.
+-->
+<ul>
+<li>Les traits, types et fonctions les plus fondamentaux, comme le trait
+<a href="https://doc.rust-lang.org/std/future/trait.Future.html"><code>Future</code></a>, sont
+fournis par la bibliothèque standard.</li>
+<li>La syntaxe <code>async/await</code> est prise en charge directement par le compilateur
+Rust.</li>
+<li>De nombreux types, macros et fonctions utilitaires sont fournis par la crate
+<a href="https://docs.rs/futures/"><code>futures</code></a>. Ils peuvent être utilisés dans de
+nombreuses applications asynchrones en Rust.</li>
+<li>L'exécution du code asynchrone, les entrées/sorties, et la création de tâches
+sont prises en charge par les &quot;environnements d'exécution asynchrone&quot;, comme
+Tokio et async-std. La plupart des applications asynchrones, et certaines
+crates asynchrones, dépendent d'un environnement d'exécution précis. Vous
+pouvez consulter la section
+<a href="../08_ecosystem/00_chapter.html">&quot;L'écosystème asynchrone&quot;</a> pour en savoir
+plus.</li>
+</ul>
+<!--
+Some language features you may be used to from synchronous Rust are not yet
+available in async Rust. Notably, Rust does not let you declare async
+functions in traits. Instead, you need to use workarounds to achieve the same
+result, which can be more verbose.
+-->
+<p>Certaines fonctionnalités du langage auquel vous êtes habitué en Rust synchrone
+peuvent ne pas encore être disponible en Rust asynchrone. Par exemple, Rust ne
+vous permet pas encore de déclarer des fonctions asynchrones dans des traits.
+Par conséquent, vous avez besoin de mettre en place des solutions de
+substitution pour arriver au même résultat, ce qui peut rendre les choses un
+peu plus verbeuses.</p>
+<!--
+## Compiling and debugging
+-->
+<h2 id="la-compilation-et-le-débogage"><a class="header" href="#la-compilation-et-le-débogage">La compilation et le débogage</a></h2>
+<!--
+For the most part, compiler- and runtime errors in async Rust work
+the same way as they have always done in Rust. There are a few
+noteworthy differences:
+-->
+<p>Dans la plupart des cas, les erreurs du compilateur et d'exécution du Rust
+asynchrone fonctionnent de la même manière qu'elles l'ont toujours fait en
+Rust. Voici quelques différences intéressantes :</p>
+<!--
+### Compilation errors
+-->
+<h3 id="les-erreurs-de-compilation"><a class="header" href="#les-erreurs-de-compilation">Les erreurs de compilation</a></h3>
+<!--
+Compilation errors in async Rust conform to the same high standards as
+synchronous Rust, but since async Rust often depends on more complex language
+features, such as lifetimes and pinning, you may encounter these types of
+errors more frequently.
+-->
+<p>Les erreurs de compilateur en Rust asynchrone suivent les mêmes règles strictes
+que le Rust synchrone, mais comme le Rust asynchrone dépend souvent de
+fonctionnalités du langage plus élaborées, comme les durées de vie
+et l'épinglage, vous pourriez rencontrer plus régulièrement ces types
+d'erreurs.</p>
+<!--
+### Runtime errors
+-->
+<h3 id="les-erreurs-à-lexécution"><a class="header" href="#les-erreurs-à-lexécution">Les erreurs à l'exécution</a></h3>
+<!--
+Whenever the compiler encounters an async function, it generates a state
+machine under the hood. Stack traces in async Rust typically contain details
+from these state machines, as well as function calls from
+the runtime. As such, interpreting stack traces can be a bit more involved than
+it would be in synchronous Rust.
+-->
+<p>A chaque fois que le compilateur va rencontrer une fonction asynchrone, il va
+générer une machine à états en arrière-plan. Les traces de la pile en Rust
+asynchrone contiennent généralement des informations sur ces machines à états,
+ainsi que les appels de fonctions de l'environnement d'exécution. Par
+conséquent, l'interprétation des traces de la pile peut être un peu plus ardue
+qu'elle le serait en Rust synchrone.</p>
+<!--
+### New failure modes
+-->
+<h3 id="les-nouveaux-types-derreurs"><a class="header" href="#les-nouveaux-types-derreurs">Les nouveaux types d'erreurs</a></h3>
+<!--
+A few novel failure modes are possible in async Rust, for instance
+if you call a blocking function from an async context or if you implement
+the `Future` trait incorrectly. Such errors can silently pass both the
+compiler and sometimes even unit tests. Having a firm understanding
+of the underlying concepts, which this book aims to give you, can help you
+avoid these pitfalls.
+-->
+<p>Quelques nouveaux types d'erreurs sont possibles avec Rust asynchrone, par
+exemple si vous appelez une fonction bloquante à partir d'un contexte
+asynchrone ou si vous n'implémentez pas correctement le trait <code>Future</code>. Ces
+erreurs peuvent ne pas être signalées par le compilateur et parfois même ne
+peuvent pas être couvertes par vos tests unitaires. Le but de ce livre est
+de vous apprendre les principes fondamentaux pour vous aider à éviter ces
+pièges.</p>
+<!--
+## Compatibility considerations
+-->
+<h2 id="remarques-à-propos-de-la-compatibilité"><a class="header" href="#remarques-à-propos-de-la-compatibilité">Remarques à propos de la compatibilité</a></h2>
+<!--
+Asynchronous and synchronous code cannot always be combined freely.
+For instance, you can't directly call an async function from a sync function.
+Sync and async code also tend to promote different design patterns, which can
+make it difficult to compose code intended for the different environments.
+-->
+<p>Le code asynchrone et synchrone ne peuvent pas toujours être combinés
+librement. Par exemple, vous ne pouvez pas appeler directement une fonction
+asynchrone à partir d'une fonction synchrone. Le code synchrone et asynchrone
+ont aussi tendance à favoriser des motifs de conception différents, ce qui
+peut rendre difficile de combiner du code destiné aux différents
+environnements.</p>
+<!--
+Even async code cannot always be combined freely. Some crates depend on a
+specific async runtime to function. If so, it is usually specified in the
+crate's dependency list.
+-->
+<p>Et même le code asynchrone ne peut pas être combiné librement. Certaines crates
+dépendent d'un environnement d'exécution asynchrone pour fonctionner. Si c'est
+le cas, c'est souvent précisé dans la liste des dépendances de la crate.</p>
+<!--
+These compatibility issues can limit your options, so make sure to
+research which async runtime and what crates you may need early.
+Once you have settled in with a runtime, you won't have to worry
+much about compatibility.
+-->
+<p>Ces problèmes de compatibilité peuvent réduire vos options, donc il vaut mieux
+faire assez tôt vos recherches sur les environnements d'exécution asynchrone et
+de leurs crates associées. Une fois que vous vous êtes installé dans un
+environnement d'exécution, vous n'aurez plus à vous soucier de la
+compatibilité.</p>
+<!--
+## Performance characteristics
+-->
+<h2 id="les-performances"><a class="header" href="#les-performances">Les performances</a></h2>
+<!--
+The performance of async Rust depends on the implementation of the
+async runtime you're using.
+Even though the runtimes that power async Rust applications are relatively new,
+they perform exceptionally well for most practical workloads.
+-->
+<p>Les performances du Rust asynchrone dépend de l'implémentation de
+l'environnement d'exécution asynchrone que vous choisissez.
+Même si les environnements d'exécution qui propulsent les applications
+asynchrones en Rust sont relativement récents, ils sont remarquablement
+performants pour la plupart des charges de travail.</p>
+<!--
+That said, most of the async ecosystem assumes a _multi-threaded_ runtime.
+This makes it difficult to enjoy the theoretical performance benefits
+of single-threaded async applications, namely cheaper synchronization.
+Another overlooked use-case is _latency sensitive tasks_, which are
+important for drivers, GUI applications and so on. Such tasks depend
+on runtime and/or OS support in order to be scheduled appropriately.
+You can expect better library support for these use cases in the future.
+-->
+<p>Ceci étant dit, la plupart des écosystèmes asynchrones prévoient un
+environnement d'exécution <em>multi-processus</em>. Cela rend plus difficile
+d'apprécier les bienfaits sur les performances théoriques des applications
+asynchrone sur un seul processus, appelée aussi synchronisation allégée.
+Un autre domaine d'application sous-côté est celui des <em>tâches sensibles à la
+latence</em>, qui sont importantes pour les pilotes, les applications avec
+interface graphique, parmi d'autres. Ces tâches dépendent de l'environnement
+d'exécution et/ou de la prise en charge du système d'exploitation pour être
+orchestrées correctement. Vous pouvez donc espérer une meilleure prise en
+charge à l'avenir des bibliothèques de ces cas d'usages.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../01_getting_started/02_why_async.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../01_getting_started/04_async_await_primer.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../01_getting_started/02_why_async.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../01_getting_started/04_async_await_primer.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>🚧 Exécuter du code asynchrone - La programmation asynchrone avec Rust</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../01_getting_started/01_chapter.html"><strong aria-hidden="true">1.</strong> 🚧 Pour démarrer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_getting_started/02_why_async.html"><strong aria-hidden="true">1.1.</strong> 🚧 Pourquoi l'asynchrone ?</a></li><li class="chapter-item expanded "><a href="../01_getting_started/03_state_of_async_rust.html"><strong aria-hidden="true">1.2.</strong> 🚧 L'état de l'art de l'asynchrone en Rust</a></li><li class="chapter-item expanded "><a href="../01_getting_started/04_async_await_primer.html"><strong aria-hidden="true">1.3.</strong> 🚧 Introduction à async et await</a></li></ol></li><li class="chapter-item expanded "><a href="../02_execution/01_chapter.html"><strong aria-hidden="true">2.</strong> 🚧 Sous le capot : exécuter les Futures et les tâches</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_execution/02_future.html"><strong aria-hidden="true">2.1.</strong> 💬 The Future Trait</a></li><li class="chapter-item expanded "><a href="../02_execution/03_wakeups.html"><strong aria-hidden="true">2.2.</strong> 💬 Task Wakeups with Waker</a></li><li class="chapter-item expanded "><a href="../02_execution/04_executor.html"><strong aria-hidden="true">2.3.</strong> 💬 Applied: Build an Executor</a></li><li class="chapter-item expanded "><a href="../02_execution/05_io.html"><strong aria-hidden="true">2.4.</strong> 💬 Executors and System IO</a></li></ol></li><li class="chapter-item expanded "><a href="../03_async_await/01_chapter.html"><strong aria-hidden="true">3.</strong> 🚧 async et await</a></li><li class="chapter-item expanded "><a href="../04_pinning/01_chapter.html"><strong aria-hidden="true">4.</strong> 🚧 L'épinglage</a></li><li class="chapter-item expanded "><a href="../05_streams/01_chapter.html"><strong aria-hidden="true">5.</strong> 🚧 Le trait Stream</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../05_streams/02_iteration_and_concurrency.html"><strong aria-hidden="true">5.1.</strong> 🚧 L'itération et la concurrence</a></li></ol></li><li class="chapter-item expanded "><a href="../06_multiple_futures/01_chapter.html"><strong aria-hidden="true">6.</strong> 🚧 Exécuter plusieurs futures en même temps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../06_multiple_futures/02_join.html"><strong aria-hidden="true">6.1.</strong> 🚧 join!</a></li><li class="chapter-item expanded "><a href="../06_multiple_futures/03_select.html"><strong aria-hidden="true">6.2.</strong> 🚧 select!</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.3.</strong> 🥚 TODO: Spawning</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.4.</strong> 🥚 TODO: Cancellation and Timeouts</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.5.</strong> 🥚 TODO: FuturesUnordered</div></li></ol></li><li class="chapter-item expanded "><a href="../07_workarounds/01_chapter.html"><strong aria-hidden="true">7.</strong> 🚧 Solutions de contournement à connaître et à utiliser</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../07_workarounds/02_err_in_async_blocks.html"><strong aria-hidden="true">7.1.</strong> 🚧 ? dans les blocs async</a></li><li class="chapter-item expanded "><a href="../07_workarounds/03_send_approximation.html"><strong aria-hidden="true">7.2.</strong> 🚧 L'approximation de Send</a></li><li class="chapter-item expanded "><a href="../07_workarounds/04_recursion.html"><strong aria-hidden="true">7.3.</strong> 🚧 La récursivité</a></li><li class="chapter-item expanded "><a href="../07_workarounds/05_async_in_traits.html"><strong aria-hidden="true">7.4.</strong> 🚧 async dans les traits</a></li></ol></li><li class="chapter-item expanded "><a href="../08_ecosystem/00_chapter.html"><strong aria-hidden="true">8.</strong> 🚧 L'écosystème asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/00_intro.html"><strong aria-hidden="true">9.</strong> 🚧 Projet final : Serveur HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../09_example/01_running_async_code.html" class="active"><strong aria-hidden="true">9.1.</strong> 🚧 Exécuter du code asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/02_handling_connections_concurrently.html"><strong aria-hidden="true">9.2.</strong> 🚧 Gérer les connexions en concurrence</a></li><li class="chapter-item expanded "><a href="../09_example/03_tests.html"><strong aria-hidden="true">9.3.</strong> 🚧 Test du serveur</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> TODO: I/O</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">10.1.</strong> TODO: AsyncRead and AsyncWrite</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> TODO: Asynchronous Design Patterns: Solutions and Suggestions</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">11.1.</strong> TODO: Modeling Servers and the Request/Response Pattern</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.2.</strong> TODO: Managing Shared State</div></li></ol></li><li class="chapter-item expanded "><a href="../12_appendix/01_translations.html"><strong aria-hidden="true">12.</strong> Annexe : traductions du livre</a></li><li class="chapter-item expanded affix "><a href="../translation-terms.html">Traduction des termes</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">La programmation asynchrone avec Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Jimskapt/async-book-fr/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <blockquote>
+<h1 id="-attention-peinture-fraîche-"><a class="header" href="#-attention-peinture-fraîche-">🚧 Attention, peinture fraîche !</a></h1>
+<p>Cette page a été traduite par une seule personne et n'a pas été relue et
+vérifiée par quelqu'un d'autre ! Les informations peuvent par exemple être
+erronées, être formulées maladroitement, ou contenir d'autres types de fautes.</p>
+</blockquote>
+<!--
+# Running Asynchronous Code
+An HTTP server should be able to serve multiple clients concurrently;
+that is, it should not wait for previous requests to complete before handling the current request.
+The book
+[solves this problem](https://doc.rust-lang.org/book/ch20-02-multithreaded.html#turning-our-single-threaded-server-into-a-multithreaded-server)
+by creating a thread pool where each connection is handled on its own thread.
+Here, instead of improving throughput by adding threads, we'll achieve the same effect using asynchronous code.
+-->
+<h1 id="exécuter-du-code-asynchrone"><a class="header" href="#exécuter-du-code-asynchrone">Exécuter du code asynchrone</a></h1>
+<p>Un serveur HTTP doit être capable de servir plusieurs clients en concurrence,
+et par conséquent, il ne doit pas attendre que les requêtes précédentes soient
+terminées pour s'occuper de la requête en cours.
+Le livre Rust <a href="https://jimskapt.github.io/rust-book-fr/ch20-02-multithreaded.html#transformer-notre-serveur-monot%C3%A2che-en-serveur-multit%C3%A2ches">résout ce
+problème</a>
+en créant un groupe de tâches où chaque connexion est gérée sur son propre
+processus. Nous allons obtenir le même effet en utilisant du code asynchrone,
+au lieu d'améliorer le débit en ajoutant des processus.</p>
+<!--
+Let's modify `handle_connection` to return a future by declaring it an `async fn`:
+```rust,ignore
+async fn handle_connection(mut stream: TcpStream) {
+    //<-- snip -- >
+}
+```
+-->
+<p>Modifions le <code>gestion_connexion</code> pour retourner une future en la déclarant
+comme étant une fonction asynchrone :</p>
+<pre><code class="language-rust ignore">async fn gestion_connexion(mut flux: TcpStream) {
+    //&lt;-- partie masquée ici --&gt;
+}
+</code></pre>
+<!--
+Adding `async` to the function declaration changes its return type
+from the unit type `()` to a type that implements `Future<Output=()>`.
+-->
+<p>L'ajout de <code>async</code> à la déclaration de la fonction change son type de retour de
+<code>()</code> à un type qui implémente <code>Future&lt;Output=()&gt;</code>.</p>
+<!--
+If we try to compile this, the compiler warns us that it will not work:
+```console
+$ cargo check
+    Checking async-rust v0.1.0 (file:///projects/async-rust)
+warning: unused implementer of `std::future::Future` that must be used
+  -- > src/main.rs:12:9
+   |
+12 |         handle_connection(stream);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_must_use)]` on by default
+   = note: futures do nothing unless you `.await` or poll them
+```
+-->
+<p>Si nous essayons de compiler cela, le compilateur va nous avertir que cela ne
+fonctionnera pas :</p>
+<pre><code class="language-console">$ cargo check
+    Checking async-rust v0.1.0 (file:///projects/async-rust)
+warning: unused implementer of `std::future::Future` that must be used
+  -- &gt; src/main.rs:12:9
+   |
+12 |         gestion_connexion(flux);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_must_use)]` on by default
+   = note: futures do nothing unless you `.await` or poll them
+</code></pre>
+<!--
+Because we haven't `await`ed or `poll`ed the result of `handle_connection`,
+it'll never run. If you run the server and visit `127.0.0.1:7878` in a browser,
+you'll see that the connection is refused; our server is not handling requests.
+-->
+<p>Comme nous n'avons pas utilisé <code>await</code> ou <code>poll</code> sur le résultat de
+<code>gestion_connexion</code>, cela ne va jamais s'exécuter. Si vous lancez le serveur et
+visitez <code>127.0.0.1:7878</code> dans un navigateur web, vous constaterez que la
+connexion est refusée, notre serveur ne prend pas en charge les requêtes.</p>
+<!--
+We can't `await` or `poll` futures within synchronous code by itself.
+We'll need an asynchronous runtime to handle scheduling and running futures to completion.
+Please consult the [section on choosing a runtime](../08_ecosystem/00_chapter.md)
+for more information on asynchronous runtimes, executors, and reactors.
+Any of the runtimes listed will work for this project, but for these examples,
+we've chosen to use the `async-std` crate.
+-->
+<p>Nous ne pouvons pas utiliser <code>await</code> ou <code>poll</code> sur des futures dans du code
+synchrone tout seul.
+Nous allons avoir besoin d'un environnement d'exécution asynchrone pour gérer
+la planification et l'exécution des futures jusqu'à ce qu'elles se terminent.
+Vous pouvez consulter la <a href="../08_ecosystem/00_chapter.html">section pour choisir un environnement
+d'exécution</a> pour plus d'information sur les
+environnements d'exécution, exécuteurs et réacteurs asynchrones.
+Tous les environnements d'exécution listés vont fonctionner pour ce projet,
+mais pour ces exemples, nous avons choisi d'utiliser la crate <code>async-std</code>.</p>
+<!--
+## Adding an Async Runtime
+The following example will demonstrate refactoring synchronous code to use an async runtime; here, `async-std`.
+The `#[async_std::main]` attribute from `async-std` allows us to write an asynchronous main function.
+To use it, enable the `attributes` feature of `async-std` in `Cargo.toml`:
+```toml
+[dependencies.async-std]
+version = "1.6"
+features = ["attributes"]
+```
+-->
+<h2 id="ajouter-un-environnement-dexécution-asynchrone"><a class="header" href="#ajouter-un-environnement-dexécution-asynchrone">Ajouter un environnement d'exécution asynchrone</a></h2>
+<p>L'exemple suivant va monter le remaniement du code synchrone pour utiliser un
+environnement d'exécution asynchrone, dans ce cas <code>async-std</code>.
+L'attribut <code>#[async_std::main]</code> de <code>async-std</code> nous permet d'écrire une
+fonction <code>main</code> asynchrone.
+Pour l'utiliser, il faut activer la fonctionnalité <code>attributes</code> de <code>async-std</code>
+dans <code>Cargo.toml</code> :</p>
+<pre><code class="language-toml">[dependencies.async-std]
+version = &quot;1.6&quot;
+features = [&quot;attributes&quot;]
+</code></pre>
+<!--
+As a first step, we'll switch to an asynchronous main function,
+and `await` the future returned by the async version of `handle_connection`.
+Then, we'll test how the server responds.
+Here's what that would look like:
+```rust
+#[async_std::main]
+async fn main() {
+    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+    for stream in listener.incoming() {
+        let stream = stream.unwrap();
+        // Warning: This is not concurrent!
+        handle_connection(stream).await;
+    }
+}
+```
+Now, let's test to see if our server can handle connections concurrently.
+Simply making `handle_connection` asynchronous doesn't mean that the server
+can handle multiple connections at the same time, and we'll soon see why.
+-->
+<p>Pour commencer, nous allons changer pour une fonction <code>main</code> asynchrone, et
+utiliser <code>await</code> sur la future retournée par la version asynchrone de
+<code>gestion_connexion</code>. Ensuite, nous testerons comment le serveur répond. Voici à
+quoi cela ressemblerait :</p>
+<pre><pre class="playground"><code class="language-rust">#[async_std::main]
+async fn main() {
+    let ecouteur = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+    for flux in ecouteur.incoming() {
+        let flux = flux.unwrap();
+        // Attention : cela n'est pas concurrent !
+        gestion_connexion(flux).await;
+    }
+}
+</code></pre></pre>
+<p>Maintenant, testons pour voir si notre serveur peut gérer les connexions en
+concurrence. Transformer simplement <code>gestion_connexion</code> en asynchrone ne
+signifie pas que le serveur puisse gérer plusieurs connexions en même temps, et
+nous allons bientôt voir pourquoi.</p>
+<!--
+To illustrate this, let's simulate a slow request.
+When a client makes a request to `127.0.0.1:7878/sleep`,
+our server will sleep for 5 seconds:
+-->
+<p>Pour illustrer cela, simulons une réponse lente.
+Lorsqu'un client fait une requête vers <code>127.0.0.1:7878/pause</code>, notre serveur va
+attendre 5 secondes :</p>
+<!--
+```rust,ignore
+use async_std::task;
+
+async fn handle_connection(mut stream: TcpStream) {
+    let mut buffer = [0; 1024];
+    stream.read(&mut buffer).unwrap();
+
+    let get = b"GET / HTTP/1.1\r\n";
+    let sleep = b"GET /sleep HTTP/1.1\r\n";
+
+    let (status_line, filename) = if buffer.starts_with(get) {
+        ("HTTP/1.1 200 OK\r\n\r\n", "hello.html")
+    } else if buffer.starts_with(sleep) {
+        task::sleep(Duration::from_secs(5)).await;
+        ("HTTP/1.1 200 OK\r\n\r\n", "hello.html")
+    } else {
+        ("HTTP/1.1 404 NOT FOUND\r\n\r\n", "404.html")
+    };
+    let contents = fs::read_to_string(filename).unwrap();
+
+    let response = format!("{status_line}{contents}");
+    stream.write(response.as_bytes()).unwrap();
+    stream.flush().unwrap();
+}
+```
+This is very similar to the 
+[simulation of a slow request](https://doc.rust-lang.org/book/ch20-02-multithreaded.html#simulating-a-slow-request-in-the-current-server-implementation)
+from the Book, but with one important difference:
+we're using the non-blocking function `async_std::task::sleep` instead of the blocking function `std::thread::sleep`.
+It's important to remember that even if a piece of code is run within an `async fn` and `await`ed, it may still block.
+To test whether our server handles connections concurrently, we'll need to ensure that `handle_connection` is non-blocking.
+-->
+<pre><code class="language-rust ignore">use async_std::task;
+
+async fn gestion_connexion(mut flux: TcpStream) {
+    let mut tampon = [0; 1024];
+    flux.read(&amp;mut tampon).unwrap();
+
+    let get = b&quot;GET / HTTP/1.1\r\n&quot;;
+    let pause = b&quot;GET /pause HTTP/1.1\r\n&quot;;
+
+    let (ligne_statut, nom_fichier) = if tampon.starts_with(get) {
+        (&quot;HTTP/1.1 200 OK\r\n\r\n&quot;, &quot;hello.html&quot;)
+    } else if tampon.starts_with(pause) {
+        task::sleep(Duration::from_secs(5)).await;
+        (&quot;HTTP/1.1 200 OK\r\n\r\n&quot;, &quot;hello.html&quot;)
+    } else {
+        (&quot;HTTP/1.1 404 NOT FOUND\r\n\r\n&quot;, &quot;404.html&quot;)
+    };
+    let contenu = fs::read_to_string(nom_fichier).unwrap();
+
+    let reponse = format!(&quot;{ligne_statut}{contenu}&quot;);
+    flux.write(reponse.as_bytes()).unwrap();
+    flux.flush().unwrap();
+}
+</code></pre>
+<p>C'est très ressemblant à la <a href="https://jimskapt.github.io/rust-book-fr/ch20-02-multithreaded.html#simuler-une-longue-requ%C3%AAte-%C3%A0-traiter-avec-limpl%C3%A9mentation-actuelle-du-serveur">simulation d'une requête
+lente</a>
+dans le livre Rust, mais avec une différence importante :
+nous utilisons la fonction non bloquante <code>async_std::task::sleep</code> au lieu de la
+fonction bloquante <code>std::thread::sleep</code>.
+Il est important de se rappeler que même si un code est exécuté dans une
+fonction asynchrone et qu'on utilise <code>await</code> sur elle, elle peut toujours
+bloquer.
+Pour tester si notre serveur puisse gérer les connexions en concurrence, nous
+avons besoin de nous assurer que <code>gestion_connexion</code> n'est pas bloquante.</p>
+<!--
+If you run the server, you'll see that a request to `127.0.0.1:7878/sleep`
+will block any other incoming requests for 5 seconds!
+This is because there are no other concurrent tasks that can make progress
+while we are `await`ing the result of `handle_connection`.
+In the next section, we'll see how to use async code to handle connections concurrently.
+-->
+<p>Si vous exécutez le serveur, vous constaterez qu'une requête vers
+<code>127.0.0.1:7878/pause</code> devrait bloquer toutes les autres requêtes entrantes
+pendant 5 secondes !
+C'est parce qu'il n'y a pas d'autres tâches concurrentes qui peuvent progresser
+pendant que nous utilisons <code>await</code> sur le résultat de <code>gestion_connexion</code>.
+Dans la prochaine section, nous allons voir comment utiliser du code asynchrone
+pour gérer en concurrence les connexions.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../09_example/00_intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../09_example/02_handling_connections_concurrently.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../09_example/00_intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../09_example/02_handling_connections_concurrently.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

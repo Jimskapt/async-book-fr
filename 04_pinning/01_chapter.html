@@ -1,0 +1,1511 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>🚧 L&#x27;épinglage - La programmation asynchrone avec Rust</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../01_getting_started/01_chapter.html"><strong aria-hidden="true">1.</strong> 🚧 Pour démarrer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_getting_started/02_why_async.html"><strong aria-hidden="true">1.1.</strong> 🚧 Pourquoi l'asynchrone ?</a></li><li class="chapter-item expanded "><a href="../01_getting_started/03_state_of_async_rust.html"><strong aria-hidden="true">1.2.</strong> 🚧 L'état de l'art de l'asynchrone en Rust</a></li><li class="chapter-item expanded "><a href="../01_getting_started/04_async_await_primer.html"><strong aria-hidden="true">1.3.</strong> 🚧 Introduction à async et await</a></li></ol></li><li class="chapter-item expanded "><a href="../02_execution/01_chapter.html"><strong aria-hidden="true">2.</strong> 🚧 Sous le capot : exécuter les Futures et les tâches</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_execution/02_future.html"><strong aria-hidden="true">2.1.</strong> 💬 The Future Trait</a></li><li class="chapter-item expanded "><a href="../02_execution/03_wakeups.html"><strong aria-hidden="true">2.2.</strong> 💬 Task Wakeups with Waker</a></li><li class="chapter-item expanded "><a href="../02_execution/04_executor.html"><strong aria-hidden="true">2.3.</strong> 💬 Applied: Build an Executor</a></li><li class="chapter-item expanded "><a href="../02_execution/05_io.html"><strong aria-hidden="true">2.4.</strong> 💬 Executors and System IO</a></li></ol></li><li class="chapter-item expanded "><a href="../03_async_await/01_chapter.html"><strong aria-hidden="true">3.</strong> 🚧 async et await</a></li><li class="chapter-item expanded "><a href="../04_pinning/01_chapter.html" class="active"><strong aria-hidden="true">4.</strong> 🚧 L'épinglage</a></li><li class="chapter-item expanded "><a href="../05_streams/01_chapter.html"><strong aria-hidden="true">5.</strong> 🚧 Le trait Stream</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../05_streams/02_iteration_and_concurrency.html"><strong aria-hidden="true">5.1.</strong> 🚧 L'itération et la concurrence</a></li></ol></li><li class="chapter-item expanded "><a href="../06_multiple_futures/01_chapter.html"><strong aria-hidden="true">6.</strong> 🚧 Exécuter plusieurs futures en même temps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../06_multiple_futures/02_join.html"><strong aria-hidden="true">6.1.</strong> 🚧 join!</a></li><li class="chapter-item expanded "><a href="../06_multiple_futures/03_select.html"><strong aria-hidden="true">6.2.</strong> 🚧 select!</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.3.</strong> 🥚 TODO: Spawning</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.4.</strong> 🥚 TODO: Cancellation and Timeouts</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.5.</strong> 🥚 TODO: FuturesUnordered</div></li></ol></li><li class="chapter-item expanded "><a href="../07_workarounds/01_chapter.html"><strong aria-hidden="true">7.</strong> 🚧 Solutions de contournement à connaître et à utiliser</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../07_workarounds/02_err_in_async_blocks.html"><strong aria-hidden="true">7.1.</strong> 🚧 ? dans les blocs async</a></li><li class="chapter-item expanded "><a href="../07_workarounds/03_send_approximation.html"><strong aria-hidden="true">7.2.</strong> 🚧 L'approximation de Send</a></li><li class="chapter-item expanded "><a href="../07_workarounds/04_recursion.html"><strong aria-hidden="true">7.3.</strong> 🚧 La récursivité</a></li><li class="chapter-item expanded "><a href="../07_workarounds/05_async_in_traits.html"><strong aria-hidden="true">7.4.</strong> 🚧 async dans les traits</a></li></ol></li><li class="chapter-item expanded "><a href="../08_ecosystem/00_chapter.html"><strong aria-hidden="true">8.</strong> 🚧 L'écosystème asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/00_intro.html"><strong aria-hidden="true">9.</strong> 🚧 Projet final : Serveur HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../09_example/01_running_async_code.html"><strong aria-hidden="true">9.1.</strong> 🚧 Exécuter du code asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/02_handling_connections_concurrently.html"><strong aria-hidden="true">9.2.</strong> 🚧 Gérer les connexions en concurrence</a></li><li class="chapter-item expanded "><a href="../09_example/03_tests.html"><strong aria-hidden="true">9.3.</strong> 🚧 Test du serveur</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> TODO: I/O</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">10.1.</strong> TODO: AsyncRead and AsyncWrite</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> TODO: Asynchronous Design Patterns: Solutions and Suggestions</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">11.1.</strong> TODO: Modeling Servers and the Request/Response Pattern</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.2.</strong> TODO: Managing Shared State</div></li></ol></li><li class="chapter-item expanded "><a href="../12_appendix/01_translations.html"><strong aria-hidden="true">12.</strong> Annexe : traductions du livre</a></li><li class="chapter-item expanded affix "><a href="../translation-terms.html">Traduction des termes</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">La programmation asynchrone avec Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Jimskapt/async-book-fr/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <blockquote>
+<h1 id="-attention-peinture-fraîche-"><a class="header" href="#-attention-peinture-fraîche-">🚧 Attention, peinture fraîche !</a></h1>
+<p>Cette page a été traduite par une seule personne et n'a pas été relue et
+vérifiée par quelqu'un d'autre ! Les informations peuvent par exemple être
+erronées, être formulées maladroitement, ou contenir d'autres types de fautes.</p>
+<p>Vous pouvez contribuer à l'amélioration de cette page sur sa
+<a href="https://github.com/Jimskapt/async-book-fr/pull/7">Pull Request</a>.</p>
+</blockquote>
+<!--
+# Pinning
+-->
+<h1 id="lépinglage"><a class="header" href="#lépinglage">L'épinglage</a></h1>
+<!--
+To poll futures, they must be pinned using a special type called
+`Pin<T>`. If you read the explanation of [the `Future` trait] in the
+previous section ["Executing `Future`s and Tasks"], you'll recognize
+`Pin` from the `self: Pin<&mut Self>` in the `Future::poll` method's definition.
+But what does it mean, and why do we need it?
+-->
+<p>Pour piloter les futures, ils doivent être épinglés en utilisant un type
+spécial qui s'appelle <code>Pin&lt;T&gt;</code>. Si vous lisez l'explication <a href="https://rust-lang.github.io/async-book/02_execution/02_future.html">du trait
+<code>Future</code></a> dans la <a href="../02_execution/01_chapter.html">section précédente</a>, vous devriez constater la présence du <code>Pin</code> dans le
+<code>self: Pin&lt;&amp;mut Self&gt;</code> dans la définition de la méthode <code>Future::poll</code>. Mais
+qu'est-ce que cela signifie, et pourquoi nous en avons besoin ?</p>
+<!--
+## Why Pinning
+-->
+<h2 id="pourquoi-épingler-"><a class="header" href="#pourquoi-épingler-">Pourquoi épingler ?</a></h2>
+<!--
+`Pin` works in tandem with the `Unpin` marker. Pinning makes it possible
+to guarantee that an object implementing `!Unpin` won't ever be moved. To understand
+why this is necessary, we need to remember how `async`/`.await` works. Consider
+the following code:
+-->
+<p><code>Pin</code> fonctionne en binôme avec le marqueur <code>Unpin</code>. L'épinglage permet de
+garantir qu'un objet qui implémente <code>!Unpin</code> ne sera jamais déplacé. Pour
+comprendre pourquoi c'est nécessaire, nous devons nous rappeler comment <code>async</code>
+et <code>await</code> fonctionnent. Imaginons le code suivant :</p>
+<!--
+```rust,edition2018,ignore
+let fut_one = /* ... */;
+let fut_two = /* ... */;
+async move {
+    fut_one.await;
+    fut_two.await;
+}
+```
+-->
+<pre><code class="language-rust edition2018 ignore">let premiere_future = /* ... */;
+let seconde_future = /* ... */;
+async move {
+    premiere_future.await;
+    seconde_future.await;
+}
+</code></pre>
+<!--
+Under the hood, this creates an anonymous type that implements `Future`,
+providing a `poll` method that looks something like this:
+-->
+<p>Sous le capot, cela crée un type anonyme qui implémente <code>Future</code>, ce qui va
+fournir une méthode <code>poll</code> qui ressemble à ceci :</p>
+<!--
+```rust,ignore
+// The `Future` type generated by our `async { ... }` block
+struct AsyncFuture {
+    fut_one: FutOne,
+    fut_two: FutTwo,
+    state: State,
+}
+
+// List of states our `async` block can be in
+enum State {
+    AwaitingFutOne,
+    AwaitingFutTwo,
+    Done,
+}
+
+impl Future for AsyncFuture {
+    type Output = ();
+
+    fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<()> {
+        loop {
+            match self.state {
+                State::AwaitingFutOne => match self.fut_one.poll(..) {
+                    Poll::Ready(()) => self.state = State::AwaitingFutTwo,
+                    Poll::Pending => return Poll::Pending,
+                }
+                State::AwaitingFutTwo => match self.fut_two.poll(..) {
+                    Poll::Ready(()) => self.state = State::Done,
+                    Poll::Pending => return Poll::Pending,
+                }
+                State::Done => return Poll::Ready(()),
+            }
+        }
+    }
+}
+```
+-->
+<pre><code class="language-rust ignore">// Le type `Future` généré pour notre bloc `async { ... }`
+struct FutureAsynchrone {
+    premiere_future: FutOne,
+    seconde_future: FutTwo,
+    etat: Etat,
+}
+
+// Liste des états dans lesquels notre bloc `async` peut être
+enum Etat {
+    AttentePremiereFuture,
+    AttenteSecondeFuture,
+    Termine,
+}
+
+impl Future for FutureAsynchrone {
+    type Output = ();
+
+    fn poll(mut self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context&lt;'_&gt;) -&gt; Poll&lt;()&gt; {
+        loop {
+            match self.etat {
+                Etat::AttentePremiereFuture =&gt; match self.premiere_future.poll(..) {
+                    Poll::Ready(()) =&gt; self.etat = Etat::AttenteSecondeFuture,
+                    Poll::Pending =&gt; return Poll::Pending,
+                }
+                Etat::AttenteSecondeFuture =&gt; match self.seconde_future.poll(..) {
+                    Poll::Ready(()) =&gt; self.etat = Etat::Termine,
+                    Poll::Pending =&gt; return Poll::Pending,
+                }
+                Etat::Termine =&gt; return Poll::Ready(()),
+            }
+        }
+    }
+}
+</code></pre>
+<!--
+
+When `poll` is first called, it will poll `fut_one`. If `fut_one` can't
+complete, `AsyncFuture::poll` will return. Future calls to `poll` will pick
+up where the previous one left off. This process continues until the future
+is able to successfully complete.
+-->
+<p>Lorsque <code>poll</code> est appelé la première fois, il va appeler <code>premiere_future</code>. Si
+<code>premiere_future</code> ne peut pas être complété, <code>FutureAsynchrone::poll</code> va retourner
+sa valeur. Les appels futurs à <code>poll</code> vont reprendre où le précédent s'est
+arrêté. Ce fonctionnement va continuer jusqu'à ce que la future se termine au
+complet.</p>
+<!--
+However, what happens if we have an `async` block that uses references?
+For example:
+-->
+<p>Cependant, que se passe-t-il si nous avons un bloc <code>async</code> qui utilise des
+références ? Par exemple :</p>
+<!--
+```rust,edition2018,ignore
+async {
+    let mut x = [0; 128];
+    let read_into_buf_fut = read_into_buf(&mut x);
+    read_into_buf_fut.await;
+    println!("{:?}", x);
+}
+```
+-->
+<pre><code class="language-rust edition2018 ignore">async {
+    let mut x = [0; 128];
+    let lire_dans_un_tampon = lire_dans_un_tampon(&amp;mut x);
+    lire_dans_un_tampon.await;
+    println!(&quot;{:?}&quot;, x);
+}
+</code></pre>
+<!--
+What struct does this compile down to?
+-->
+<p>Quelle structure va donner la compilation ?</p>
+<!--
+```rust,ignore
+struct ReadIntoBuf<'a> {
+    buf: &'a mut [u8], // points to `x` below
+}
+
+struct AsyncFuture {
+    x: [u8; 128],
+    read_into_buf_fut: ReadIntoBuf<'what_lifetime?>,
+}
+```
+-->
+<pre><code class="language-rust ignore">struct LireDansTampon&lt;'a&gt; {
+    tampon: &amp;'a mut [u8], // cela pointe sur le `x` ci-desous
+}
+
+struct FutureAsynchrone {
+    x: [u8; 128],
+    future_lire_dans_un_tampon: LireDansTampon&lt;'quelle_duree_de_vie?&gt;,
+}
+</code></pre>
+<!--
+Here, the `ReadIntoBuf` future holds a reference into the other field of our
+structure, `x`. However, if `AsyncFuture` is moved, the location of `x` will
+move as well, invalidating the pointer stored in `read_into_buf_fut.buf`.
+-->
+<p>Ici, la future <code>LireDansTampon</code> contient une référence vers l'autre champ de
+notre structure, <code>x</code>. Cependant, si <code>FutureAsynchrone</code> est déplacée,
+l'emplacement de <code>x</code> va aussi être déplacé, ce qui va corrompre le pointeur
+stocké dans <code>future_lire_dans_un_tampon.tampon</code>.</p>
+<!--
+Pinning futures to a particular spot in memory prevents this problem, making
+it safe to create references to values inside an `async` block.
+-->
+<p>L'épinglage des futures à un endroit précis de la mémoire évite ce problème, ce
+qui va sécuriser la création de références vers des valeurs dans des blocs
+<code>async</code>.</p>
+<!--
+## Pinning in Detail
+-->
+<h2 id="lépinglage-en-détail"><a class="header" href="#lépinglage-en-détail">L'épinglage en détail</a></h2>
+<!--
+Let's try to understand pinning by using an slightly simpler example. The problem we encounter
+above is a problem that ultimately boils down to how we handle references in self-referential
+types in Rust.
+-->
+<p>Essayons de comprendre l'épinglage en utilisant un exemple légèrement plus
+simple. Le problème que nous allons rencontrer ci-dessous peut se résumer à
+notre manière de gérer les types auto-référentiels en Rust.</p>
+<!--
+For now our example will look like this:
+-->
+<p>Pour l'instant, notre exemple ressemble à ceci :</p>
+<!--
+```rust, ignore
+#[derive(Debug)]
+struct Test {
+    a: String,
+    b: *const String,
+}
+
+impl Test {
+    fn new(txt: &str) -> Self {
+        Test {
+            a: String::from(txt),
+            b: std::ptr::null(),
+        }
+    }
+
+    fn init(&mut self) {
+        let self_ref: *const String = &self.a;
+        self.b = self_ref;
+    }
+
+    fn a(&self) -> &str {
+        &self.a
+    }
+
+    fn b(&self) -> &String {
+        assert!(!self.b.is_null(), "Test::b called without Test::init being called first");
+        unsafe { &*(self.b) }
+    }
+}
+```
+-->
+<pre><code class="language-rust  ignore">#[derive(Debug)]
+struct Test {
+    a: String,
+    b: *const String,
+}
+
+impl Test {
+    fn new(texte: &amp;str) -&gt; Self {
+        Test {
+            a: String::from(texte),
+            b: std::ptr::null(),
+        }
+    }
+
+    fn initialiser(&amp;mut self) {
+        let self_ref: *const String = &amp;self.a;
+        self.b = self_ref;
+    }
+
+    fn a(&amp;self) -&gt; &amp;str {
+        &amp;self.a
+    }
+
+    fn b(&amp;self) -&gt; &amp;String {
+        assert!(!self.b.is_null(), &quot;Test::b est appelé sans appeler avant Test::initialiser&quot;);
+        unsafe { &amp;*(self.b) }
+    }
+}
+</code></pre>
+<!--
+`Test` provides methods to get a reference to the value of the fields `a` and `b`. Since `b` is a
+reference to `a` we store it as a pointer since the borrowing rules of Rust doesn't allow us to
+define this lifetime. We now have what we call a self-referential struct.
+-->
+<p><code>Test</code> propose des méthodes pour obtenir une référence vers la valeur des
+champs <code>a</code> et <code>b</code>. Comme <code>b</code> est une référence vers <code>a</code>, nous le stockons comme
+un pointeur puisque les règles d'emprunt de Rust ne nous autorisent pas à
+définir cette durée de vie. Nous avons désormais ce que l'on appelle une
+structure auto-référentielle.</p>
+<!--
+Our example works fine if we don't move any of our data around as you can observe by running
+this example:
+-->
+<p>Notre exemple fonctionne bien si nous ne déplaçons aucune de nos données, comme
+vous pouvez le constater en exécutant cet exemple :</p>
+<!--
+```rust
+fn main() {
+    let mut test1 = Test::new("test1");
+    test1.init();
+    let mut test2 = Test::new("test2");
+    test2.init();
+
+    println!("a: {}, b: {}", test1.a(), test1.b());
+    println!("a: {}, b: {}", test2.a(), test2.b());
+
+}
+# #[derive(Debug)]
+# struct Test {
+#     a: String,
+#     b: *const String,
+# }
+#
+# impl Test {
+#     fn new(txt: &str) -> Self {
+#         Test {
+#             a: String::from(txt),
+#             b: std::ptr::null(),
+#         }
+#     }
+#
+#     // We need an `init` method to actually set our self-reference
+#     fn init(&mut self) {
+#         let self_ref: *const String = &self.a;
+#         self.b = self_ref;
+#     }
+#
+#     fn a(&self) -> &str {
+#         &self.a
+#     }
+#
+#     fn b(&self) -> &String {
+#         assert!(!self.b.is_null(), "Test::b called without Test::init being called first");
+#         unsafe { &*(self.b) }
+#     }
+# }
+```
+-->
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let mut test1 = Test::new(&quot;test1&quot;);
+    test1.initialiser();
+    let mut test2 = Test::new(&quot;test2&quot;);
+    test2.initialiser();
+
+    println!(&quot;a: {}, b: {}&quot;, test1.a(), test1.b());
+    println!(&quot;a: {}, b: {}&quot;, test2.a(), test2.b());
+
+}
+<span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Test {
+</span><span class="boring">    a: String,
+</span><span class="boring">    b: *const String,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Test {
+</span><span class="boring">    fn new(texte: &amp;str) -&gt; Self {
+</span><span class="boring">        Test {
+</span><span class="boring">            a: String::from(texte),
+</span><span class="boring">            b: std::ptr::null(),
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    // We need an `init` method to actually set our self-reference
+</span><span class="boring">    fn initialiser(&amp;mut self) {
+</span><span class="boring">        let self_ref: *const String = &amp;self.a;
+</span><span class="boring">        self.b = self_ref;
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn a(&amp;self) -&gt; &amp;str {
+</span><span class="boring">        &amp;self.a
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn b(&amp;self) -&gt; &amp;String {
+</span><span class="boring">        assert!(!self.b.is_null(), &quot;Test::b est appelé sans appeler avant Test::initialiser&quot;);
+</span><span class="boring">        unsafe { &amp;*(self.b) }
+</span><span class="boring">    }
+</span><span class="boring">}
+</span></code></pre></pre>
+<!--
+We get what we'd expect:
+-->
+<p>Nous obtenons ce que nous attendions :</p>
+<!--
+```rust, ignore
+a: test1, b: test1
+a: test2, b: test2
+```
+-->
+<pre><code class="language-rust  ignore">a: test1, b: test1
+a: test2, b: test2
+</code></pre>
+<!--
+Let's see what happens if we swap `test1` with `test2` and thereby move the data:
+-->
+<p>Voyons maintenant ce qui se passe si nous permutions <code>test1</code> avec <code>test2</code> et
+ainsi nous déplaçons les données :</p>
+<!--
+```rust
+fn main() {
+    let mut test1 = Test::new("test1");
+    test1.init();
+    let mut test2 = Test::new("test2");
+    test2.init();
+
+    println!("a: {}, b: {}", test1.a(), test1.b());
+    std::mem::swap(&mut test1, &mut test2);
+    println!("a: {}, b: {}", test2.a(), test2.b());
+
+}
+# #[derive(Debug)]
+# struct Test {
+#     a: String,
+#     b: *const String,
+# }
+#
+# impl Test {
+#     fn new(txt: &str) -> Self {
+#         Test {
+#             a: String::from(txt),
+#             b: std::ptr::null(),
+#         }
+#     }
+#
+#     fn init(&mut self) {
+#         let self_ref: *const String = &self.a;
+#         self.b = self_ref;
+#     }
+#
+#     fn a(&self) -> &str {
+#         &self.a
+#     }
+#
+#     fn b(&self) -> &String {
+#         assert!(!self.b.is_null(), "Test::b called without Test::init being called first");
+#         unsafe { &*(self.b) }
+#     }
+# }
+```
+-->
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let mut test1 = Test::new(&quot;test1&quot;);
+    test1.initialiser();
+    let mut test2 = Test::new(&quot;test2&quot;);
+    test2.initialiser();
+
+    println!(&quot;a: {}, b: {}&quot;, test1.a(), test1.b());
+    std::mem::swap(&amp;mut test1, &amp;mut test2);
+    println!(&quot;a: {}, b: {}&quot;, test2.a(), test2.b());
+
+}
+<span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Test {
+</span><span class="boring">    a: String,
+</span><span class="boring">    b: *const String,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Test {
+</span><span class="boring">    fn new(texte: &amp;str) -&gt; Self {
+</span><span class="boring">        Test {
+</span><span class="boring">            a: String::from(texte),
+</span><span class="boring">            b: std::ptr::null(),
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn initialiser(&amp;mut self) {
+</span><span class="boring">        let self_ref: *const String = &amp;self.a;
+</span><span class="boring">        self.b = self_ref;
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn a(&amp;self) -&gt; &amp;str {
+</span><span class="boring">        &amp;self.a
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn b(&amp;self) -&gt; &amp;String {
+</span><span class="boring">        assert!(!self.b.is_null(), &quot;Test::b est appelé sans appeler avant Test::initialiser&quot;);
+</span><span class="boring">        unsafe { &amp;*(self.b) }
+</span><span class="boring">    }
+</span><span class="boring">}
+</span></code></pre></pre>
+<!--
+Naively, we could think that what we should get a debug print of `test1` two times like this:
+-->
+<p>Naïvement, nous pourrions penser que nous devrions obtenir l'écriture de
+déboguage de <code>test1</code> deux fois comme ceci :</p>
+<!--
+```rust, ignore
+a: test1, b: test1
+a: test1, b: test1
+```
+-->
+<pre><code class="language-rust  ignore">a: test1, b: test1
+a: test1, b: test1
+</code></pre>
+<!--
+But instead we get:
+-->
+<p>Mais à la place, nous avons ceci :</p>
+<!--
+```rust, ignore
+a: test1, b: test1
+a: test1, b: test2
+```
+-->
+<pre><code class="language-rust  ignore">a: test1, b: test1
+a: test1, b: test2
+</code></pre>
+<!--
+The pointer to `test2.b` still points to the old location which is inside `test1`
+now. The struct is not self-referential anymore, it holds a pointer to a field
+in a different object. That means we can't rely on the lifetime of `test2.b` to
+be tied to the lifetime of `test2` anymore.
+-->
+<p>Le pointeur vers <code>test2.b</code> pointe toujours vers l'ancien emplacement qui est
+maintenant <code>test1</code>. La structure n'est plus auto-référentielle, elle contient
+un pointeur vers un champ dans un objet différent. Cela signifie que nous ne
+pouvons plus considérer que la durée de vie de <code>test2.b</code> soit toujours liée à
+la durée de vie de <code>test2</code>.</p>
+<!--
+If you're still not convinced, this should at least convince you:
+-->
+<p>Si vous n'êtes pas convaincu, ceci devrait vous convaincre :</p>
+<!--
+```rust
+fn main() {
+    let mut test1 = Test::new("test1");
+    test1.init();
+    let mut test2 = Test::new("test2");
+    test2.init();
+
+    println!("a: {}, b: {}", test1.a(), test1.b());
+    std::mem::swap(&mut test1, &mut test2);
+    test1.a = "I've totally changed now!".to_string();
+    println!("a: {}, b: {}", test2.a(), test2.b());
+
+}
+# #[derive(Debug)]
+# struct Test {
+#     a: String,
+#     b: *const String,
+# }
+#
+# impl Test {
+#     fn new(txt: &str) -> Self {
+#         Test {
+#             a: String::from(txt),
+#             b: std::ptr::null(),
+#         }
+#     }
+#
+#     fn init(&mut self) {
+#         let self_ref: *const String = &self.a;
+#         self.b = self_ref;
+#     }
+#
+#     fn a(&self) -> &str {
+#         &self.a
+#     }
+#
+#     fn b(&self) -> &String {
+#         assert!(!self.b.is_null(), "Test::b called without Test::init being called first");
+#         unsafe { &*(self.b) }
+#     }
+# }
+```
+-->
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let mut test1 = Test::new(&quot;test1&quot;);
+    test1.initialiser();
+    let mut test2 = Test::new(&quot;test2&quot;);
+    test2.initialiser();
+
+    println!(&quot;a: {}, b: {}&quot;, test1.a(), test1.b());
+    std::mem::swap(&amp;mut test1, &amp;mut test2);
+    test1.a = &quot;J'ai complètement changé, désormais !&quot;.to_string();
+    println!(&quot;a: {}, b: {}&quot;, test2.a(), test2.b());
+
+}
+<span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Test {
+</span><span class="boring">    a: String,
+</span><span class="boring">    b: *const String,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Test {
+</span><span class="boring">    fn new(texte: &amp;str) -&gt; Self {
+</span><span class="boring">        Test {
+</span><span class="boring">            a: String::from(texte),
+</span><span class="boring">            b: std::ptr::null(),
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn initialiser(&amp;mut self) {
+</span><span class="boring">        let self_ref: *const String = &amp;self.a;
+</span><span class="boring">        self.b = self_ref;
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn a(&amp;self) -&gt; &amp;str {
+</span><span class="boring">        &amp;self.a
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn b(&amp;self) -&gt; &amp;String {
+</span><span class="boring">        assert!(!self.b.is_null(), &quot;Test::b est appelé sans appeler avant Test::initialiser&quot;);
+</span><span class="boring">        unsafe { &amp;*(self.b) }
+</span><span class="boring">    }
+</span><span class="boring">}
+</span></code></pre></pre>
+<!--
+The diagram below can help visualize what's going on:
+-->
+<p>Le schéma ci-dessous peut vous aider à voir ce qui se passe :</p>
+<!--
+**Fig 1: Before and after swap**
+![swap_problem](../assets/swap_problem.jpg)
+-->
+<p><strong>Figure 1 : avant et après l'échange</strong>
+<img src="../assets/swap_problem.jpg" alt="probleme_echange" /></p>
+<!--
+It's easy to get this to show undefined behavior and fail in other spectacular ways as well.
+-->
+<p>C'est ainsi facile d'avoir un fonctionnement indéfini et aussi de provoquer une
+autre défaillance spectaculaire.</p>
+<!--
+## Pinning in Practice
+-->
+<h2 id="lépinglage-dans-la-pratique"><a class="header" href="#lépinglage-dans-la-pratique">L'épinglage dans la pratique</a></h2>
+<!--
+Let's see how pinning and the `Pin` type can help us solve this problem.
+-->
+<p>Voyons voir comment l'épinglage et le type <code>Pin</code> peut nous aider à résoudre ce
+problème.</p>
+<!--
+The `Pin` type wraps pointer types, guaranteeing that the values behind the
+pointer won't be moved. For example, `Pin<&mut T>`, `Pin<&T>`,
+`Pin<Box<T>>` all guarantee that `T` won't be moved even if `T: !Unpin`.
+-->
+<p>Le type <code>Pin</code> enveloppe les types de pointeurs, ce qui garantit que les valeurs
+derrière ce pointeur ne seront pas déplacées. Par exemple, <code>Pin&lt;&amp;mut T&gt;</code>,
+<code>Pin&lt;&amp;T&gt;</code>, <code>Pin&lt;Box&lt;T&gt;&gt;</code> garantissent tous que <code>T</code> ne sera pas déplacé même si
+<code>T: !Unpin</code>.</p>
+<!--
+Most types don't have a problem being moved. These types implement a trait
+called `Unpin`. Pointers to `Unpin` types can be freely placed into or taken
+out of `Pin`. For example, `u8` is `Unpin`, so `Pin<&mut u8>` behaves just like
+a normal `&mut u8`.
+-->
+<p>La plupart des types n'ont pas de problème lorsqu'ils sont déplacés. Ces types
+implémentent le trait <code>Unpin</code>. Les pointeurs vers des types <code>Unpin</code> peuvent
+être librement logés à l'intérieur d'un <code>Pin</code>, ou en être retiré. Par exemple,
+<code>u8</code> implémente <code>Unpin</code>, donc <code>Pin&lt;&amp;mut u8&gt;</code> se comporte exactement comme un
+<code>&amp;mut u8</code> normal.</p>
+<!--
+However, types that can't be moved after they're pinned have a marker called
+`!Unpin`. Futures created by async/await is an example of this.
+-->
+<p>Cependant, les types qui ne peuvent pas être déplacés après avoir été épinglés
+ont un marqueur <code>!Unpin</code>. Les futures créées par <code>async</code> et <code>await</code> en sont un
+exemple.</p>
+<!--
+### Pinning to the Stack
+-->
+<h3 id="lépinglage-sur-la-pile"><a class="header" href="#lépinglage-sur-la-pile">L'épinglage sur la pile</a></h3>
+<!--
+Back to our example. We can solve our problem by using `Pin`. Let's take a look at what
+our example would look like if we required a pinned pointer instead:
+-->
+<p>Retournons à notre exemple. Nous pouvons résoudre notre problème en utilisant
+<code>Pin</code>. Voyons ce à quoi notre exemple ressemblerait si nous avions utilisé un
+pointeur épinglé à la place :</p>
+<!-- markdownlint-disable -->
+<!--
+```rust, ignore
+use std::pin::Pin;
+use std::marker::PhantomPinned;
+
+#[derive(Debug)]
+struct Test {
+    a: String,
+    b: *const String,
+    _marker: PhantomPinned,
+}
+
+
+impl Test {
+    fn new(txt: &str) -> Self {
+        Test {
+            a: String::from(txt),
+            b: std::ptr::null(),
+            _marker: PhantomPinned, // This makes our type `!Unpin`
+        }
+    }
+
+    fn init(self: Pin<&mut Self>) {
+        let self_ptr: *const String = &self.a;
+        let this = unsafe { self.get_unchecked_mut() };
+        this.b = self_ptr;
+    }
+
+    fn a(self: Pin<&Self>) -> &str {
+        &self.get_ref().a
+    }
+
+    fn b(self: Pin<&Self>) -> &String {
+        assert!(!self.b.is_null(), "Test::b called without Test::init being called first");
+        unsafe { &*(self.b) }
+    }
+}
+```
+-->
+<!-- markdownlint-enable -->
+<pre><code class="language-rust  ignore">use std::pin::Pin;
+use std::marker::PhantomPinned;
+
+#[derive(Debug)]
+struct Test {
+    a: String,
+    b: *const String,
+    _marqueur: PhantomPinned,
+}
+
+impl Test {
+    fn new(texte: &amp;str) -&gt; Self {
+        Test {
+            a: String::from(texte),
+            b: std::ptr::null(),
+            _marqueur: PhantomPinned, // Cela rends notre type `!Unpin`
+        }
+    }
+
+    fn initialiser(self: Pin&lt;&amp;mut Self&gt;) {
+        let self_pointeur: *const String = &amp;self.a;
+        let this = unsafe { self.get_unchecked_mut() };
+        this.b = self_pointeur;
+    }
+
+    fn a(self: Pin&lt;&amp;Self&gt;) -&gt; &amp;str {
+        &amp;self.get_ref().a
+    }
+
+    fn b(self: Pin&lt;&amp;Self&gt;) -&gt; &amp;String {
+        assert!(!self.b.is_null(), &quot;Test::b est appelé sans appeler avant Test::initialiser&quot;);
+        unsafe { &amp;*(self.b) }
+    }
+}
+</code></pre>
+<!--
+Pinning an object to the stack will always be `unsafe` if our type implements
+`!Unpin`. You can use a crate like [`pin_utils`][pin_utils] to avoid writing
+our own `unsafe` code when pinning to the stack.
+-->
+<p>L'épinglage d'un objet à la pile va toujours être <code>unsafe</code> si notre type
+implémente <code>!Unpin</code>. Vous pouvez utiliser une crate comme
+<a href="https://docs.rs/pin-utils/"><code>pin_utils</code></a> pour éviter d'avoir à écrire notre propre <code>unsafe</code> code
+lorsqu'on épinglera sur la pile.</p>
+<!--
+Below, we pin the objects `test1` and `test2` to the stack:
+-->
+<p>Ci-dessous, nous épinglons les objets <code>test1</code> et <code>test2</code> sur la pile :</p>
+<!--
+```rust
+pub fn main() {
+    // test1 is safe to move before we initialize it
+    let mut test1 = Test::new("test1");
+    // Notice how we shadow `test1` to prevent it from being accessed again
+    let mut test1 = unsafe { Pin::new_unchecked(&mut test1) };
+    Test::init(test1.as_mut());
+
+    let mut test2 = Test::new("test2");
+    let mut test2 = unsafe { Pin::new_unchecked(&mut test2) };
+    Test::init(test2.as_mut());
+
+    println!("a: {}, b: {}", Test::a(test1.as_ref()), Test::b(test1.as_ref()));
+    println!("a: {}, b: {}", Test::a(test2.as_ref()), Test::b(test2.as_ref()));
+}
+# use std::pin::Pin;
+# use std::marker::PhantomPinned;
+#
+# #[derive(Debug)]
+# struct Test {
+#     a: String,
+#     b: *const String,
+#     _marker: PhantomPinned,
+# }
+#
+#
+# impl Test {
+#     fn new(txt: &str) -> Self {
+#         Test {
+#             a: String::from(txt),
+#             b: std::ptr::null(),
+#             // This makes our type `!Unpin`
+#             _marker: PhantomPinned,
+#         }
+#     }
+#
+#     fn init(self: Pin<&mut Self>) {
+#         let self_ptr: *const String = &self.a;
+#         let this = unsafe { self.get_unchecked_mut() };
+#         this.b = self_ptr;
+#     }
+#
+#     fn a(self: Pin<&Self>) -> &str {
+#         &self.get_ref().a
+#     }
+#
+#     fn b(self: Pin<&Self>) -> &String {
+#         assert!(!self.b.is_null(), "Test::b called without Test::init being called first");
+#         unsafe { &*(self.b) }
+#     }
+# }
+```
+-->
+<pre><pre class="playground"><code class="language-rust">pub fn main() {
+    // test1 peut être déplacé en sécurité avant que nous l'initialisions :
+    let mut test1 = Test::new(&quot;test1&quot;);
+    // Notez que nous masquons `test1` pour l'empêcher d'être toujours
+    // accessible :
+    let mut test1 = unsafe { Pin::new_unchecked(&amp;mut test1) };
+    Test::initialiser(test1.as_mut());
+
+    let mut test2 = Test::new(&quot;test2&quot;);
+    let mut test2 = unsafe { Pin::new_unchecked(&amp;mut test2) };
+    Test::initialiser(test2.as_mut());
+
+    println!(&quot;a: {}, b: {}&quot;, Test::a(test1.as_ref()), Test::b(test1.as_ref()));
+    println!(&quot;a: {}, b: {}&quot;, Test::a(test2.as_ref()), Test::b(test2.as_ref()));
+}
+<span class="boring">use std::pin::Pin;
+</span><span class="boring">use std::marker::PhantomPinned;
+</span><span class="boring">
+</span><span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Test {
+</span><span class="boring">    a: String,
+</span><span class="boring">    b: *const String,
+</span><span class="boring">    _marqueur: PhantomPinned,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">
+</span><span class="boring">impl Test {
+</span><span class="boring">    fn new(texte: &amp;str) -&gt; Self {
+</span><span class="boring">        Test {
+</span><span class="boring">            a: String::from(texte),
+</span><span class="boring">            b: std::ptr::null(),
+</span><span class="boring">            // Cela rends notre type `!Unpin`
+</span><span class="boring">            _marqueur: PhantomPinned,
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn initialiser(self: Pin&lt;&amp;mut Self&gt;) {
+</span><span class="boring">        let self_pointeur: *const String = &amp;self.a;
+</span><span class="boring">        let this = unsafe { self.get_unchecked_mut() };
+</span><span class="boring">        this.b = self_pointeur;
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn a(self: Pin&lt;&amp;Self&gt;) -&gt; &amp;str {
+</span><span class="boring">        &amp;self.get_ref().a
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn b(self: Pin&lt;&amp;Self&gt;) -&gt; &amp;String {
+</span><span class="boring">        assert!(!self.b.is_null(), &quot;Test::b est appelé sans appeler avant Test::initialiser&quot;);
+</span><span class="boring">        unsafe { &amp;*(self.b) }
+</span><span class="boring">    }
+</span><span class="boring">}
+</span></code></pre></pre>
+<!--
+Now, if we try to move our data now we get a compilation error:
+-->
+<p>Maintenant, si nous essayons de déplacer nos données, nous avons désormais une
+erreur de compilation :</p>
+<!--
+```rust, compile_fail
+pub fn main() {
+    let mut test1 = Test::new("test1");
+    let mut test1 = unsafe { Pin::new_unchecked(&mut test1) };
+    Test::init(test1.as_mut());
+
+    let mut test2 = Test::new("test2");
+    let mut test2 = unsafe { Pin::new_unchecked(&mut test2) };
+    Test::init(test2.as_mut());
+
+    println!("a: {}, b: {}", Test::a(test1.as_ref()), Test::b(test1.as_ref()));
+    std::mem::swap(test1.get_mut(), test2.get_mut());
+    println!("a: {}, b: {}", Test::a(test2.as_ref()), Test::b(test2.as_ref()));
+}
+# use std::pin::Pin;
+# use std::marker::PhantomPinned;
+#
+# #[derive(Debug)]
+# struct Test {
+#     a: String,
+#     b: *const String,
+#     _marker: PhantomPinned,
+# }
+#
+#
+# impl Test {
+#     fn new(txt: &str) -> Self {
+#         Test {
+#             a: String::from(txt),
+#             b: std::ptr::null(),
+#             _marker: PhantomPinned, // This makes our type `!Unpin`
+#         }
+#     }
+#
+#     fn init(self: Pin<&mut Self>) {
+#         let self_ptr: *const String = &self.a;
+#         let this = unsafe { self.get_unchecked_mut() };
+#         this.b = self_ptr;
+#     }
+#
+#     fn a(self: Pin<&Self>) -> &str {
+#         &self.get_ref().a
+#     }
+#
+#     fn b(self: Pin<&Self>) -> &String {
+#         assert!(!self.b.is_null(), "Test::b called without Test::init being called first");
+#         unsafe { &*(self.b) }
+#     }
+# }
+```
+-->
+<pre><pre class="playground"><code class="language-rust  compile_fail">pub fn main() {
+    let mut test1 = Test::new(&quot;test1&quot;);
+    let mut test1 = unsafe { Pin::new_unchecked(&amp;mut test1) };
+    Test::initialiser(test1.as_mut());
+
+    let mut test2 = Test::new(&quot;test2&quot;);
+    let mut test2 = unsafe { Pin::new_unchecked(&amp;mut test2) };
+    Test::initialiser(test2.as_mut());
+
+    println!(&quot;a: {}, b: {}&quot;, Test::a(test1.as_ref()), Test::b(test1.as_ref()));
+    std::mem::swap(test1.get_mut(), test2.get_mut());
+    println!(&quot;a: {}, b: {}&quot;, Test::a(test2.as_ref()), Test::b(test2.as_ref()));
+}
+<span class="boring">use std::pin::Pin;
+</span><span class="boring">use std::marker::PhantomPinned;
+</span><span class="boring">
+</span><span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Test {
+</span><span class="boring">    a: String,
+</span><span class="boring">    b: *const String,
+</span><span class="boring">    _marqueur: PhantomPinned,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">
+</span><span class="boring">impl Test {
+</span><span class="boring">    fn new(txt: &amp;str) -&gt; Self {
+</span><span class="boring">        Test {
+</span><span class="boring">            a: String::from(txt),
+</span><span class="boring">            b: std::ptr::null(),
+</span><span class="boring">            _marqueur: PhantomPinned, // Cela rends notre type `!Unpin`
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn initialiser(self: Pin&lt;&amp;mut Self&gt;) {
+</span><span class="boring">        let self_pointeur: *const String = &amp;self.a;
+</span><span class="boring">        let this = unsafe { self.get_unchecked_mut() };
+</span><span class="boring">        this.b = self_pointeur;
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn a(self: Pin&lt;&amp;Self&gt;) -&gt; &amp;str {
+</span><span class="boring">        &amp;self.get_ref().a
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn b(self: Pin&lt;&amp;Self&gt;) -&gt; &amp;String {
+</span><span class="boring">        assert!(!self.b.is_null(), &quot;Test::b est appelé sans appeler avant Test::initialiser&quot;);
+</span><span class="boring">        unsafe { &amp;*(self.b) }
+</span><span class="boring">    }
+</span><span class="boring">}
+</span></code></pre></pre>
+<!--
+The type system prevents us from moving the data.
+-->
+<p>Le système de type nous empêche de déplacer les données.</p>
+<!--
+> It's important to note that stack pinning will always rely on guarantees
+> you give when writing `unsafe`. While we know that the _pointee_ of `&'a mut T`
+> is pinned for the lifetime of `'a` we can't know if the data `&'a mut T`
+> points to isn't moved after `'a` ends. If it does it will violate the Pin
+> contract.
+>
+> A mistake that is easy to make is forgetting to shadow the original variable
+> since you could drop the `Pin` and move the data after `&'a mut T`
+> like shown below (which violates the Pin contract):
+>
+> ```rust
+> fn main() {
+>    let mut test1 = Test::new("test1");
+>    let mut test1_pin = unsafe { Pin::new_unchecked(&mut test1) };
+>    Test::init(test1_pin.as_mut());
+>
+>    drop(test1_pin);
+>    println!(r#"test1.b points to "test1": {:?}..."#, test1.b);
+>
+>    let mut test2 = Test::new("test2");
+>    mem::swap(&mut test1, &mut test2);
+>    println!("... and now it points nowhere: {:?}", test1.b);
+> }
+> # use std::pin::Pin;
+> # use std::marker::PhantomPinned;
+> # use std::mem;
+> #
+> # #[derive(Debug)]
+> # struct Test {
+> #     a: String,
+> #     b: *const String,
+> #     _marker: PhantomPinned,
+> # }
+> #
+> #
+> # impl Test {
+> #     fn new(txt: &str) -> Self {
+> #         Test {
+> #             a: String::from(txt),
+> #             b: std::ptr::null(),
+> #             // This makes our type `!Unpin`
+> #             _marker: PhantomPinned,
+> #         }
+> #     }
+> #
+> #     fn init<'a>(self: Pin<&'a mut Self>) {
+> #         let self_ptr: *const String = &self.a;
+> #         let this = unsafe { self.get_unchecked_mut() };
+> #         this.b = self_ptr;
+> #     }
+> #
+> #     fn a<'a>(self: Pin<&'a Self>) -> &'a str {
+> #         &self.get_ref().a
+> #     }
+> #
+> #     fn b<'a>(self: Pin<&'a Self>) -> &'a String {
+> #         assert!(!self.b.is_null(), "Test::b called without Test::init being called first");
+> #         unsafe { &*(self.b) }
+> #     }
+> # }
+> ```
+-->
+<blockquote>
+<p>Il est important que vous compreniez que l'épinglage sur la pile s'appuie
+toujours sur les garanties que vous écrivez dans votre <code>unsafe</code>. Même si nous
+savons que ce sur quoi pointe le <code>&amp;'a mut T</code> est épinglé pour la durée de vie
+de <code>'a</code>, nous ne pouvons pas savoir si la donnée sur laquelle pointe
+<code>&amp;'a mut T</code> n'est pas déplacée après que <code>'a</code> soit terminé. Si c'est ce qui
+se passe, cela violera le contrat du <code>Pin</code>.</p>
+<p>Une erreur courante est d'oublier de masquer la variable originale alors que
+vous pourriez terminer le <code>Pin</code> et déplacer la donnée après le <code>&amp;'a mut T</code>
+comme nous le montrons ci-dessous (ce qui viole le contrat du <code>Pin</code>) :</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+   let mut test1 = Test::new(&quot;test1&quot;);
+   let mut test1_pin = unsafe { Pin::new_unchecked(&amp;mut test1) };
+   Test::init(test1_pin.as_mut());
+
+   drop(test1_pin);
+   println!(r#&quot;test1.b pointe sur &quot;test1&quot;: {:?}...&quot;#, test1.b);
+
+   let mut test2 = Test::new(&quot;test2&quot;);
+   mem::swap(&amp;mut test1, &amp;mut test2);
+   println!(&quot;... et maintenant il pointe nulle part : {:?}&quot;, test1.b);
+}
+<span class="boring">use std::pin::Pin;
+</span><span class="boring">use std::marker::PhantomPinned;
+</span><span class="boring">use std::mem;
+</span><span class="boring">
+</span><span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Test {
+</span><span class="boring">    a: String,
+</span><span class="boring">    b: *const String,
+</span><span class="boring">    _marqueur: PhantomPinned,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">
+</span><span class="boring">impl Test {
+</span><span class="boring">    fn new(txt: &amp;str) -&gt; Self {
+</span><span class="boring">        Test {
+</span><span class="boring">            a: String::from(txt),
+</span><span class="boring">            b: std::ptr::null(),
+</span><span class="boring">            // Cela rends notre type `!Unpin`
+</span><span class="boring">            _marqueur: PhantomPinned,
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn init&lt;'a&gt;(self: Pin&lt;&amp;'a mut Self&gt;) {
+</span><span class="boring">        let self_pointeur: *const String = &amp;self.a;
+</span><span class="boring">        let this = unsafe { self.get_unchecked_mut() };
+</span><span class="boring">        this.b = self_pointeur;
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn a&lt;'a&gt;(self: Pin&lt;&amp;'a Self&gt;) -&gt; &amp;'a str {
+</span><span class="boring">        &amp;self.get_ref().a
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    fn b&lt;'a&gt;(self: Pin&lt;&amp;'a Self&gt;) -&gt; &amp;'a String {
+</span><span class="boring">        assert!(!self.b.is_null(), &quot;Test::b est appelé sans appeler avant Test::initialiser&quot;);
+</span><span class="boring">        unsafe { &amp;*(self.b) }
+</span><span class="boring">    }
+</span><span class="boring">}
+</span></code></pre></pre>
+</blockquote>
+<!--
+### Pinning to the Heap
+-->
+<h3 id="epingler-sur-le-tas"><a class="header" href="#epingler-sur-le-tas">Epingler sur le tas</a></h3>
+<!--
+Pinning an `!Unpin` type to the heap gives our data a stable address so we know
+that the data we point to can't move after it's pinned. In contrast to stack
+pinning, we know that the data will be pinned for the lifetime of the object.
+-->
+<p>L'épinglage d'un type <code>!Unpin</code> sur le tas donne une adresse stable à vos
+données donc nous savons que la donnée sur laquelle nous pointons ne peut pas
+être déplacée après avoir été épinglée. Contrairement à l'épinglage sur la
+pile, nous savons que la donnée va être épinglée pendant la durée de vie de
+l'objet.</p>
+<!--
+```rust, edition2018
+use std::pin::Pin;
+use std::marker::PhantomPinned;
+
+#[derive(Debug)]
+struct Test {
+    a: String,
+    b: *const String,
+    _marker: PhantomPinned,
+}
+
+impl Test {
+    fn new(txt: &str) -> Pin<Box<Self>> {
+        let t = Test {
+            a: String::from(txt),
+            b: std::ptr::null(),
+            _marker: PhantomPinned,
+        };
+        let mut boxed = Box::pin(t);
+        let self_ptr: *const String = &boxed.as_ref().a;
+        unsafe { boxed.as_mut().get_unchecked_mut().b = self_ptr };
+
+        boxed
+    }
+
+    fn a(self: Pin<&Self>) -> &str {
+        &self.get_ref().a
+    }
+
+    fn b(self: Pin<&Self>) -> &String {
+        unsafe { &*(self.b) }
+    }
+}
+
+pub fn main() {
+    let test1 = Test::new("test1");
+    let test2 = Test::new("test2");
+
+    println!("a: {}, b: {}",test1.as_ref().a(), test1.as_ref().b());
+    println!("a: {}, b: {}",test2.as_ref().a(), test2.as_ref().b());
+}
+```
+-->
+<pre><pre class="playground"><code class="language-rust  edition2018">use std::pin::Pin;
+use std::marker::PhantomPinned;
+
+#[derive(Debug)]
+struct Test {
+    a: String,
+    b: *const String,
+    _marqueur: PhantomPinned,
+}
+
+impl Test {
+    fn new(texte: &amp;str) -&gt; Pin&lt;Box&lt;Self&gt;&gt; {
+        let t = Test {
+            a: String::from(texte),
+            b: std::ptr::null(),
+            _marqueur: PhantomPinned,
+        };
+        let mut boxed = Box::pin(t);
+        let self_pointeur: *const String = &amp;boxed.as_ref().a;
+        unsafe { boxed.as_mut().get_unchecked_mut().b = self_pointeur };
+
+        boxed
+    }
+
+    fn a(self: Pin&lt;&amp;Self&gt;) -&gt; &amp;str {
+        &amp;self.get_ref().a
+    }
+
+    fn b(self: Pin&lt;&amp;Self&gt;) -&gt; &amp;String {
+        unsafe { &amp;*(self.b) }
+    }
+}
+
+pub fn main() {
+    let test1 = Test::new(&quot;test1&quot;);
+    let test2 = Test::new(&quot;test2&quot;);
+
+    println!(&quot;a: {}, b: {}&quot;,test1.as_ref().a(), test1.as_ref().b());
+    println!(&quot;a: {}, b: {}&quot;,test2.as_ref().a(), test2.as_ref().b());
+}
+</code></pre></pre>
+<!--
+Some functions require the futures they work with to be `Unpin`. To use a
+`Future` or `Stream` that isn't `Unpin` with a function that requires
+`Unpin` types, you'll first have to pin the value using either
+`Box::pin` (to create a `Pin<Box<T>>`) or the `pin_utils::pin_mut!` macro
+(to create a `Pin<&mut T>`). `Pin<Box<Fut>>` and `Pin<&mut Fut>` can both be
+used as futures, and both implement `Unpin`.
+-->
+<p>Certaines fonctions nécessitent que les futures avec lesquelles elles
+fonctionnent soient des <code>Unpin</code>. Pour utiliser une <code>Future</code> ou un <code>Stream</code> qui
+n'est pas <code>Unpin</code> avec une fonction qui nécessite des types <code>Unpin</code>, vous devez
+d'abord épingler la valeur en utilisant soit <code>Box::pin</code> (pour créer un
+<code>Pin&lt;Box&lt;T&gt;&gt;</code>) ou la macro <code>pin_utils::pin_mut!</code> (pour créer une
+<code>Pin&lt;&amp;mut T&gt;</code>). <code>Pin&lt;Box&lt;Future&gt;&gt;</code> et <code>Pin&lt;&amp;mut Future&gt;</code> peuvent tous deux être
+utilisés comme des <code>Future</code>s, et les deux implémentent <code>Unpin</code>.</p>
+<!--
+For example:
+-->
+<p>Par exemple :</p>
+<!--
+```rust,edition2018,ignore
+use pin_utils::pin_mut; // `pin_utils` is a handy crate available on crates.io
+
+// A function which takes a `Future` that implements `Unpin`.
+fn execute_unpin_future(x: impl Future<Output = ()> + Unpin) { /* ... */ }
+
+let fut = async { /* ... */ };
+execute_unpin_future(fut); // Error: `fut` does not implement `Unpin` trait
+
+// Pinning with `Box`:
+let fut = async { /* ... */ };
+let fut = Box::pin(fut);
+execute_unpin_future(fut); // OK
+
+// Pinning with `pin_mut!`:
+let fut = async { /* ... */ };
+pin_mut!(fut);
+execute_unpin_future(fut); // OK
+```
+-->
+<pre><code class="language-rust edition2018 ignore">use pin_utils::pin_mut; // `pin_utils` est une crate bien pratique,
+                        // disponible sur crates.io
+
+// Une fonction qui prend en argument une `Future` qui implémente `Unpin`.
+fn executer_une_future_unpin(x: impl Future&lt;Output = ()&gt; + Unpin) { /* ... */ }
+
+let future = async { /* ... */ };
+executer_une_future_unpin(future); // Erreur : `future` n'implémente pas
+                                   // le trait `Unpin`
+
+// Epingler avec `Box`:
+let future = async { /* ... */ };
+let future = Box::pin(future);
+executer_une_future_unpin(future); // OK
+
+// Epingler avec `pin_mut!`:
+let future = async { /* ... */ };
+pin_mut!(future);
+executer_une_future_unpin(future); // OK
+</code></pre>
+<!--
+## Summary
+-->
+<h2 id="en-résumé"><a class="header" href="#en-résumé">En résumé</a></h2>
+<!--
+1. If `T: Unpin` (which is the default), then `Pin<'a, T>` is entirely
+equivalent to `&'a mut T`. in other words: `Unpin` means it's OK for this type
+to be moved even when pinned, so `Pin` will have no effect on such a type.
+
+2. Getting a `&mut T` to a pinned T requires unsafe if `T: !Unpin`.
+
+3. Most standard library types implement `Unpin`. The same goes for most
+"normal" types you encounter in Rust. A `Future` generated by async/await is an exception to this rule.
+
+4. You can add a `!Unpin` bound on a type on nightly with a feature flag, or
+by adding `std::marker::PhantomPinned` to your type on stable.
+
+5. You can either pin data to the stack or to the heap.
+
+6. Pinning a `!Unpin` object to the stack requires `unsafe`
+
+7. Pinning a `!Unpin` object to the heap does not require `unsafe`. There is a shortcut for doing this using `Box::pin`.
+
+8. For pinned data where `T: !Unpin` you have to maintain the invariant that its memory will not
+get invalidated or repurposed _from the moment it gets pinned until when drop_ is called. This is
+an important part of the _pin contract_.
+-->
+<ol>
+<li>
+<p>Si <code>T: Unpin</code> (ce qu'il est par défaut), alors <code>Pin&lt;'a, T&gt;</code> est strictement
+équivalent à <code>&amp;'a mut T</code>. Autrement dit : <code>Unpin</code> signifie que ce type peut
+être déplacé sans problème même lorsqu'il est épinglé, donc <code>Pin</code> n'aura pas
+d'impact sur ce genre de type.</p>
+</li>
+<li>
+<p>Obtenir un <code>&amp;mut T</code> à partir d'un T épinglé nécessite du code non sécurisé
+si <code>T: !Unpin</code>.</p>
+</li>
+<li>
+<p>La plupart des bibliothèques standard implémentent <code>Unpin</code>. C'est la même
+chose pour la plupart des types &quot;normaux&quot; que vous utilisez en Rust. Une
+<code>Future</code> générée par <code>async</code> et <code>await</code> est une exception à cette généralité.</p>
+</li>
+<li>
+<p>Vous pouvez ajouter un lien <code>!Unpin</code> sur un type avec la version
+expérimentale de Rust avec un drapeau de fonctionnalité, ou en ajoutant le
+<code>std::marker::PhantomPinned</code> sur votre type avec la version stable.</p>
+</li>
+<li>
+<p>Vous pouvez épingler des données soit sur la pile, soit sur le tas.</p>
+</li>
+<li>
+<p>Epingler un objet <code>!Unpin</code> sur la pile nécessite <code>unsafe</code></p>
+</li>
+<li>
+<p>Epingler un objet <code>!Unpin</code> sur le tas ne nécessite pas <code>unsafe</code>. Il existe
+un raccourci pour faire ceci avec <code>Box::pin</code>.</p>
+</li>
+<li>
+<p>Pour les données épinglées où <code>T: !Unpin</code>, vous devez maintenir l'invariant
+dont sa mémoire n'est pas invalidée ou réaffectée <em>à partir du moment où elle
+est épinglée jusqu'à l'appel à drop</em>. C'est une partie très importante du
+<em>contrat d'épinglage</em>.</p>
+</li>
+</ol>
+<!--
+["Executing `Future`s and Tasks"]: ../02_execution/01_chapter.md
+[the `Future` trait]: ../02_execution/02_future.md
+[pin_utils]: https://docs.rs/pin-utils/
+-->
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../03_async_await/01_chapter.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../05_streams/01_chapter.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../03_async_await/01_chapter.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../05_streams/01_chapter.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

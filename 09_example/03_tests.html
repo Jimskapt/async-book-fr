@@ -1,0 +1,428 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>🚧 Test du serveur - La programmation asynchrone avec Rust</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../01_getting_started/01_chapter.html"><strong aria-hidden="true">1.</strong> 🚧 Pour démarrer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_getting_started/02_why_async.html"><strong aria-hidden="true">1.1.</strong> 🚧 Pourquoi l'asynchrone ?</a></li><li class="chapter-item expanded "><a href="../01_getting_started/03_state_of_async_rust.html"><strong aria-hidden="true">1.2.</strong> 🚧 L'état de l'art de l'asynchrone en Rust</a></li><li class="chapter-item expanded "><a href="../01_getting_started/04_async_await_primer.html"><strong aria-hidden="true">1.3.</strong> 🚧 Introduction à async et await</a></li></ol></li><li class="chapter-item expanded "><a href="../02_execution/01_chapter.html"><strong aria-hidden="true">2.</strong> 🚧 Sous le capot : exécuter les Futures et les tâches</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_execution/02_future.html"><strong aria-hidden="true">2.1.</strong> 💬 The Future Trait</a></li><li class="chapter-item expanded "><a href="../02_execution/03_wakeups.html"><strong aria-hidden="true">2.2.</strong> 💬 Task Wakeups with Waker</a></li><li class="chapter-item expanded "><a href="../02_execution/04_executor.html"><strong aria-hidden="true">2.3.</strong> 💬 Applied: Build an Executor</a></li><li class="chapter-item expanded "><a href="../02_execution/05_io.html"><strong aria-hidden="true">2.4.</strong> 💬 Executors and System IO</a></li></ol></li><li class="chapter-item expanded "><a href="../03_async_await/01_chapter.html"><strong aria-hidden="true">3.</strong> 🚧 async et await</a></li><li class="chapter-item expanded "><a href="../04_pinning/01_chapter.html"><strong aria-hidden="true">4.</strong> 🚧 L'épinglage</a></li><li class="chapter-item expanded "><a href="../05_streams/01_chapter.html"><strong aria-hidden="true">5.</strong> 🚧 Le trait Stream</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../05_streams/02_iteration_and_concurrency.html"><strong aria-hidden="true">5.1.</strong> 🚧 L'itération et la concurrence</a></li></ol></li><li class="chapter-item expanded "><a href="../06_multiple_futures/01_chapter.html"><strong aria-hidden="true">6.</strong> 🚧 Exécuter plusieurs futures en même temps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../06_multiple_futures/02_join.html"><strong aria-hidden="true">6.1.</strong> 🚧 join!</a></li><li class="chapter-item expanded "><a href="../06_multiple_futures/03_select.html"><strong aria-hidden="true">6.2.</strong> 🚧 select!</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.3.</strong> 🥚 TODO: Spawning</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.4.</strong> 🥚 TODO: Cancellation and Timeouts</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.5.</strong> 🥚 TODO: FuturesUnordered</div></li></ol></li><li class="chapter-item expanded "><a href="../07_workarounds/01_chapter.html"><strong aria-hidden="true">7.</strong> 🚧 Solutions de contournement à connaître et à utiliser</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../07_workarounds/02_err_in_async_blocks.html"><strong aria-hidden="true">7.1.</strong> 🚧 ? dans les blocs async</a></li><li class="chapter-item expanded "><a href="../07_workarounds/03_send_approximation.html"><strong aria-hidden="true">7.2.</strong> 🚧 L'approximation de Send</a></li><li class="chapter-item expanded "><a href="../07_workarounds/04_recursion.html"><strong aria-hidden="true">7.3.</strong> 🚧 La récursivité</a></li><li class="chapter-item expanded "><a href="../07_workarounds/05_async_in_traits.html"><strong aria-hidden="true">7.4.</strong> 🚧 async dans les traits</a></li></ol></li><li class="chapter-item expanded "><a href="../08_ecosystem/00_chapter.html"><strong aria-hidden="true">8.</strong> 🚧 L'écosystème asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/00_intro.html"><strong aria-hidden="true">9.</strong> 🚧 Projet final : Serveur HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../09_example/01_running_async_code.html"><strong aria-hidden="true">9.1.</strong> 🚧 Exécuter du code asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/02_handling_connections_concurrently.html"><strong aria-hidden="true">9.2.</strong> 🚧 Gérer les connexions en concurrence</a></li><li class="chapter-item expanded "><a href="../09_example/03_tests.html" class="active"><strong aria-hidden="true">9.3.</strong> 🚧 Test du serveur</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> TODO: I/O</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">10.1.</strong> TODO: AsyncRead and AsyncWrite</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> TODO: Asynchronous Design Patterns: Solutions and Suggestions</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">11.1.</strong> TODO: Modeling Servers and the Request/Response Pattern</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.2.</strong> TODO: Managing Shared State</div></li></ol></li><li class="chapter-item expanded "><a href="../12_appendix/01_translations.html"><strong aria-hidden="true">12.</strong> Annexe : traductions du livre</a></li><li class="chapter-item expanded affix "><a href="../translation-terms.html">Traduction des termes</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">La programmation asynchrone avec Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Jimskapt/async-book-fr/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <blockquote>
+<h1 id="-attention-peinture-fraîche-"><a class="header" href="#-attention-peinture-fraîche-">🚧 Attention, peinture fraîche !</a></h1>
+<p>Cette page a été traduite par une seule personne et n'a pas été relue et
+vérifiée par quelqu'un d'autre ! Les informations peuvent par exemple être
+erronées, être formulées maladroitement, ou contenir d'autres types de fautes.</p>
+</blockquote>
+<!--
+# Testing the TCP Server
+Let's move on to testing our `handle_connection` function.
+-->
+<h1 id="test-du-serveur-tcp"><a class="header" href="#test-du-serveur-tcp">Test du serveur TCP</a></h1>
+<p>Passons désormais au test de notre fonction <code>gestion_connexion</code>.</p>
+<!--
+First, we need a `TcpStream` to work with.
+In an end-to-end or integration test, we might want to make a real TCP connection
+to test our code.
+One strategy for doing this is to start a listener on `localhost` port 0.
+Port 0 isn't a valid UNIX port, but it'll work for testing.
+The operating system will pick an open TCP port for us.
+-->
+<p>D'abord, nous avons besoin d'un <code>TcpStream</code> avec lequel travailler.
+Dans un test d'intégration ou de bout-à-bout, nous serions tentés de faire une
+vraie connexion TCP pour tester notre code.
+Une des stratégies pour faire cela est de démarrer un écouteur sur le port 0 de
+<code>localhost</code>.
+Le port 0 n'est pas un port UNIX valide, mais il fonctionne pour faire des
+tests.
+Le système d'exploitation va obtenir un port TCP ouvert pour nous.</p>
+<!--
+Instead, in this example we'll write a unit test for the connection handler,
+to check that the correct responses are returned for the respective inputs.
+To keep our unit test isolated and deterministic, we'll replace the `TcpStream` with a mock.
+-->
+<p>Dans cet exemple, nous allons plutôt écrire un test unitaire pour le
+gestionnaire de connexion, pour vérifier que les réponses correctes soient
+retournées à leurs entrées respectives.
+Pour faire en sorte que notre test unitaire soit isolé et déterminé, nous
+allons remplacer le <code>TcpStream</code> par un mock.</p>
+<!--
+First, we'll change the signature of `handle_connection` to make it easier to test.
+`handle_connection` doesn't actually require an `async_std::net::TcpStream`;
+it requires any struct that implements `async_std::io::Read`, `async_std::io::Write`, and `marker::Unpin`.
+Changing the type signature to reflect this allows us to pass a mock for testing.
+```rust,ignore
+use std::marker::Unpin;
+use async_std::io::{Read, Write};
+
+async fn handle_connection(mut stream: impl Read + Write + Unpin) {
+```
+-->
+<p>Pour commencer, nous allons changer la signature de <code>gestion_connexion</code> pour
+faciliter ses tests.
+En fait, <code>gestion_connexion</code> ne nécessite pas de <code>async_std::net::TcpStream</code>,
+il a juste besoin d'une structure qui implémente <code>async_std::io::Read</code>,
+<code>async_std::io::Write</code>, et <code>marker::Unpin</code>.
+Changeons la signature du type dans ce sens nous permet de lui passer un mock
+pour la tester.</p>
+<pre><code class="language-rust ignore">use std::marker::Unpin;
+use async_std::io::{Read, Write};
+
+async fn gestion_connexion(mut stream: impl Read + Write + Unpin) {
+</code></pre>
+<!--
+Next, let's build a mock `TcpStream` that implements these traits.
+First, let's implement the `Read` trait, with one method, `poll_read`.
+Our mock `TcpStream` will contain some data that is copied into the read buffer,
+and we'll return `Poll::Ready` to signify that the read is complete.
+```rust,ignore
+    use super::*;
+    use futures::io::Error;
+    use futures::task::{Context, Poll};
+
+    use std::cmp::min;
+    use std::pin::Pin;
+
+    struct MockTcpStream {
+        read_data: Vec<u8>,
+        write_data: Vec<u8>,
+    }
+
+    impl Read for MockTcpStream {
+        fn poll_read(
+            self: Pin<&mut Self>,
+            _: &mut Context,
+            buf: &mut [u8],
+        ) -> Poll<Result<usize, Error>> {
+            let size: usize = min(self.read_data.len(), buf.len());
+            buf[..size].copy_from_slice(&self.read_data[..size]);
+            Poll::Ready(Ok(size))
+        }
+    }
+```
+-->
+<p>Ensuite, créons un mock de <code>TcpStream</code> qui implémente ces traits.
+Implémentons d'abord le trait <code>Read</code>, qui a une méthode, <code>poll_read</code>.
+Notre mock de <code>TcpStream</code> va contenir certaines données qui sont copiées dans
+le tampon de lecture, et nous allons retourner <code>Poll::Ready</code> pour signaler que
+la lecture est terminée.</p>
+<pre><code class="language-rust ignore">    use super::*;
+    use futures::io::Error;
+    use futures::task::{Context, Poll};
+
+    use std::cmp::min;
+    use std::pin::Pin;
+
+    struct MockTcpStream {
+        donnees_lecture: Vec&lt;u8&gt;,
+        donnees_ecriture: Vec&lt;u8&gt;,
+    }
+
+    impl Read for MockTcpStream {
+        fn poll_read(
+            self: Pin&lt;&amp;mut Self&gt;,
+            _: &amp;mut Context,
+            tampon: &amp;mut [u8],
+        ) -&gt; Poll&lt;Result&lt;usize, Error&gt;&gt; {
+            let taille: usize = min(self.donnees_lecture.len(), tampon.len());
+            tampon[..taille].copy_from_slice(&amp;self.donnees_lecture[..taille]);
+            Poll::Ready(Ok(taille))
+        }
+    }
+</code></pre>
+<!--
+Our implementation of `Write` is very similar,
+although we'll need to write three methods: `poll_write`, `poll_flush`, and `poll_close`.
+`poll_write` will copy any input data into the mock `TcpStream`, and return `Poll::Ready` when complete.
+No work needs to be done to flush or close the mock `TcpStream`, so `poll_flush` and `poll_close`
+can just return `Poll::Ready`.
+```rust,ignore
+    impl Write for MockTcpStream {
+        fn poll_write(
+            mut self: Pin<&mut Self>,
+            _: &mut Context,
+            buf: &[u8],
+        ) -> Poll<Result<usize, Error>> {
+            self.write_data = Vec::from(buf);
+
+            Poll::Ready(Ok(buf.len()))
+        }
+
+        fn poll_flush(self: Pin<&mut Self>, _: &mut Context) -> Poll<Result<(), Error>> {
+            Poll::Ready(Ok(()))
+        }
+
+        fn poll_close(self: Pin<&mut Self>, _: &mut Context) -> Poll<Result<(), Error>> {
+            Poll::Ready(Ok(()))
+        }
+    }
+```
+-->
+<p>Notre implémentation de <code>Write</code> y ressemble beaucoup, même si nous avons besoin
+d'écrire trois méthodes : <code>poll_write</code>, <code>poll_flush</code>, et <code>poll_close</code>.
+<code>poll_write</code> va copier toutes les données d'entrée dans le mock de <code>TcpStream</code>,
+et retourne <code>Poll::Ready</code> lorsqu'elle sera terminée.
+Il n'y a pas besoin de purger et fermer le mock de <code>TcpStream</code>, donc
+<code>poll_flush</code> et <code>poll_close</code> peuvent simplement retourner <code>Poll::Ready</code>.</p>
+<pre><code class="language-rust ignore">    impl Write for MockTcpStream {
+        fn poll_write(
+            mut self: Pin&lt;&amp;mut Self&gt;,
+            _: &amp;mut Context,
+            tampon: &amp;[u8],
+        ) -&gt; Poll&lt;Result&lt;usize, Error&gt;&gt; {
+            self.donnees_ecriture = Vec::from(tampon);
+
+            Poll::Ready(Ok(tampon.len()))
+        }
+
+        fn poll_flush(self: Pin&lt;&amp;mut Self&gt;, _: &amp;mut Context) -&gt; Poll&lt;Result&lt;(), Error&gt;&gt; {
+            Poll::Ready(Ok(()))
+        }
+
+        fn poll_close(self: Pin&lt;&amp;mut Self&gt;, _: &amp;mut Context) -&gt; Poll&lt;Result&lt;(), Error&gt;&gt; {
+            Poll::Ready(Ok(()))
+        }
+    }
+</code></pre>
+<!--
+Lastly, our mock will need to implement `Unpin`, signifying that its location in memory can safely be moved.
+For more information on pinning and the `Unpin` trait, see the [section on pinning](../04_pinning/01_chapter.md).
+```rust,ignore
+    use std::marker::Unpin;
+    impl Unpin for MockTcpStream {}
+```
+-->
+<p>Enfin, notre mock a besoin d'implémenter <code>Unpin</code>, ce qui veut dire que sa
+position dans la mémoire peut être déplacée en toute sécurité. Pour plus
+d'informations sur l'épinglage et le trait <code>Unpin</code>, rendez-vous à la <a href="../04_pinning/01_chapter.html">section
+sur l'épinglage</a>.</p>
+<pre><code class="language-rust ignore">    use std::marker::Unpin;
+    impl Unpin for MockTcpStream {}
+</code></pre>
+<!--
+Now we're ready to test the `handle_connection` function.
+After setting up the `MockTcpStream` containing some initial data,
+we can run `handle_connection` using the attribute `#[async_std::test]`, similarly to how we used `#[async_std::main]`.
+To ensure that `handle_connection` works as intended, we'll check that the correct data
+was written to the `MockTcpStream` based on its initial contents.
+```rust,ignore
+    use std::fs;
+
+    #[async_std::test]
+    async fn test_handle_connection() {
+        let input_bytes = b"GET / HTTP/1.1\r\n";
+        let mut contents = vec![0u8; 1024];
+        contents[..input_bytes.len()].clone_from_slice(input_bytes);
+        let mut stream = MockTcpStream {
+            read_data: contents,
+            write_data: Vec::new(),
+        };
+
+        handle_connection(&mut stream).await;
+        let mut buf = [0u8; 1024];
+        stream.read(&mut buf).await.unwrap();
+
+        let expected_contents = fs::read_to_string("hello.html").unwrap();
+        let expected_response = format!("HTTP/1.1 200 OK\r\n\r\n{}", expected_contents);
+        assert!(stream.write_data.starts_with(expected_response.as_bytes()));
+    }
+```
+-->
+<p>Maintenant nous sommes prêts à tester la fonction <code>gestion_connexion</code>.
+Après avoir réglé le <code>MockTcpStream</code> pour contenir les données initiales, nous
+pouvons exécuter <code>gestion_connexion</code> en utilisant l'attribut
+<code>#[async_std::test]</code>, de la même manière que nous avons utilisé
+<code>#[async_std::main]</code>.
+Pour nous assurer que <code>gestion_connexion</code> fonctionne comme attendu, nous
+allons vérifier que les données ont été correctement écrites dans le
+<code>MockTcpStream</code> en fonction de son contenu initial.</p>
+<pre><code class="language-rust ignore">    use std::fs;
+
+    #[async_std::test]
+    async fn test_gestion_connexion() {
+        let octets_entree = b&quot;GET / HTTP/1.1\r\n&quot;;
+        let mut contenu = vec![0u8; 1024];
+        contenu[..octets_entree.len()].clone_from_slice(octets_entree);
+        let mut flux = MockTcpStream {
+            donnees_lecture: contenu,
+            donnees_ecriture: Vec::new(),
+        };
+
+        gestion_connexion(&amp;mut flux).await;
+        let mut tampon = [0u8; 1024];
+        flux.read(&amp;mut tampon).await.unwrap();
+
+        let contenu_attendu = fs::read_to_string(&quot;hello.html&quot;).unwrap();
+        let reponse_attendue = format!(&quot;HTTP/1.1 200 OK\r\n\r\n{}&quot;, contenu_attendu);
+        assert!(flux.donnees_ecriture.starts_with(reponse_attendue.as_bytes()));
+    }
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../09_example/02_handling_connections_concurrently.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../12_appendix/01_translations.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../09_example/02_handling_connections_concurrently.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../12_appendix/01_translations.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

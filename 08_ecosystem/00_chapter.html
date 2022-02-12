@@ -1,0 +1,398 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>🚧 L&#x27;écosystème asynchrone - La programmation asynchrone avec Rust</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../01_getting_started/01_chapter.html"><strong aria-hidden="true">1.</strong> 🚧 Pour démarrer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_getting_started/02_why_async.html"><strong aria-hidden="true">1.1.</strong> 🚧 Pourquoi l'asynchrone ?</a></li><li class="chapter-item expanded "><a href="../01_getting_started/03_state_of_async_rust.html"><strong aria-hidden="true">1.2.</strong> 🚧 L'état de l'art de l'asynchrone en Rust</a></li><li class="chapter-item expanded "><a href="../01_getting_started/04_async_await_primer.html"><strong aria-hidden="true">1.3.</strong> 🚧 Introduction à async et await</a></li></ol></li><li class="chapter-item expanded "><a href="../02_execution/01_chapter.html"><strong aria-hidden="true">2.</strong> 🚧 Sous le capot : exécuter les Futures et les tâches</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_execution/02_future.html"><strong aria-hidden="true">2.1.</strong> 💬 The Future Trait</a></li><li class="chapter-item expanded "><a href="../02_execution/03_wakeups.html"><strong aria-hidden="true">2.2.</strong> 💬 Task Wakeups with Waker</a></li><li class="chapter-item expanded "><a href="../02_execution/04_executor.html"><strong aria-hidden="true">2.3.</strong> 💬 Applied: Build an Executor</a></li><li class="chapter-item expanded "><a href="../02_execution/05_io.html"><strong aria-hidden="true">2.4.</strong> 💬 Executors and System IO</a></li></ol></li><li class="chapter-item expanded "><a href="../03_async_await/01_chapter.html"><strong aria-hidden="true">3.</strong> 🚧 async et await</a></li><li class="chapter-item expanded "><a href="../04_pinning/01_chapter.html"><strong aria-hidden="true">4.</strong> 🚧 L'épinglage</a></li><li class="chapter-item expanded "><a href="../05_streams/01_chapter.html"><strong aria-hidden="true">5.</strong> 🚧 Le trait Stream</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../05_streams/02_iteration_and_concurrency.html"><strong aria-hidden="true">5.1.</strong> 🚧 L'itération et la concurrence</a></li></ol></li><li class="chapter-item expanded "><a href="../06_multiple_futures/01_chapter.html"><strong aria-hidden="true">6.</strong> 🚧 Exécuter plusieurs futures en même temps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../06_multiple_futures/02_join.html"><strong aria-hidden="true">6.1.</strong> 🚧 join!</a></li><li class="chapter-item expanded "><a href="../06_multiple_futures/03_select.html"><strong aria-hidden="true">6.2.</strong> 🚧 select!</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.3.</strong> 🥚 TODO: Spawning</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.4.</strong> 🥚 TODO: Cancellation and Timeouts</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.5.</strong> 🥚 TODO: FuturesUnordered</div></li></ol></li><li class="chapter-item expanded "><a href="../07_workarounds/01_chapter.html"><strong aria-hidden="true">7.</strong> 🚧 Solutions de contournement à connaître et à utiliser</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../07_workarounds/02_err_in_async_blocks.html"><strong aria-hidden="true">7.1.</strong> 🚧 ? dans les blocs async</a></li><li class="chapter-item expanded "><a href="../07_workarounds/03_send_approximation.html"><strong aria-hidden="true">7.2.</strong> 🚧 L'approximation de Send</a></li><li class="chapter-item expanded "><a href="../07_workarounds/04_recursion.html"><strong aria-hidden="true">7.3.</strong> 🚧 La récursivité</a></li><li class="chapter-item expanded "><a href="../07_workarounds/05_async_in_traits.html"><strong aria-hidden="true">7.4.</strong> 🚧 async dans les traits</a></li></ol></li><li class="chapter-item expanded "><a href="../08_ecosystem/00_chapter.html" class="active"><strong aria-hidden="true">8.</strong> 🚧 L'écosystème asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/00_intro.html"><strong aria-hidden="true">9.</strong> 🚧 Projet final : Serveur HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../09_example/01_running_async_code.html"><strong aria-hidden="true">9.1.</strong> 🚧 Exécuter du code asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/02_handling_connections_concurrently.html"><strong aria-hidden="true">9.2.</strong> 🚧 Gérer les connexions en concurrence</a></li><li class="chapter-item expanded "><a href="../09_example/03_tests.html"><strong aria-hidden="true">9.3.</strong> 🚧 Test du serveur</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> TODO: I/O</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">10.1.</strong> TODO: AsyncRead and AsyncWrite</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> TODO: Asynchronous Design Patterns: Solutions and Suggestions</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">11.1.</strong> TODO: Modeling Servers and the Request/Response Pattern</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.2.</strong> TODO: Managing Shared State</div></li></ol></li><li class="chapter-item expanded "><a href="../12_appendix/01_translations.html"><strong aria-hidden="true">12.</strong> Annexe : traductions du livre</a></li><li class="chapter-item expanded affix "><a href="../translation-terms.html">Traduction des termes</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">La programmation asynchrone avec Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Jimskapt/async-book-fr/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <blockquote>
+<h1 id="-attention-peinture-fraîche-"><a class="header" href="#-attention-peinture-fraîche-">🚧 Attention, peinture fraîche !</a></h1>
+<p>Cette page a été traduite par une seule personne et n'a pas été relue et
+vérifiée par quelqu'un d'autre ! Les informations peuvent par exemple être
+erronées, être formulées maladroitement, ou contenir d'autres types de fautes.</p>
+</blockquote>
+<!--
+# The Async Ecosystem
+Rust currently provides only the bare essentials for writing async code.
+Importantly, executors, tasks, reactors, combinators, and low-level I/O futures and traits
+are not yet provided in the standard library. In the meantime,
+community-provided async ecosystems fill in these gaps.
+-->
+<h1 id="lécosystème-asynchrone"><a class="header" href="#lécosystème-asynchrone">L'écosystème asynchrone</a></h1>
+<p>Actuellement, Rust ne fournit que l'essentiel pour écrire du code asynchrone.
+En particulier, les exécuteurs, les tâches, les réacteurs, les combinateurs, et
+les futures et les traits de bas-niveau d'entrée/sortie ne sont pas encore
+fournis par la bibliothèque standard. Mais en attendant, les écosystèmes
+asynchrones fournis par la communauté répondent à ce besoin.</p>
+<!--
+The Async Foundations Team is interested in extending examples in the Async Book to cover multiple runtimes.
+If you're interested in contributing to this project, please reach out to us on
+[Zulip](https://rust-lang.zulipchat.com/#narrow/stream/201246-wg-async-foundations.2Fbook).
+-->
+<p>L'équipe en charge des fondations de l'asynchrone est intéressée par le
+développement dans le livre sur l'asynchrone pour couvrir plusieurs
+environnements d'exécution. Si vous êtes intéressé pour contribuer à ce projet,
+veuillez vous rendre sur
+<a href="https://rust-lang.zulipchat.com/#narrow/stream/201246-wg-async-foundations.2Fbook">Zulip</a>.</p>
+<!--
+## Async Runtimes
+Async runtimes are libraries used for executing async applications.
+Runtimes usually bundle together a *reactor* with one or more *executors*.
+Reactors provide subscription mechanisms for external events, like async I/O, interprocess communication, and timers.
+In an async runtime, subscribers are typically futures representing low-level I/O operations.
+Executors handle the scheduling and execution of tasks.
+They keep track of running and suspended tasks, poll futures to completion, and wake tasks when they can make progress.
+The word "executor" is frequently used interchangeably with "runtime".
+Here, we use the word "ecosystem" to describe a runtime bundled with compatible traits and features.
+-->
+<h2 id="les-environnements-dexécution-asynchrone"><a class="header" href="#les-environnements-dexécution-asynchrone">Les environnements d'exécution asynchrone</a></h2>
+<p>Les environnements d'exécution asynchrones sont des bibliothèques utilisées
+pour exécuter des applications asynchrones.
+Les environnements d'exécution embarquent généralement ensemble un <em>réacteur</em>
+avec un ou plusieurs <em>exécuteurs</em>.
+Les réacteurs fournissent des mécanismes d'abonnement pour les évènements
+externes, comme les entrées/sorties asynchrones, la communication entre les
+processus, et les temporisations.
+Dans un environnement d'exécution asynchrone, les abonnés sont typiquement des
+futures qui représentent les opérations d'entrées/sorties de bas-niveau.
+Les exécuteurs gèrent la planification et l'exécution des tâches.
+Ils assurent le suivi les tâches en cours d'exécution et celles qui sont
+suspendues, l'appel des futures jusqu'à ce qu'elles terminent, et réaniment les
+tâches lorsqu'elles peuvent progresser.
+Le mot &quot;exécuteur&quot; est souvent permuté avec &quot;l'environnement d'exécution&quot;.
+Ici, nous utilisons le mot &quot;écosystème&quot; pour décrire un environnement
+d'exécution accompagné des traits et fonctionnalités compatibles.</p>
+<!--
+## Community-Provided Async Crates
+-->
+<h2 id="les-crates-asynchrones-fournies-par-la-communauté"><a class="header" href="#les-crates-asynchrones-fournies-par-la-communauté">Les crates asynchrones fournies par la communauté</a></h2>
+<!--
+### The Futures Crate
+The [`futures` crate](https://docs.rs/futures/) contains traits and functions useful for writing async code.
+This includes the `Stream`, `Sink`, `AsyncRead`, and `AsyncWrite` traits, and utilities such as combinators.
+These utilities and traits may eventually become part of the standard library.
+-->
+<h3 id="la-crate-futures"><a class="header" href="#la-crate-futures">La crate <code>Futures</code></a></h3>
+<p>La <a href="https://docs.rs/futures/">crate <code>futures</code></a> contient les traits et les
+fonctions utiles pour écrire du code asynchrone. Cela comprend les traits
+<code>Stream</code>, <code>Sink</code>, <code>AsyncRead</code>, et <code>AsyncWrite</code>, et des utilitaires comme les
+combinateurs. Ces utilitaires et ces traits pourraient éventuellement faire
+partie un jour de la bibliothèque standard.</p>
+<!--
+`futures` has its own executor, but not its own reactor, so it does not support execution of async I/O or timer futures.
+For this reason, it's not considered a full runtime.
+A common choice is to use utilities from `futures` with an executor from another crate.
+-->
+<p>Les <code>futures</code> ont leur propre exécuteur, mais pas son propre réacteur, donc
+cela ne prend pas en charge l'exécution d'entrées/sorties asynchrones ou de
+futures de temporisation. C'est pour cette raison que ce n'est pas considéré
+comme un environnement d'exécution complet.
+Il est courant d'employer les utilitaires de <code>futures</code> avec un exécuteur d'une
+autre crate.</p>
+<!--
+### Popular Async Runtimes
+There is no asynchronous runtime in the standard library, and none are officially recommended.
+The following crates provide popular runtimes.
+- [Tokio](https://docs.rs/tokio/): A popular async ecosystem with HTTP, gRPC, and tracing frameworks.
+- [async-std](https://docs.rs/async-std/): A crate that provides asynchronous counterparts to standard library components.
+- [smol](https://docs.rs/smol/): A small, simplified async runtime.
+Provides the `Async` trait that can be used to wrap structs like `UnixStream` or `TcpListener`.
+- [fuchsia-async](https://fuchsia.googlesource.com/fuchsia/+/master/src/lib/fuchsia-async/):
+An executor for use in the Fuchsia OS.
+-->
+<h3 id="les-environnements-dexécution-asynchrones-populaires"><a class="header" href="#les-environnements-dexécution-asynchrones-populaires">Les environnements d'exécution asynchrones populaires</a></h3>
+<p>Il n'y a pas d'environnement d'exécution asynchrone dans la bibliothèque
+standard, et aucune n'est officiellement recommandée.
+Les crates suivantes offrent des environnement d'exécution populaires.</p>
+<ul>
+<li><a href="https://docs.rs/tokio/">Tokio</a> : un écosystème asynchrone populaire pour des
+cadriciels travaillant avec HTTP, gRPC et du traçage.</li>
+<li><a href="https://docs.rs/async-std/">async-std</a> : une crate qui fournit des
+équivalents asynchrones aux composants de la bibliothèque standard.</li>
+<li><a href="https://docs.rs/smol/">smol</a> : un environnement d'exécution asynchrone,
+minimisé et simplifié.</li>
+</ul>
+<!--
+## Determining Ecosystem Compatibility
+Not all async applications, frameworks, and libraries are compatible with each other, or with every OS or platform.
+Most async code can be used with any ecosystem, but some frameworks and libraries require the use of a specific ecosystem.
+Ecosystem constraints are not always documented, but there are several rules of thumb to determine
+whether a library, trait, or function depends on a specific ecosystem.
+-->
+<h2 id="la-compatibilité-des-écosystèmes"><a class="header" href="#la-compatibilité-des-écosystèmes">La compatibilité des écosystèmes</a></h2>
+<p>Toutes les applications, cadriciels, et bibliothèques asynchrones ne sont pas
+compatibles entre elles, ou avec tous les systèmes d'exploitation ou
+plateformes. La plupart du code asynchrone peut être utilisé avec n'importe
+quel écosystème, mais certains cadriciels et bibliothèques nécessitent
+l'utilisation d'un écosystème précis. Les contraintes d'un écosystème ne sont
+pas toujours documentées, mais quelques méthodes empiriques pour déterminer si
+une bibliothèque, un trait, ou une fonction dépends d'un écosystème précis.</p>
+<!--
+Any async code that interacts with async I/O, timers, interprocess communication, or tasks
+generally depends on a specific async executor or reactor.
+All other async code, such as async expressions, combinators, synchronization types, and streams
+are usually ecosystem independent, provided that any nested futures are also ecosystem independent.
+Before beginning a project, it's recommended to research relevant async frameworks and libraries to ensure
+compatibility with your chosen runtime and with each other.
+-->
+<p>Tout code asynchrone qui interagit avec des entrées/sorties, temporisations,
+communication inter-processus, ou des tâches asynchrones dépend généralement
+d'un exécuteur ou réacteur asynchrone.
+Tous les autres codes asynchrones, comme les expressions, combinateurs, types
+de sychronisation, et les <code>Stream</code> asynchrones sont généralement indépendants
+des écosystèmes, à condition que toutes les futures imbriquées sont aussi
+indépendantes de tout écosystème.
+Avant de commencer un projet, il est recommandé de rechercher les cadriciels
+et bibliothèques asynchrones que vous aurez besoin pour vous assurer la
+compatibilité entre eux et avec l'environnement d'exécution que vous avez
+choisi.</p>
+<!--
+Notably, `Tokio` uses the `mio` reactor and defines its own versions of async I/O traits,
+including `AsyncRead` and `AsyncWrite`.
+On its own, it's not compatible with `async-std` and `smol`,
+which rely on the [`async-executor` crate](https://docs.rs/async-executor), and the `AsyncRead` and `AsyncWrite`
+traits defined in `futures`.
+-->
+<p>En particulier, <code>Tokio</code> utilise le réacteur <code>mio</code> et définit ses propres
+versions des traits d'entrées/sorties asynchrones, y compris <code>AsyncRead</code> et
+<code>AsyncWrite</code>. Seul, il n'est pas compatible avec <code>async-std</code> et <code>smol</code>, qui
+reposent sur <a href="https://docs.rs/async-executor">la crate <code>async-executor</code></a>, et
+les traits <code>AsyncRead</code> et <code>AsyncWrite</code> sont définis dans <code>futures</code>.</p>
+<!--
+Conflicting runtime requirements can sometimes be resolved by compatibility layers
+that allow you to call code written for one runtime within another.
+For example, the [`async_compat` crate](https://docs.rs/async_compat) provides a compatibility layer between
+`Tokio` and other runtimes.
+-->
+<p>Les pré-requis d'environnement d'exécution en conflit peuvent parfois être
+résolus avec des couches de compatibilité qui vous permettent d'appeler du code
+écrit pour un environnement d'exécution dans un autre.
+Par exemple, <a href="https://docs.rs/async_compat">la crate <code>async_compat</code></a> fournit
+une couche de compatibilité entre <code>Tokio</code> et les autres environnements
+d'exécution.</p>
+<!--
+Libraries exposing async APIs should not depend on a specific executor or reactor,
+unless they need to spawn tasks or define their own async I/O or timer futures.
+Ideally, only binaries should be responsible for scheduling and running tasks.
+-->
+<p>Les bibliothèques qui exposent des APIs asynchrones ne devraient pas dépendre
+d'un exécuteur ou d'un réacteur en particulier, à moins qu'ils aient besoin de
+créer des tâches ou de définir leurs propres entrées/sorties asynchrones ou des
+futures de temporisation. Dans l'idéal, seuls les binaires devraient être
+responsables de la planification et de l'exécution des tâches.</p>
+<!--
+## Single Threaded vs Multi-Threaded Executors
+Async executors can be single-threaded or multi-threaded.
+For example, the `async-executor` crate has both a single-threaded `LocalExecutor` and a multi-threaded `Executor`.
+-->
+<h2 id="les-exécuteurs-mono-processus-versus-multi-processus"><a class="header" href="#les-exécuteurs-mono-processus-versus-multi-processus">Les exécuteurs mono-processus versus multi-processus</a></h2>
+<p>Les exécuteurs asynchrones peuvent être mono-processus ou multi-processus.
+Par exemple, la crate <code>async-executor</code> a deux <code>LocalExecutor</code> mono-processus et
+un <code>Executor</code> multi-processus.</p>
+<!--
+A multi-threaded executor makes progress on several tasks simultaneously.
+It can speed up the execution greatly for workloads with many tasks,
+but synchronizing data between tasks is usually more expensive.
+It is recommended to measure performance for your application
+when you are choosing between a single- and a multi-threaded runtime.
+-->
+<p>Les exécuteurs multi-processus permettent de faire progresser plusieurs tâches
+en simultané. Cela peut accélérer considérablement l'exécution pour les charges
+de travail avec beaucoup de tâches, mais la synchronisation des données entre
+les tâches est habituellement moins rentable. Il est recommandé de mesurer les
+performances de votre application lorsque vous choisissez entre un
+environnement d'exécution mono-processus et multi-processus.</p>
+<!--
+Tasks can either be run on the thread that created them or on a separate thread.
+Async runtimes often provide functionality for spawning tasks onto separate threads.
+Even if tasks are executed on separate threads, they should still be non-blocking.
+In order to schedule tasks on a multi-threaded executor, they must also be `Send`.
+Some runtimes provide functions for spawning non-`Send` tasks,
+which ensures every task is executed on the thread that spawned it.
+They may also provide functions for spawning blocking tasks onto dedicated threads,
+which is useful for running blocking synchronous code from other libraries.
+-->
+<p>Les tâches peuvent être exécutées soit sur le processus qui les a créés, ou sur
+processus séparé. Les environnements d'exécution asynchrones fournissent
+souvent des fonctionnalités pour créer des tâches sur des processus séparés.
+Même si les tâches sont exécutées sur des processus séparés, ils ne doivent
+toujours pas être bloquants. Pour pouvoir planifier l'exécution des tâches sur
+un exécuteur multi-processus, elles doivent être aussi être <code>Send</code>. Certains
+environnements d'exécution fournissent des fonctions pour créer des tâches qui
+ne sont pas <code>Send</code>, ce qui permet de s'assurer que les tâches sont exécutées
+sur le processus qui les ont créés.
+Ils peuvent également fournir des fonctions pour créer des tâches bloquantes
+sur des processus dédiés, ce qui est pratique pour exécuter du code synchrone
+bloquant des autres bibliothèques.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../07_workarounds/05_async_in_traits.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../09_example/00_intro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../07_workarounds/05_async_in_traits.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../09_example/00_intro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

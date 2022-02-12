@@ -1,0 +1,407 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>🚧 Introduction à async et await - La programmation asynchrone avec Rust</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../01_getting_started/01_chapter.html"><strong aria-hidden="true">1.</strong> 🚧 Pour démarrer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_getting_started/02_why_async.html"><strong aria-hidden="true">1.1.</strong> 🚧 Pourquoi l'asynchrone ?</a></li><li class="chapter-item expanded "><a href="../01_getting_started/03_state_of_async_rust.html"><strong aria-hidden="true">1.2.</strong> 🚧 L'état de l'art de l'asynchrone en Rust</a></li><li class="chapter-item expanded "><a href="../01_getting_started/04_async_await_primer.html" class="active"><strong aria-hidden="true">1.3.</strong> 🚧 Introduction à async et await</a></li></ol></li><li class="chapter-item expanded "><a href="../02_execution/01_chapter.html"><strong aria-hidden="true">2.</strong> 🚧 Sous le capot : exécuter les Futures et les tâches</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_execution/02_future.html"><strong aria-hidden="true">2.1.</strong> 💬 The Future Trait</a></li><li class="chapter-item expanded "><a href="../02_execution/03_wakeups.html"><strong aria-hidden="true">2.2.</strong> 💬 Task Wakeups with Waker</a></li><li class="chapter-item expanded "><a href="../02_execution/04_executor.html"><strong aria-hidden="true">2.3.</strong> 💬 Applied: Build an Executor</a></li><li class="chapter-item expanded "><a href="../02_execution/05_io.html"><strong aria-hidden="true">2.4.</strong> 💬 Executors and System IO</a></li></ol></li><li class="chapter-item expanded "><a href="../03_async_await/01_chapter.html"><strong aria-hidden="true">3.</strong> 🚧 async et await</a></li><li class="chapter-item expanded "><a href="../04_pinning/01_chapter.html"><strong aria-hidden="true">4.</strong> 🚧 L'épinglage</a></li><li class="chapter-item expanded "><a href="../05_streams/01_chapter.html"><strong aria-hidden="true">5.</strong> 🚧 Le trait Stream</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../05_streams/02_iteration_and_concurrency.html"><strong aria-hidden="true">5.1.</strong> 🚧 L'itération et la concurrence</a></li></ol></li><li class="chapter-item expanded "><a href="../06_multiple_futures/01_chapter.html"><strong aria-hidden="true">6.</strong> 🚧 Exécuter plusieurs futures en même temps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../06_multiple_futures/02_join.html"><strong aria-hidden="true">6.1.</strong> 🚧 join!</a></li><li class="chapter-item expanded "><a href="../06_multiple_futures/03_select.html"><strong aria-hidden="true">6.2.</strong> 🚧 select!</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.3.</strong> 🥚 TODO: Spawning</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.4.</strong> 🥚 TODO: Cancellation and Timeouts</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.5.</strong> 🥚 TODO: FuturesUnordered</div></li></ol></li><li class="chapter-item expanded "><a href="../07_workarounds/01_chapter.html"><strong aria-hidden="true">7.</strong> 🚧 Solutions de contournement à connaître et à utiliser</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../07_workarounds/02_err_in_async_blocks.html"><strong aria-hidden="true">7.1.</strong> 🚧 ? dans les blocs async</a></li><li class="chapter-item expanded "><a href="../07_workarounds/03_send_approximation.html"><strong aria-hidden="true">7.2.</strong> 🚧 L'approximation de Send</a></li><li class="chapter-item expanded "><a href="../07_workarounds/04_recursion.html"><strong aria-hidden="true">7.3.</strong> 🚧 La récursivité</a></li><li class="chapter-item expanded "><a href="../07_workarounds/05_async_in_traits.html"><strong aria-hidden="true">7.4.</strong> 🚧 async dans les traits</a></li></ol></li><li class="chapter-item expanded "><a href="../08_ecosystem/00_chapter.html"><strong aria-hidden="true">8.</strong> 🚧 L'écosystème asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/00_intro.html"><strong aria-hidden="true">9.</strong> 🚧 Projet final : Serveur HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../09_example/01_running_async_code.html"><strong aria-hidden="true">9.1.</strong> 🚧 Exécuter du code asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/02_handling_connections_concurrently.html"><strong aria-hidden="true">9.2.</strong> 🚧 Gérer les connexions en concurrence</a></li><li class="chapter-item expanded "><a href="../09_example/03_tests.html"><strong aria-hidden="true">9.3.</strong> 🚧 Test du serveur</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> TODO: I/O</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">10.1.</strong> TODO: AsyncRead and AsyncWrite</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> TODO: Asynchronous Design Patterns: Solutions and Suggestions</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">11.1.</strong> TODO: Modeling Servers and the Request/Response Pattern</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.2.</strong> TODO: Managing Shared State</div></li></ol></li><li class="chapter-item expanded "><a href="../12_appendix/01_translations.html"><strong aria-hidden="true">12.</strong> Annexe : traductions du livre</a></li><li class="chapter-item expanded affix "><a href="../translation-terms.html">Traduction des termes</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">La programmation asynchrone avec Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Jimskapt/async-book-fr/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <blockquote>
+<h1 id="-attention-peinture-fraîche-"><a class="header" href="#-attention-peinture-fraîche-">🚧 Attention, peinture fraîche !</a></h1>
+<p>Cette page a été traduite par une seule personne et n'a pas été relue et
+vérifiée par quelqu'un d'autre ! Les informations peuvent par exemple être
+erronées, être formulées maladroitement, ou contenir d'autres types de fautes.</p>
+<p>Vous pouvez contribuer à l'amélioration de cette page sur sa
+<a href="https://github.com/Jimskapt/async-book-fr/pull/4">Pull Request</a>.</p>
+</blockquote>
+<!--
+# `async`/`.await` Primer
+-->
+<h1 id="introduction-à-async-et-await"><a class="header" href="#introduction-à-async-et-await">Introduction à <code>async</code> et <code>await</code></a></h1>
+<!--
+`async`/`.await` is Rust's built-in tool for writing asynchronous functions
+that look like synchronous code. `async` transforms a block of code into a
+state machine that implements a trait called `Future`. Whereas calling a
+blocking function in a synchronous method would block the whole thread,
+blocked `Future`s will yield control of the thread, allowing other
+`Future`s to run.
+-->
+<p>Le <code>async</code> et <code>await</code> sont les outils intégrés dans Rust pour écrire des
+fonctions asynchrones qui ressemblent à du code synchrone. <code>async</code> transforme
+un bloc de code en une machine à états qui implémente le trait <code>Future</code>. Alors
+que l'appel à une fonction bloquante dans une méthode synchrone va bloquer tout
+le processus, les <code>Future</code>s bloquées céderont le contrôle du processus,
+permettant aux autres <code>Future</code>s de s'exécuter.</p>
+<!--
+Let's add some dependencies to the `Cargo.toml` file:
+-->
+<p>Ajoutons quelques dépendances au fichier <code>Cargo.toml</code> :</p>
+<!--
+```toml
+[dependencies]
+futures = "0.3"
+```
+-->
+<pre><code class="language-toml">[dependencies]
+futures = &quot;0.3&quot;
+</code></pre>
+<!--
+To create an asynchronous function, you can use the `async fn` syntax:
+-->
+<p>Pour créer une fonction asynchrone, vous pouvez utiliser la syntaxe
+<code>async fn</code> :</p>
+<!--
+```rust,edition2018
+async fn do_something() { /* ... */ }
+```
+-->
+<pre><pre class="playground"><code class="language-rust edition2018">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>async fn faire_quelquechose() { /* ... */ }
+<span class="boring">}
+</span></code></pre></pre>
+<!--
+The value returned by `async fn` is a `Future`. For anything to happen,
+the `Future` needs to be run on an executor.
+-->
+<p>La valeur retournée par <code>async fn</code> est une <code>Future</code>. Pour que quelque chose se
+produise, la <code>Future</code> a besoin d'être exécutée avec un exécuteur.</p>
+<!--
+```rust,edition2018
+// `block_on` blocks the current thread until the provided future has run to
+// completion. Other executors provide more complex behavior, like scheduling
+// multiple futures onto the same thread.
+use futures::executor::block_on;
+
+async fn hello_world() {
+    println!("hello, world!");
+}
+
+fn main() {
+    let future = hello_world(); // Nothing is printed
+    block_on(future); // `future` is run and "hello, world!" is printed
+}
+```
+-->
+<pre><pre class="playground"><code class="language-rust edition2018">// `block_on` bloque le processus en cours jusqu'à ce que la future qu'on lui
+// donne ait terminé son exécution. Les autres exécuteurs ont un comportement
+// plus complexe, comme par exemple ordonnancer plusieurs futures sur le même
+// processus.
+use futures::executor::block_on;
+
+async fn salutations() {
+    println!(&quot;salutations !&quot;);
+}
+
+fn main() {
+    let future = salutations(); // rien n'est pas affiché
+    block_on(future); // `future` est exécuté et &quot;salutations !&quot; est affiché
+}
+</code></pre></pre>
+<!--
+Inside an `async fn`, you can use `.await` to wait for the completion of
+another type that implements the `Future` trait, such as the output of
+another `async fn`. Unlike `block_on`, `.await` doesn't block the current
+thread, but instead asynchronously waits for the future to complete, allowing
+other tasks to run if the future is currently unable to make progress.
+-->
+<p>Dans une <code>async fn</code>, vous pouvez utiliser <code>.await</code> pour attendre la fin d'un
+autre type qui implémente le trait <code>Future</code>, comme le résultat d'une autre
+<code>async fn</code>. Contrairement à <code>block_on</code>, <code>.await</code> ne bloque pas le processus en
+cours, mais attends plutôt de manière asynchrone que la future se termine, pour
+permettre aux autres tâches de s'exécuter si cette future n'est pas en mesure de
+progresser actuellement.</p>
+<!--
+For example, imagine that we have three `async fn`: `learn_song`, `sing_song`,
+and `dance`:
+-->
+<p>Par exemple, imaginons que nous ayons trois <code>async fn</code> : <code>apprendre_chanson</code>,
+<code>chanter_chanson</code>, et <code>danser</code> :</p>
+<!--
+```rust,ignore
+async fn learn_song() -> Song { /* ... */ }
+async fn sing_song(song: Song) { /* ... */ }
+async fn dance() { /* ... */ }
+```
+-->
+<pre><code class="language-rust ignore">async fn apprendre_chanson() -&gt; Chanson { /* ... */ }
+async fn chanter_chanson(chanson: Chanson) { /* ... */ }
+async fn danser() { /* ... */ }
+</code></pre>
+<!--
+One way to do learn, sing, and dance would be to block on each of these
+individually:
+-->
+<p>Une façon d'apprendre, chanter, et danser serait de bloquer sur chacun :</p>
+<!--
+```rust,ignore
+fn main() {
+    let song = block_on(learn_song());
+    block_on(sing_song(song));
+    block_on(dance());
+}
+```
+-->
+<pre><code class="language-rust ignore">fn main() {
+    let chanson = block_on(apprendre_chanson());
+    block_on(chanter_chanson(chanson));
+    block_on(danser());
+}
+</code></pre>
+<!--
+However, we're not giving the best performance possible this way—we're
+only ever doing one thing at once! Clearly we have to learn the song before
+we can sing it, but it's possible to dance at the same time as learning and
+singing the song. To do this, we can create two separate `async fn` which
+can be run concurrently:
+-->
+<p>Cependant, nous ne profitons pas de performances optimales de cette manière —
+nous ne faisons qu'une seule chose à fois ! Il faut que nous apprenions la
+chanson avant de pouvoir la chanter, mais il reste possible de danser en même
+temps qu'on apprends et qu'on chante la chanson. Pour pouvoir faire cela, nous
+pouvons créer deux <code>async fn</code> qui peuvent être exécutés en concurrence :</p>
+<!--
+```rust,ignore
+async fn learn_and_sing() {
+    // Wait until the song has been learned before singing it.
+    // We use `.await` here rather than `block_on` to prevent blocking the
+    // thread, which makes it possible to `dance` at the same time.
+    let song = learn_song().await;
+    sing_song(song).await;
+}
+
+async fn async_main() {
+    let f1 = learn_and_sing();
+    let f2 = dance();
+
+    // `join!` is like `.await` but can wait for multiple futures concurrently.
+    // If we're temporarily blocked in the `learn_and_sing` future, the `dance`
+    // future will take over the current thread. If `dance` becomes blocked,
+    // `learn_and_sing` can take back over. If both futures are blocked, then
+    // `async_main` is blocked and will yield to the executor.
+    futures::join!(f1, f2);
+}
+
+fn main() {
+    block_on(async_main());
+}
+```
+-->
+<pre><code class="language-rust ignore">async fn apprendre_et_chanter() {
+    // Attends (await) que la chanson soit apprise avant de la chanter.
+    // Nous utilisons ici `.await` plutôt que `block_on` pour éviter de bloquer
+    // le processus, ce qui rend possible de `danser` en même temps.
+    let chanson = apprendre_chanson().await;
+    chanter_chanson(chanson).await;
+}
+
+async fn async_main() {
+    let f1 = apprendre_et_chanter();
+    let f2 = danser();
+
+    // `join!` se comporte comme `.await`, mais permet d'attendre plusieurs
+    // futures en concurrence. Si nous avions bloqué temporairement dans la
+    // future `apprendre_et_chanter`, la future `danser` aurais pris le relais
+    // dans le processus d'exécution en cours. Si `danser` se bloque aussi,
+    // `apprendre_et_chanter` pourra continuer dans le processus en cours. Si
+    // les deux futures sont bloquées, et bien `async_main` est bloqué et va en
+    // informer son exécuteur.
+    futures::join!(f1, f2);
+}
+
+fn main() {
+    block_on(async_main());
+}
+</code></pre>
+<!--
+In this example, learning the song must happen before singing the song, but
+both learning and singing can happen at the same time as dancing. If we used
+`block_on(learn_song())` rather than `learn_song().await` in `learn_and_sing`,
+the thread wouldn't be able to do anything else while `learn_song` was running.
+This would make it impossible to dance at the same time. By `.await`-ing
+the `learn_song` future, we allow other tasks to take over the current thread
+if `learn_song` is blocked. This makes it possible to run multiple futures
+to completion concurrently on the same thread.
+-->
+<p>Dans cet exemple, la chanson doit être apprise avant de chanter la chanson,
+mais l'apprentissage et le chant peuvent se dérouler en même temps qu'on
+danse. Si nous avions utilisé <code>block_on(apprendre_chanson())</code> plutôt que
+<code>apprendre_chanson().await</code> dans <code>apprendre_et_chanter</code>, le processus n'aurait
+rien pu faire tant que <code>apprendre_chanson</code> s'exécutait. Cela aurait rendu
+impossible de pouvoir danser en même temps. En attendant la future
+<code>apprendre_chanson</code>, grâce à <code>await</code>, nous permettons aux autres tâches de
+prendre le relais dans le processus en cours d'exécution lorsque
+<code>apprendre_chanson</code> est bloqué. Cela permet d'exécuter plusieurs futures
+jusqu'à leur fin de manière concurrente au sein du même processus.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../01_getting_started/03_state_of_async_rust.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../02_execution/01_chapter.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../01_getting_started/03_state_of_async_rust.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../02_execution/01_chapter.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

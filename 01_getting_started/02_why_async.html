@@ -1,0 +1,493 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>🚧 Pourquoi l&#x27;asynchrone ? - La programmation asynchrone avec Rust</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../01_getting_started/01_chapter.html"><strong aria-hidden="true">1.</strong> 🚧 Pour démarrer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_getting_started/02_why_async.html" class="active"><strong aria-hidden="true">1.1.</strong> 🚧 Pourquoi l'asynchrone ?</a></li><li class="chapter-item expanded "><a href="../01_getting_started/03_state_of_async_rust.html"><strong aria-hidden="true">1.2.</strong> 🚧 L'état de l'art de l'asynchrone en Rust</a></li><li class="chapter-item expanded "><a href="../01_getting_started/04_async_await_primer.html"><strong aria-hidden="true">1.3.</strong> 🚧 Introduction à async et await</a></li></ol></li><li class="chapter-item expanded "><a href="../02_execution/01_chapter.html"><strong aria-hidden="true">2.</strong> 🚧 Sous le capot : exécuter les Futures et les tâches</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_execution/02_future.html"><strong aria-hidden="true">2.1.</strong> 💬 The Future Trait</a></li><li class="chapter-item expanded "><a href="../02_execution/03_wakeups.html"><strong aria-hidden="true">2.2.</strong> 💬 Task Wakeups with Waker</a></li><li class="chapter-item expanded "><a href="../02_execution/04_executor.html"><strong aria-hidden="true">2.3.</strong> 💬 Applied: Build an Executor</a></li><li class="chapter-item expanded "><a href="../02_execution/05_io.html"><strong aria-hidden="true">2.4.</strong> 💬 Executors and System IO</a></li></ol></li><li class="chapter-item expanded "><a href="../03_async_await/01_chapter.html"><strong aria-hidden="true">3.</strong> 🚧 async et await</a></li><li class="chapter-item expanded "><a href="../04_pinning/01_chapter.html"><strong aria-hidden="true">4.</strong> 🚧 L'épinglage</a></li><li class="chapter-item expanded "><a href="../05_streams/01_chapter.html"><strong aria-hidden="true">5.</strong> 🚧 Le trait Stream</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../05_streams/02_iteration_and_concurrency.html"><strong aria-hidden="true">5.1.</strong> 🚧 L'itération et la concurrence</a></li></ol></li><li class="chapter-item expanded "><a href="../06_multiple_futures/01_chapter.html"><strong aria-hidden="true">6.</strong> 🚧 Exécuter plusieurs futures en même temps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../06_multiple_futures/02_join.html"><strong aria-hidden="true">6.1.</strong> 🚧 join!</a></li><li class="chapter-item expanded "><a href="../06_multiple_futures/03_select.html"><strong aria-hidden="true">6.2.</strong> 🚧 select!</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.3.</strong> 🥚 TODO: Spawning</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.4.</strong> 🥚 TODO: Cancellation and Timeouts</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.5.</strong> 🥚 TODO: FuturesUnordered</div></li></ol></li><li class="chapter-item expanded "><a href="../07_workarounds/01_chapter.html"><strong aria-hidden="true">7.</strong> 🚧 Solutions de contournement à connaître et à utiliser</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../07_workarounds/02_err_in_async_blocks.html"><strong aria-hidden="true">7.1.</strong> 🚧 ? dans les blocs async</a></li><li class="chapter-item expanded "><a href="../07_workarounds/03_send_approximation.html"><strong aria-hidden="true">7.2.</strong> 🚧 L'approximation de Send</a></li><li class="chapter-item expanded "><a href="../07_workarounds/04_recursion.html"><strong aria-hidden="true">7.3.</strong> 🚧 La récursivité</a></li><li class="chapter-item expanded "><a href="../07_workarounds/05_async_in_traits.html"><strong aria-hidden="true">7.4.</strong> 🚧 async dans les traits</a></li></ol></li><li class="chapter-item expanded "><a href="../08_ecosystem/00_chapter.html"><strong aria-hidden="true">8.</strong> 🚧 L'écosystème asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/00_intro.html"><strong aria-hidden="true">9.</strong> 🚧 Projet final : Serveur HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../09_example/01_running_async_code.html"><strong aria-hidden="true">9.1.</strong> 🚧 Exécuter du code asynchrone</a></li><li class="chapter-item expanded "><a href="../09_example/02_handling_connections_concurrently.html"><strong aria-hidden="true">9.2.</strong> 🚧 Gérer les connexions en concurrence</a></li><li class="chapter-item expanded "><a href="../09_example/03_tests.html"><strong aria-hidden="true">9.3.</strong> 🚧 Test du serveur</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> TODO: I/O</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">10.1.</strong> TODO: AsyncRead and AsyncWrite</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> TODO: Asynchronous Design Patterns: Solutions and Suggestions</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">11.1.</strong> TODO: Modeling Servers and the Request/Response Pattern</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.2.</strong> TODO: Managing Shared State</div></li></ol></li><li class="chapter-item expanded "><a href="../12_appendix/01_translations.html"><strong aria-hidden="true">12.</strong> Annexe : traductions du livre</a></li><li class="chapter-item expanded affix "><a href="../translation-terms.html">Traduction des termes</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">La programmation asynchrone avec Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Jimskapt/async-book-fr/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <blockquote>
+<h1 id="-attention-peinture-fraîche-"><a class="header" href="#-attention-peinture-fraîche-">🚧 Attention, peinture fraîche !</a></h1>
+<p>Cette page a été traduite par une seule personne et n'a pas été relue et
+vérifiée par quelqu'un d'autre ! Les informations peuvent par exemple être
+erronées, être formulées maladroitement, ou contenir d'autres types de fautes.</p>
+<p>Vous pouvez contribuer à l'amélioration de cette page sur sa
+<a href="https://github.com/Jimskapt/async-book-fr/pull/2">Pull Request</a>.</p>
+</blockquote>
+<!--
+# Why Async?
+-->
+<h1 id="pourquoi-lasynchrone-"><a class="header" href="#pourquoi-lasynchrone-">Pourquoi l'asynchrone ?</a></h1>
+<!--
+We all love how Rust empowers us to write fast, safe software.
+But how does asynchronous programming fit into this vision?
+-->
+<p>Nous apprécions tous la façon dont Rust nous permet d'écrire rapidement des
+programmes sûrs. Mais comment la programmation asynchrone s'inscrit-elle dans
+cette démarche ?</p>
+<!--
+Asynchronous programming, or async for short, is a _concurrent programming model_
+supported by an increasing number of programming languages.
+It lets you run a large number of concurrent
+tasks on a small number of OS threads, while preserving much of the
+look and feel of ordinary synchronous programming, through the
+`async/await` syntax.
+-->
+<p>La programmation asynchrone, abrégé async, est un <em>modèle de programmation
+concurrent</em> pris en charge par un nombre croissant de langages de
+programmation. Il vous permet d'exécuter un grand nombre de tâches concurrentes
+sur un petit nombre de processus du Système d'Exploitation, tout en conservant
+l'apparence et la convivialité de la programmation synchrone habituelle, grâce
+à la syntaxe <code>async/await</code>.</p>
+<!--
+## Async vs other concurrency models
+-->
+<h2 id="lasynchrone-et-les-autres-modèles-de-concurrence"><a class="header" href="#lasynchrone-et-les-autres-modèles-de-concurrence">L'asynchrone et les autres modèles de concurrence</a></h2>
+<!--
+Concurrent programming is less mature and "standardized" than
+regular, sequential programming. As a result, we express concurrency
+differently depending on which concurrent programming model
+the language is supporting.
+A brief overview of the most popular concurrency models can help
+you understand how asynchronous programming fits within the broader
+field of concurrent programming:
+-->
+<p>La programmation concurrente est moins mûre et moins &quot;formalisée&quot; que la
+programmation séquentielle classique. Par conséquent, nous formulons la
+concurrence différemment selon le modèle de programmation pris en charge par le
+langage.
+Un bref panorama des modèles de concurrence les plus populaires peut vous aider
+à comprendre où se situe la programmation asynchrone dans le domaine plus large
+de la programmation asynchrone :</p>
+<!--
+- **OS threads** don't require any changes to the programming model,
+  which makes it very easy to express concurrency. However, synchronizing
+  between threads can be difficult, and the performance overhead is large.
+  Thread pools can mitigate some of these costs, but not enough to support
+  massive IO-bound workloads.
+- **Event-driven programming**, in conjunction with _callbacks_, can be very
+  performant, but tends to result in a verbose, "non-linear" control flow.
+  Data flow and error propagation is often hard to follow.
+- **Coroutines**, like threads, don't require changes to the programming model,
+  which makes them easy to use. Like async, they can also support a large
+  number of tasks. However, they abstract away low-level details that
+  are important for systems programming and custom runtime implementors.
+- **The actor model** divides all concurrent computation into units called
+  actors, which communicate through fallible message passing, much like
+  in distributed systems. The actor model can be efficiently implemented, but it leaves
+  many practical issues unanswered, such as flow control and retry logic.
+-->
+<ul>
+<li>Les <strong>processus du système d'exploitation</strong> ne nécessitent aucun changement
+dans le modèle de programmation, ce qui facilite l'expression de la
+concurrence. Cependant, la synchronisation entre les processus peut être
+difficile, et la conséquence sur les performances est importante. Les groupes
+de processus peuvent réduire certains coûts, mais pas suffisamment pour faire
+face à la charge de travail d'une grosse masse d'entrées/sorties.</li>
+<li>La <strong>programmation orientée évènements</strong>, conjuguée avec les <em>fonctions de
+rappel</em>, peut s'avérer très performante, mais a tendance à produire un
+contrôle de flux &quot;non-linéaire&quot; et verbeux. Les flux de données et les
+propagations d'erreurs sont souvent difficiles à suivre.</li>
+<li>Les <strong>coroutines</strong>, comme les processus, ne nécessitent pas de changements
+sur le modèle de programmation, ce qui facilite leur utilisation. Comme
+l'asynchrone, elles peuvent supporter de nombreuses tâches. Cependant, elles
+font abstraction des détails de bas niveau, qui sont importants pour la
+programmation système et les implémentations personnalisées d'environnements
+d'exécution.</li>
+<li>Le <strong>modèle acteur</strong> divise tous les calculs concurrents en différentes
+parties que l'on appelle acteurs, qui communiquent par le biais de passage de
+messages faillibles, comme dans les systèmes distribués. Le modèle d'acteur
+peut être implémenté efficacement, mais il ne répondra pas à tous les
+problèmes, comme le contrôle de flux et la logique de relance.</li>
+</ul>
+<!--
+In summary, asynchronous programming allows highly performant implementations
+that are suitable for low-level languages like Rust, while providing
+most of the ergonomic benefits of threads and coroutines.
+-->
+<p>En résumé, la programmation asynchrone permet des implémentations très
+performantes qui sont nécessaires pour des langages bas-niveau comme Rust, tout
+en offrant les avantages ergonomiques aux processus et aux coroutines.</p>
+<!--
+## Async in Rust vs other languages
+-->
+<h2 id="lasynchrone-en-rust-et-dans-les-autres-langages"><a class="header" href="#lasynchrone-en-rust-et-dans-les-autres-langages">L'asynchrone en Rust et dans les autres langages</a></h2>
+<!--
+Although asynchronous programming is supported in many languages, some
+details vary across implementations. Rust's implementation of async
+differs from most languages in a few ways:
+-->
+<p>Bien que la programmation asynchrone soit prise en charge dans de nombreux
+langages, certains détails changent selon les implémentations. L'implémentation
+en Rust de async se distingue des autres langages de plusieurs manières :</p>
+<!--
+- **Futures are inert** in Rust and make progress only when polled. Dropping a
+  future stops it from making further progress.
+- **Async is zero-cost** in Rust, which means that you only pay for what you use.
+  Specifically, you can use async without heap allocations and dynamic dispatch,
+  which is great for performance!
+  This also lets you use async in constrained environments, such as embedded systems.
+- **No built-in runtime** is provided by Rust. Instead, runtimes are provided by
+  community maintained crates.
+- **Both single- and multithreaded** runtimes are available in Rust, which have
+  different strengths and weaknesses.
+-->
+<ul>
+<li>Les <strong>futures sont inertes</strong> en Rust et progressent uniquement lorsqu'elles
+sont sollicitées. Libérer une future va arrêter sa progression.</li>
+<li><strong>L'asynchrone n'a pas de coût</strong> en Rust, ce qui signifie que vous ne payez que
+ce que vous utilisez. Plus précisément, vous pouvez utiliser async sans
+allouer sur le tas et sans répartition dynamique, ce qui est très intéressant
+pour les performances !
+Cela vous permet également d'utiliser async dans des environnements
+restreints, comme par exemple sur des systèmes embarqués.</li>
+<li><strong>Il n'y a pas d'environnement d'exécution intégré</strong> par défaut dans Rust. Par
+contre, des environnements d'exécution sont disponibles dans des crates maintenues
+par la communauté.</li>
+<li><strong>Des environnements d'exécution mono-processus et multi-processus</strong> existent
+en Rust, qui ont chacun leurs avantages et inconvénients.</li>
+</ul>
+<!--
+## Async vs threads in Rust
+-->
+<h2 id="lasynchrone-et-les-processus-en-rust"><a class="header" href="#lasynchrone-et-les-processus-en-rust">L'asynchrone et les processus en Rust</a></h2>
+<!--
+The primary alternative to async in Rust is using OS threads, either
+directly through [`std::thread`](https://doc.rust-lang.org/std/thread/)
+or indirectly through a thread pool.
+Migrating from threads to async or vice versa
+typically requires major refactoring work, both in terms of implementation and
+(if you are building a library) any exposed public interfaces. As such,
+picking the model that suits your needs early can save a lot of development time.
+-->
+<p>La première alternative à l'asynchrone en Rust est d'utiliser les processus du
+Système d'Exploitation, soit directement via
+<a href="https://doc.rust-lang.org/std/thread/"><code>std::thread</code></a>, soit indirectement via
+un groupe de processus.
+La migration des processus vers de l'asynchrone et vice-versa nécessite
+généralement un gros chantier de remaniement, que ce soit pour leur implémentation
+ou pour leurs interfaces publique (si vous écrivez une bibliothèque) . Par
+conséquent, vous pouvez vous épargner beaucoup de temps de développement si
+vous choisissez très tôt le modèle qui convient bien à vos besoins.</p>
+<!--
+**OS threads** are suitable for a small number of tasks, since threads come with
+CPU and memory overhead. Spawning and switching between threads
+is quite expensive as even idle threads consume system resources.
+A thread pool library can help mitigate some of these costs, but not all.
+However, threads let you reuse existing synchronous code without significant
+code changes—no particular programming model is required.
+In some operating systems, you can also change the priority of a thread,
+which is useful for drivers and other latency sensitive applications.
+-->
+<p>Les <strong>processus de Système d'Exploitation</strong> sont préférables pour un petit
+nombre de tâches, puisque les processus s'accompagnent d'une surcharge du
+processeur et de la mémoire. Créer et basculer entre les processus est assez
+gourmand, car même les processus inutilisés consomment des ressources système.
+Une bibliothèque implémentant des groupe de tâches peut aider à atténuer certains
+coûts, mais pas tous. Cependant, les processus vous permet de réutiliser du code
+synchrone existant sans avoir besoin de changement significatif du code — il n'y
+a pas besoin d'avoir de modèle de programmation en particulier.
+Avec certains systèmes d'exploitation, vous pouvez aussi changer la priorité
+d'un processus, ce qui peut être pratique pour les pilotes et les autres
+utilisations sensibles à la latence.</p>
+<!--
+**Async** provides significantly reduced CPU and memory
+overhead, especially for workloads with a
+large amount of IO-bound tasks, such as servers and databases.
+All else equal, you can have orders of magnitude more tasks than OS threads,
+because an async runtime uses a small amount of (expensive) threads to handle
+a large amount of (cheap) tasks.
+However, async Rust results in larger binary blobs due to the state
+machines generated from async functions and since each executable
+bundles an async runtime.
+-->
+<p><strong>L'asynchrone</strong> permet de réduire significativement la surcharge du processeur
+et de la mémoire, en particulier pour les charges de travail avec un grand
+nombre de tâches liées à des entrées/sorties, comme les serveurs et les bases
+de données. Pour comparaison à la même échelle, vous pouvez avoir un nombre bien
+plus élevé de tâches qu'avec les processus du Système d'Exploitation, car comme
+un environnement d'exécution asynchrone utilise une petite partie des (coûteux)
+processus pour gérer une grande quantité de tâches (peu coûteuses).
+Cependant, le Rust asynchrone produit des binaires plus lourds à cause des
+machines à états générés à partir des fonctions asynchrones et que par conséquent
+chaque exécutable embarque un environnement d'exécution asynchrone.</p>
+<!--
+On a last note, asynchronous programming is not _better_ than threads,
+but different.
+If you don't need async for performance reasons, threads can often be
+the simpler alternative.
+-->
+<p>Une dernière remarque, la programmation asynchrone n'est pas <em>meilleure</em> que
+les processus, c'est différent.
+Si vous n'avez pas besoin de l'asynchrone pour des raisons de performance, les
+processus sont souvent une alternative plus simple.</p>
+<!--
+### Example: Concurrent downloading
+-->
+<h3 id="exemple--un-téléchargement-concurrent"><a class="header" href="#exemple--un-téléchargement-concurrent">Exemple : un téléchargement concurrent</a></h3>
+<!--
+In this example our goal is to download two web pages concurrently.
+In a typical threaded application we need to spawn threads
+to achieve concurrency:
+-->
+<p>Dans cet exemple, notre objectif est de télécharger deux pages web en
+concurrence. Dans une application traditionnelle avec des processus nous avons
+besoin de créer des processus pour appliquer la concurrence :</p>
+<!--
+```rust,ignore
+fn get_two_sites() {
+    // Spawn two threads to do work.
+    let thread_one = thread::spawn(|| download("https://www.foo.com"));
+    let thread_two = thread::spawn(|| download("https://www.bar.com"));
+
+    // Wait for both threads to complete.
+    thread_one.join().expect("thread one panicked");
+    thread_two.join().expect("thread two panicked");
+}
+```
+-->
+<pre><code class="language-rust ignore">fn recuperer_deux_sites() {
+    // Crée deux tâches pour faire le travail.
+    let premiere_tache = std::thread::spawn(|| telecharger(&quot;https://www.foo.com&quot;));
+    let seconde_tache = std::thread::spawn(|| telecharger(&quot;https://www.bar.com&quot;));
+
+    // Attente que les deux tâches se terminent.
+    premiere_tache.join().expect(&quot;la première tâche a paniqué&quot;);
+    seconde_tache.join().expect(&quot;la deuxième tâche a paniqué&quot;);
+}
+</code></pre>
+<!--
+However, downloading a web page is a small task; creating a thread
+for such a small amount of work is quite wasteful. For a larger application, it
+can easily become a bottleneck. In async Rust, we can run these tasks
+concurrently without extra threads:
+-->
+<p>Cependant, le téléchargement d'une page web est une petite tâche, donc créer un
+processus pour une si petite quantité de travail est un peu du gaspillage. Pour
+une application plus importante, cela peut rapidement devenir un goulot
+d'étranglement. Grâce au Rust asynchrone, nous pouvons exécuter ces tâches en
+concurrence sans avoir besoin de processus supplémentaires :</p>
+<!--
+```rust,ignore
+async fn get_two_sites_async() {
+    // Create two different "futures" which, when run to completion,
+    // will asynchronously download the webpages.
+    let future_one = download_async("https://www.foo.com");
+    let future_two = download_async("https://www.bar.com");
+
+    // Run both futures to completion at the same time.
+    join!(future_one, future_two);
+}
+```
+-->
+<pre><code class="language-rust ignore">async fn recuperer_deux_sites_asynchrone() {
+    // Crée deux différentes &quot;futures&quot; qui, lorsqu'elles sont menée à terme,
+    // va télécharger les pages web de manière asynchrone.
+    let premier_future = telecharger_asynchrone(&quot;https://www.foo.com&quot;);
+    let second_future = telecharger_asynchrone(&quot;https://www.bar.com&quot;);
+
+    // Exécute les deux futures en même temps jusqu'à leur fin.
+    futures::join!(premier_future, second_future);
+}
+</code></pre>
+<!--
+Here, no extra threads are created. Additionally, all function calls are statically
+dispatched, and there are no heap allocations!
+However, we need to write the code to be asynchronous in the first place,
+which this book will help you achieve.
+-->
+<p>Notez bien que ici, il n'y a pas de processus supplémentaires qui sont créés.
+De plus, tous les appels à des fonctions sont distribués statiquement, et il
+n'y a pas d'allocation sur le tas !
+Cependant, nous avons d'abord besoin d'écrire le code pour être asynchrone, ce
+que ce livre va vous aider à accomplir.</p>
+<!--
+## Custom concurrency models in Rust
+-->
+<h2 id="les-modèles-personnalisés-de-concurrence-en-rust"><a class="header" href="#les-modèles-personnalisés-de-concurrence-en-rust">Les modèles personnalisés de concurrence en Rust</a></h2>
+<!--
+On a last note, Rust doesn't force you to choose between threads and async.
+You can use both models within the same application, which can be
+useful when you have mixed threaded and async dependencies.
+In fact, you can even use a different concurrency model altogether,
+such as event-driven programming, as long as you find a library that
+implements it.
+-->
+<p>Une dernière remarque, Rust ne vous forçait pas à choisir entre les
+processus et l'asynchrone. Vous pouvez utiliser ces deux modèles au sein d'une
+même application, ce qui peut être utile lorsque vous mélangez les dépendances
+de processus et d'asynchrone.
+En fait, vous pouvez même utiliser un modèle de concurrence complètement
+différent en même temps, du moment que vous trouvez une bibliothèque qui
+l'implémente.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../01_getting_started/01_chapter.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../01_getting_started/03_state_of_async_rust.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../01_getting_started/01_chapter.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../01_getting_started/03_state_of_async_rust.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

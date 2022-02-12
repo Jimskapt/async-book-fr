@@ -2,7 +2,7 @@
 # Recursion
 -->
 
-# Récursivité
+# La récursivité
 
 <!--
 Internally, `async fn` creates a state machine type containing each
@@ -113,7 +113,7 @@ to make `recursive` into a non-`async` function which returns a `.boxed()`
 `async` block:
 -->
 
-Pour pouvoir permettre cela, nous devons faire une dérivation en utilisant
+Pour nous permettre cela, nous devons faire une dérivation en utilisant
 `Box`. Malheureusement, les limitations du compilateur font en sorte
 qu'envelopper les appels à `recursif()` dans une `Box::pin` n'est pas
 suffisant. Pour que cela fonctionne, nous devons transformer `recursif` en

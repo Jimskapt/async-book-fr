@@ -81,14 +81,14 @@ de la programmation asynchrone :
   many practical issues unanswered, such as flow control and retry logic.
 -->
 
-- Les **processus de l'OS** ne nécessitent aucun changement dans le modèle de
-  programmation, ce qui facilite l'expression de la concurrence. Cependant, la
-  synchronisation entre les processus peut-être difficile, et la conséquence
-  sur les performances est importante. Les groupes de processus peuvent réduire
-  certains coûts, mais pas suffisamment pour faire face à la charge de travail
-  d'une grosse masse d'entrées-sorties.
-- La **programmation orientée évènements**, conjugué avec les _fonctions de
-  rappel_, peuvent être très performants, mais a tendance à produire un
+- Les **processus du système d'exploitation** ne nécessitent aucun changement
+  dans le modèle de programmation, ce qui facilite l'expression de la
+  concurrence. Cependant, la synchronisation entre les processus peut être
+  difficile, et la conséquence sur les performances est importante. Les groupes
+  de processus peuvent réduire certains coûts, mais pas suffisamment pour faire
+  face à la charge de travail d'une grosse masse d'entrées/sorties.
+- La **programmation orientée évènements**, conjuguée avec les _fonctions de
+  rappel_, peut s'avérer très performante, mais a tendance à produire un
   contrôle de flux "non-linéaire" et verbeux. Les flux de données et les
   propagations d'erreurs sont souvent difficiles à suivre.
 - Les **coroutines**, comme les processus, ne nécessitent pas de changements
@@ -97,7 +97,7 @@ de la programmation asynchrone :
   font abstraction des détails de bas niveau, qui sont importants pour la
   programmation système et les implémentations personnalisées d'environnements
   d'exécution.
-- Le **modèle d'acteur** divise tous les calculs concurrents en différentes
+- Le **modèle acteur** divise tous les calculs concurrents en différentes
   parties que l'on appelle acteurs, qui communiquent par le biais de passage de
   messages faillibles, comme dans les systèmes distribués. Le modèle d'acteur
   peut être implémenté efficacement, mais il ne répondra pas à tous les
@@ -111,7 +111,7 @@ most of the ergonomic benefits of threads and coroutines.
 
 En résumé, la programmation asynchrone permet des implémentations très
 performantes qui sont nécessaires pour des langages bas-niveau comme Rust, tout
-en offrant les avantages ergonomiques des processus et des coroutines.
+en offrant les avantages ergonomiques aux processus et aux coroutines.
 
 <!--
 ## Async in Rust vs other languages
@@ -127,7 +127,7 @@ differs from most languages in a few ways:
 
 Bien que la programmation asynchrone soit prise en charge dans de nombreux
 langages, certains détails changent selon les implémentations. L'implémentation
-de Rust de async se distingue des autres langages de plusieurs manières :
+en Rust de async se distingue des autres langages de plusieurs manières :
 
 <!--
 - **Futures are inert** in Rust and make progress only when polled. Dropping a
@@ -144,17 +144,17 @@ de Rust de async se distingue des autres langages de plusieurs manières :
 
 - Les **futures sont inertes** en Rust et progressent uniquement lorsqu'elles
   sont sollicitées. Libérer une future va arrêter sa progression.
-- **L'asynchrone n'a pas coût** en Rust, ce qui signifie que vous ne payez que
+- **L'asynchrone n'a pas de coût** en Rust, ce qui signifie que vous ne payez que
   ce que vous utilisez. Plus précisément, vous pouvez utiliser async sans
   allouer sur le tas et sans répartition dynamique, ce qui est très intéressant
   pour les performances !
   Cela vous permet également d'utiliser async dans des environnements
-  restreints, comme les systèmes embarqués.
-- **Il n'y a pas d'environnement d'exécution intégré** avec Rust. Par contre,
-  des environnements d'exécution sont proposés par des crates maintenues par la
-  communauté.
-- **Les environnements d'exécution mono-processus et multi-processus** sont
-  disponibles en Rust, qui ont chacun leurs avantages et inconvénients.
+  restreints, comme par exemple sur des systèmes embarqués.
+- **Il n'y a pas d'environnement d'exécution intégré** par défaut dans Rust. Par
+  contre, des environnements d'exécution sont disponibles dans des crates maintenues
+  par la communauté.
+- **Des environnements d'exécution mono-processus et multi-processus** existent
+  en Rust, qui ont chacun leurs avantages et inconvénients.
 
 <!--
 ## Async vs threads in Rust
@@ -177,11 +177,10 @@ Système d'Exploitation, soit directement via
 [`std::thread`](https://doc.rust-lang.org/std/thread/), soit indirectement via
 un groupe de processus.
 La migration des processus vers de l'asynchrone et vice-versa nécessite
-généralement un gros chantier de remaniement, autant en termes d'implémentation
-et aussi (si vous écrivez une bibliothèque) toutes les interfaces exposées
-publiquement. Par conséquent, vous pouvez vous épargner beaucoup de temps de
-développement si vous choisissez très tôt le modèle qui convient bien à vos
-besoins.
+généralement un gros chantier de remaniement, que ce soit pour leur implémentation
+ou pour leurs interfaces publique (si vous écrivez une bibliothèque) . Par
+conséquent, vous pouvez vous épargner beaucoup de temps de développement si
+vous choisissez très tôt le modèle qui convient bien à vos besoins.
 
 <!--
 **OS threads** are suitable for a small number of tasks, since threads come with
@@ -198,10 +197,10 @@ Les **processus de Système d'Exploitation** sont préférables pour un petit
 nombre de tâches, puisque les processus s'accompagnent d'une surcharge du
 processeur et de la mémoire. Créer et basculer entre les processus est assez
 gourmand, car même les processus inutilisés consomment des ressources système.
-Une bibliothèque de groupe de tâches peut aider à atténuer certains coûts, mais
-pas tous. Cependant, les processus vous permet de réutiliser du code synchrone
-existant sans avoir besoin de changement significatif de code — il n'y a pas
-besoin d'avoir de modèle de programmation en particulier.
+Une bibliothèque implémentant des groupe de tâches peut aider à atténuer certains
+coûts, mais pas tous. Cependant, les processus vous permet de réutiliser du code
+synchrone existant sans avoir besoin de changement significatif du code — il n'y
+a pas besoin d'avoir de modèle de programmation en particulier.
 Avec certains systèmes d'exploitation, vous pouvez aussi changer la priorité
 d'un processus, ce qui peut être pratique pour les pilotes et les autres
 utilisations sensibles à la latence.
@@ -221,13 +220,13 @@ bundles an async runtime.
 **L'asynchrone** permet de réduire significativement la surcharge du processeur
 et de la mémoire, en particulier pour les charges de travail avec un grand
 nombre de tâches liées à des entrées/sorties, comme les serveurs et les bases
-de données. Pour comparaison à échelle égale, vous pouvez avoir un nombre bien
+de données. Pour comparaison à la même échelle, vous pouvez avoir un nombre bien
 plus élevé de tâches qu'avec les processus du Système d'Exploitation, car comme
 un environnement d'exécution asynchrone utilise une petite partie des (coûteux)
 processus pour gérer une grande quantité de tâches (peu coûteuses).
-Cependant, le Rust asynchrone produit des binaires plus gros à cause des
-machines à états générés à partir des fonctions asynchrones et puisque chaque
-exécutable embarque un environnement d'exécution asynchrone.
+Cependant, le Rust asynchrone produit des binaires plus lourds à cause des
+machines à états générés à partir des fonctions asynchrones et que par conséquent
+chaque exécutable embarque un environnement d'exécution asynchrone.
 
 <!--
 On a last note, asynchronous programming is not _better_ than threads,
@@ -276,8 +275,8 @@ concurrently without extra threads:
 
 Cependant, le téléchargement d'une page web est une petite tâche, donc créer un
 processus pour une si petite quantité de travail est un peu du gaspillage. Pour
-une application plus grosse, cela peut facilement devenir un goulot
-d'étranglement. Avec le Rust asynchrone, nous pouvons exécuter ces tâches en
+une application plus importante, cela peut rapidement devenir un goulot
+d'étranglement. Grâce au Rust asynchrone, nous pouvons exécuter ces tâches en
 concurrence sans avoir besoin de processus supplémentaires :
 
 <!--
@@ -297,11 +296,11 @@ However, we need to write the code to be asynchronous in the first place,
 which this book will help you achieve.
 -->
 
-Donc ici, il n'y a pas de processus supplémentaires qui sont créés. De plus,
-tous les appels à des fonctions sont distribués statiquement, et il n'y a pas
-d'allocation sur le tas !
+Notez bien que ici, il n'y a pas de processus supplémentaires qui sont créés.
+De plus, tous les appels à des fonctions sont distribués statiquement, et il
+n'y a pas d'allocation sur le tas !
 Cependant, nous avons d'abord besoin d'écrire le code pour être asynchrone, ce
-que ce présent libre va vous aider à accomplir.
+que ce livre va vous aider à accomplir.
 
 <!--
 ## Custom concurrency models in Rust
@@ -318,7 +317,7 @@ such as event-driven programming, as long as you find a library that
 implements it.
 -->
 
-Sur la dernière remarque, Rust ne vous forçait pas à choisir entre les
+Une dernière remarque, Rust ne vous forçait pas à choisir entre les
 processus et l'asynchrone. Vous pouvez utiliser ces deux modèles au sein d'une
 même application, ce qui peut être utile lorsque vous mélangez les dépendances
 de processus et d'asynchrone.

@@ -26,7 +26,7 @@ async fn gestion_connexion(mut flux: TcpStream) {
     let (ligne_statut, nom_fichier) = if tampon.starts_with(get) {
         ("HTTP/1.1 200 OK\r\n\r\n", "hello.html")
     } else if tampon.starts_with(pause) {
-        task::pause(Duration::from_secs(5)).await;
+        task::sleep(Duration::from_secs(5)).await;
         ("HTTP/1.1 200 OK\r\n\r\n", "hello.html")
     } else {
         ("HTTP/1.1 404 NOT FOUND\r\n\r\n", "404.html")

@@ -22,7 +22,7 @@
 - [🚧 Solutions de contournement à connaître et à utiliser](07_workarounds/01_chapter.md)
   - [🚧 `?` dans les blocs `async`](07_workarounds/02_err_in_async_blocks.md)
   - [🚧 L'approximation de `Send`](07_workarounds/03_send_approximation.md)
-  - [🚧 Récursivité](07_workarounds/04_recursion.md)
+  - [🚧 La récursivité](07_workarounds/04_recursion.md)
   - [🚧 `async` dans les traits](07_workarounds/05_async_in_traits.md)
 - [🚧 L'écosystème asynchrone](08_ecosystem/00_chapter.md)
 - [🚧 Projet final : Serveur HTTP](09_example/00_intro.md)

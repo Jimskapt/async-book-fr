@@ -12,7 +12,7 @@ over time. With async Rust, you can expect:
 
 Certaines parties du Rust asynchrone sont pris en charge avec les mêmes
 garanties de stabilité que le Rust synchrone. Les autres parties sont en cours
-de perfectionnement et évolueront avec le temps. Voici ce que vous pouvez
+de perfectionnement et évolueront dans le temps. Voici ce que vous pouvez
 attendre du Rust asynchrone :
 
 <!--
@@ -86,7 +86,7 @@ offertes par le langage et les bibliothèques :
 - Les traits, types et fonctions les plus fondamentaux, comme le trait
   [`Future`](https://doc.rust-lang.org/std/future/trait.Future.html), sont
   fournis par la bibliothèque standard.
-- La syntaxe `async/await` est pris en charge directement par le compilateur
+- La syntaxe `async/await` est prise en charge directement par le compilateur
   Rust.
 - De nombreux types, macros et fonctions utilitaires sont fournis par la crate
   [`futures`](https://docs.rs/futures/). Ils peuvent être utilisés dans de
@@ -107,11 +107,11 @@ result, which can be more verbose.
 -->
 
 Certaines fonctionnalités du langage auquel vous êtes habitué en Rust synchrone
-peuvent ne pas être encore disponible en Rust asynchrone. Par exemple, Rust ne
+peuvent ne pas encore être disponible en Rust asynchrone. Par exemple, Rust ne
 vous permet pas encore de déclarer des fonctions asynchrones dans des traits.
 Par conséquent, vous avez besoin de mettre en place des solutions de
 substitution pour arriver au même résultat, ce qui peut rendre les choses un
-peu plus verbeux.
+peu plus verbeuses.
 
 <!--
 ## Compiling and debugging
@@ -125,7 +125,7 @@ the same way as they have always done in Rust. There are a few
 noteworthy differences:
 -->
 
-Dans la plupart des cas, les erreurs de compilateur et d'exécution de Rust
+Dans la plupart des cas, les erreurs du compilateur et d'exécution du Rust
 asynchrone fonctionnent de la même manière qu'elles l'ont toujours fait en
 Rust. Voici quelques différences intéressantes :
 
@@ -143,8 +143,8 @@ errors more frequently.
 -->
 
 Les erreurs de compilateur en Rust asynchrone suivent les mêmes règles strictes
-que le Rust synchrone, mais comme le Rust asynchrone dépend souvent dépend
-souvent de fonctionnalités du langage plus élaborées, comme les durées de vie
+que le Rust synchrone, mais comme le Rust asynchrone dépend souvent de
+fonctionnalités du langage plus élaborées, comme les durées de vie
 et l'épinglage, vous pourriez rencontrer plus régulièrement ces types
 d'erreurs.
 
@@ -187,9 +187,10 @@ avoid these pitfalls.
 Quelques nouveaux types d'erreurs sont possibles avec Rust asynchrone, par
 exemple si vous appelez une fonction bloquante à partir d'un contexte
 asynchrone ou si vous n'implémentez pas correctement le trait `Future`. Ces
-erreurs peuvent ne pas être signalées par le compilateur et parfois même par
-les tests unitaires. Le but de ce livre est de vous apprendre les principes
-fondamentaux pour vous aider à éviter ces pièges.
+erreurs peuvent ne pas être signalées par le compilateur et parfois même ne
+peuvent pas être couvertes par vos tests unitaires. Le but de ce livre est
+de vous apprendre les principes fondamentaux pour vous aider à éviter ces
+pièges.
 
 <!--
 ## Compatibility considerations
@@ -204,10 +205,10 @@ Sync and async code also tend to promote different design patterns, which can
 make it difficult to compose code intended for the different environments.
 -->
 
-Le code asynchrone et synchrone ne peuvent pas tout le temps être combinés
+Le code asynchrone et synchrone ne peuvent pas toujours être combinés
 librement. Par exemple, vous ne pouvez pas appeler directement une fonction
 asynchrone à partir d'une fonction synchrone. Le code synchrone et asynchrone
-ont aussi tendance à encourager des motifs de conception différents, ce qui
+ont aussi tendance à favoriser des motifs de conception différents, ce qui
 peut rendre difficile de combiner du code destiné aux différents
 environnements.
 
@@ -247,8 +248,8 @@ Even though the runtimes that power async Rust applications are relatively new,
 they perform exceptionally well for most practical workloads.
 -->
 
-La performance du Rust asynchrone dépend de l'implémentation de l'environnement
-d'exécution asynchrone que vous choisissez.
+Les performances du Rust asynchrone dépend de l'implémentation de
+l'environnement d'exécution asynchrone que vous choisissez.
 Même si les environnements d'exécution qui propulsent les applications
 asynchrones en Rust sont relativement récents, ils sont remarquablement
 performants pour la plupart des charges de travail.
@@ -271,5 +272,5 @@ Un autre domaine d'application sous-côté est celui des _tâches sensibles à l
 latence_, qui sont importantes pour les pilotes, les applications avec
 interface graphique, parmi d'autres. Ces tâches dépendent de l'environnement
 d'exécution et/ou de la prise en charge du système d'exploitation pour être
-orchestrées correctement. Vous pouvez donc espérer de meilleures prises en
-charge des bibliothèques pour cas d'usages à l'avenir.
+orchestrées correctement. Vous pouvez donc espérer une meilleure prise en
+charge à l'avenir des bibliothèques de ces cas d'usages.

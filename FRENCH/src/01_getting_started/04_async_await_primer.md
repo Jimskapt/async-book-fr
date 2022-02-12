@@ -92,7 +92,7 @@ Dans une `async fn`, vous pouvez utiliser `.await` pour attendre la fin d'un
 autre type qui implémente le trait `Future`, comme le résultat d'une autre
 `async fn`. Contrairement à `block_on`, `.await` ne bloque pas le processus en
 cours, mais attends plutôt de manière asynchrone que la future se termine, pour
-permettre aux autres tâches de s'exécuter si la future n'est pas en mesure de
+permettre aux autres tâches de s'exécuter si cette future n'est pas en mesure de
 progresser actuellement.
 
 <!--
@@ -169,13 +169,13 @@ if `learn_song` is blocked. This makes it possible to run multiple futures
 to completion concurrently on the same thread.
 -->
 
-Dans cet exemple, l'apprentissage de la chanson doit être effectué avant de
-chanter la chanson, mais l'apprentissage et le chant peuvent se dérouler en
-même temps qu'on danse. Si nous avions utilisé `block_on(apprendre_chanson())`
-plutôt que `apprendre_chanson().await` dans `apprendre_et_chanter`, le
-processus n'aurait rien pu faire tant que `apprendre_chanson` s'exécutait. Cela
-aurait rendu impossible de danser en même temps. En attendant la future
+Dans cet exemple, la chanson doit être apprise avant de chanter la chanson,
+mais l'apprentissage et le chant peuvent se dérouler en même temps qu'on
+danse. Si nous avions utilisé `block_on(apprendre_chanson())` plutôt que
+`apprendre_chanson().await` dans `apprendre_et_chanter`, le processus n'aurait
+rien pu faire tant que `apprendre_chanson` s'exécutait. Cela aurait rendu
+impossible de pouvoir danser en même temps. En attendant la future
 `apprendre_chanson`, grâce à `await`, nous permettons aux autres tâches de
-reprendre la main sur le processus en cours lorsque `apprendre_chanson` est
-bloqué. Cela permet d'exécuter plusieurs futures jusqu'à leur fin de manière
-concurrente sur le même processus.
+prendre le relais dans le processus en cours d'exécution lorsque
+`apprendre_chanson` est bloqué. Cela permet d'exécuter plusieurs futures
+jusqu'à leur fin de manière concurrente au sein du même processus.

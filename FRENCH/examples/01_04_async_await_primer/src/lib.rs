@@ -58,10 +58,10 @@ async fn async_main() {
     let f1 = apprendre_et_chanter();
     let f2 = danser();
 
-    // `join!` se comporte comme `.await` mais ne peut pas attendre plusieurs
+    // `join!` se comporte comme `.await`, mais permet d'attendre plusieurs
     // futures en concurrence. Si nous avions bloqué temporairement dans la
-    // future `apprendre_et_chanter`, la future `danser` continuera son
-    // exécution dans le processus en cours. Si `danser` se bloque aussi,
+    // future `apprendre_et_chanter`, la future `danser` aurais pris le relais
+    // dans le processus d'exécution en cours. Si `danser` se bloque aussi,
     // `apprendre_et_chanter` pourra continuer dans le processus en cours. Si
     // les deux futures sont bloquées, et bien `async_main` est bloqué et va en
     // informer son exécuteur.

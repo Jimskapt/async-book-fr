@@ -5,3 +5,5 @@ français.
 
 | Anglais | Français | Remarques |
 | ------- | ------ | ------ |
+| mutable | mutable | - |
+| ownership | possession | - |

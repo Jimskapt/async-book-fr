@@ -1,3 +1,4 @@
 [workspace]
 members = [
+  "03_01_async_await",
 ]

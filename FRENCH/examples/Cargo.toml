@@ -1,3 +1,4 @@
 [workspace]
 members = [
+  "05_02_iteration_and_concurrency",
 ]
